@@ -1,21 +1,16 @@
 import React from 'react';
 import ChartLabel from './ChartLabel';
 
-type Props = {};
+type Props = {
+  colors: string[];
+  labels: string[];
+};
 
-const ChartLabels = (props: Props) => {
-  const data = [
-    { color: '#FF0000', title: 'Blat' },
-    { color: '#FF0000', title: 'Blat' },
-    { color: '#FF0000', title: 'Blat' },
-    { color: '#FF0000', title: 'Blat' },
-    { color: '#FF0000', title: 'Blat' },
-    { color: '#FF0000', title: 'Blat' },
-  ];
+const ChartLabels = ({ colors, labels }: Props) => {
   return (
-    <div className="grid grid-cols-3 gap-2">
-      {data.map((item, index) => (
-        <ChartLabel key={index} color={item.color} title={item.title} />
+    <div className='flex justify-between space-x-4'>
+      {labels.map((label, index) => (
+        <ChartLabel key={label} color={colors[index]} title={label} />
       ))}
     </div>
   );

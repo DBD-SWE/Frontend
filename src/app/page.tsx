@@ -10,14 +10,14 @@ import DoughnutSummaryCard from './components/ui/Dashboard/DoughnutSummaryCard';
 export default function Home() {
   return (
     <div className="flex items-center justify-center">
-      {/* <SummaryCardsList /> */}
-      {/* <DoughnutChart
-        labels={['Task', 'Blue', 'Yellow']}
-        stats={[300, 50, 100]}
-        colors={['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)']}
-      /> */}
-      {/* <ChartLabelsList /> */}
-      <DoughnutSummaryCard />
+      <DoughnutSummaryCard
+        title="Services"
+        total={216}
+        lastModified="Jan 8, 2024"
+        stats={[200, 40, 20]}
+        labels={['Blat', 'Amchit', 'Mastita']}
+        colors={['#ff0000', '#3d85c6', '#f4cccc']}
+      />
     </div>
   );
 }
