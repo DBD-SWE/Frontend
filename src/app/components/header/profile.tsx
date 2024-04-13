@@ -8,11 +8,17 @@ const Profile = () => {
       <Avatar onClick={() => setOpen(!open)} letter={'T'} />
 
       <div
-        className={`absolute right-0 top-[50px] w-[230px] transform rounded-md border-[1px] border-gray-200 bg-white p-3 opacity-0 shadow-sm transition-all duration-300 ease-out ${open ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
+        className={`absolute right-0 top-[50px] w-[250px] transform rounded-md border-[1px] border-gray-200 bg-white p-3 opacity-0 shadow-sm transition-all duration-300 ease-out ${open ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
       >
         {/* avatar section */}
         <div className="flex flex-row items-center gap-3">
-          <Avatar letter="T" />
+          <div
+            className={`h-[38px] w-[38px] rounded-full border-[1px] border-gray-300 p-[2px] shadow-sm`}
+          >
+            <div className="flex h-full w-full flex-row items-center justify-center rounded-full bg-gray-300">
+              <span className="block text-sm font-semibold text-black">T</span>
+            </div>
+          </div>
           <div className="flex flex-col items-start">
             <span className="block text-sm font-semibold text-black">
               Tony Kosseify
@@ -22,8 +28,9 @@ const Profile = () => {
             </span>
           </div>
         </div>
-				{/* Links */}
-				
+        {/* Links */}
+        {/* divider */}
+        <div className=" my-4 h-[1px] w-full bg-gray-300" />
         <ul>
           <li className="py-2">Profile</li>
           <li className="py-2">Settings</li>
@@ -53,4 +60,8 @@ const Avatar = ({
       </div>
     </div>
   );
+};
+
+const Links = () => {
+  return <div className="text-"></div>;
 };
