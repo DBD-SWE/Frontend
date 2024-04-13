@@ -45,7 +45,7 @@ const Profile = () => {
         className={` absolute right-0 top-[50px] w-max transform rounded-md border-[1px] border-gray-200 bg-white py-4 opacity-0 shadow-sm transition-all duration-300 ease-out ${open ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
       >
         {/* avatar section */}
-        <div className="ml-4 mr-20 flex flex-row items-center gap-3">
+        <div className="ml-4 mr-28 flex flex-row items-center gap-3">
           <div
             className={`h-[38px] w-[38px] rounded-full border-[1px] border-gray-300 p-[2px] shadow-sm`}
           >
