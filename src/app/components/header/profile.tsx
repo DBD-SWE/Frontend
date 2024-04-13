@@ -4,20 +4,26 @@ import Link from 'next/link';
 
 const Profile = () => {
   const [open, setOpen] = useState<boolean>(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null); // For the dropdown
+  const avatarRef = useRef<HTMLDivElement>(null); // For the avatar
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent): void => {
       if (
+        avatarRef.current &&
+        avatarRef.current.contains(event.target as Node)
+      ) {
+        setOpen(!open);
+      } else if (
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
         setOpen(false);
       }
     };
-    if (open) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -25,7 +31,9 @@ const Profile = () => {
 
   return (
     <div className="relative">
-      <Avatar onClick={() => setOpen(!open)} letter={'T'} />
+      <div ref={avatarRef}>
+        <Avatar letter={'T'} />
+      </div>
 
       <div
         ref={dropdownRef}
