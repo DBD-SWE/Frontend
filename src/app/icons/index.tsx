@@ -1,3 +1,4 @@
-import SearchIcon from "./search"; 
+import SearchIcon from './search';
+import CloseIcon from './close';
 
-export { SearchIcon };
+export { SearchIcon, CloseIcon };
