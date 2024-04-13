@@ -92,7 +92,7 @@ const MyLink = ({
   return (
     <Link
       href={href}
-      className={`cursor-pointer rounded-sm py-2 pl-2.5 text-sm transition-colors ${danger ? 'text-red-500 hover:bg-red-500 hover:text-white' : 'text-black hover:bg-gray-100'}`}
+      className={`cursor-pointer rounded-sm py-2 pl-2.5 text-sm transition-colors ${danger ? 'text-red-600 hover:bg-red-600 hover:text-white' : 'text-black hover:bg-gray-100'}`}
     >
       {text}
     </Link>

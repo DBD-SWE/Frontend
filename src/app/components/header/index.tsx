@@ -4,6 +4,9 @@ import SearchInput from './search';
 import Link from 'next/link';
 import Profile from './profile';
 
+// Here we should request the /me route, get user info and pass user info
+// as props to the Profile component
+
 const Header = () => {
   return (
     <header className="flex w-full flex-row items-center justify-between border-b-[1px] border-gray-100 px-7 py-3">

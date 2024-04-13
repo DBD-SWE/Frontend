@@ -25,6 +25,7 @@ export default function RootLayout({
       >
         <CustomNextUiProvider>
           <Header />
+          {/* <Sidebar /> */}
           {children}
         </CustomNextUiProvider>
       </body>
