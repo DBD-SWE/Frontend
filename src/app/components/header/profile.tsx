@@ -4,8 +4,8 @@ import Link from 'next/link';
 
 const Profile = () => {
   const [open, setOpen] = useState<boolean>(false);
-  const dropdownRef = useRef<HTMLDivElement>(null); // For the dropdown
-  const avatarRef = useRef<HTMLDivElement>(null); // For the avatar
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const avatarRef = useRef<HTMLDivElement>(null); 
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent): void => {
@@ -31,8 +31,13 @@ const Profile = () => {
 
   return (
     <div className="relative">
-      <div ref={avatarRef}>
-        <Avatar letter={'T'} />
+      <div
+        ref={avatarRef}
+        className={`h-[38px] w-[38px] transform cursor-pointer rounded-full border-[1px] border-gray-300 p-[2px] shadow-sm transition-transform duration-500 ease-in-out hover:scale-110`}
+      >
+        <div className="flex h-full w-full flex-row items-center justify-center rounded-full bg-gray-300">
+          <span className="block text-sm font-semibold text-black">T</span>
+        </div>
       </div>
 
       <div
@@ -58,7 +63,6 @@ const Profile = () => {
           </div>
         </div>
         {/* Links */}
-        {/* divider */}
         <div className="my-4 h-[1px] w-full bg-gray-300" />
         <div className="ml-4 mr-3 flex flex-col">
           <MyLink text="My Profile" href="/profile" />
@@ -75,25 +79,6 @@ const Profile = () => {
 };
 
 export default Profile;
-
-const Avatar = ({
-  onClick,
-  letter,
-}: {
-  onClick?: () => void;
-  letter: string;
-}) => {
-  return (
-    <div
-      onClick={onClick}
-      className={`h-[38px] w-[38px] transform cursor-pointer rounded-full border-[1px] border-gray-300 p-[2px] shadow-sm transition-transform duration-500 ease-in-out hover:scale-110`}
-    >
-      <div className="flex h-full w-full flex-row items-center justify-center rounded-full bg-gray-300">
-        <span className="block text-sm font-semibold text-black">{letter}</span>
-      </div>
-    </div>
-  );
-};
 
 const MyLink = ({
   text,
