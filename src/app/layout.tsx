@@ -1,9 +1,8 @@
 import './styles/globals.css';
 import { Inter as FontSans } from 'next/font/google';
-import Image from 'next/image';
 import { cn } from '@/lib/utils';
-// import {Input} from "@nextui-org/react";
-
+import CustomNextUiProvider from '@/context/next-ui';
+import Header from '@/components/header';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -24,18 +23,10 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
-        <header className="flex w-full flex-row items-center justify-between border-b-[1px] border-gray-100 px-7 py-3">
-          <Image
-            src="/assets/general/big-logo.png"
-            alt="Logo"
-            width={110}
-            height={110}
-          />
-          <div>
-
-          </div>
-        </header>
-        {children}
+        <CustomNextUiProvider>
+          <Header />
+          {children}
+        </CustomNextUiProvider>
       </body>
     </html>
   );
