@@ -1,17 +1,38 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 
 const Profile = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent): void => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setOpen(false);
+      }
+    };
+    if (open) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [open]);
+
   return (
     <div className="relative">
       <Avatar onClick={() => setOpen(!open)} letter={'T'} />
 
       <div
-        className={`absolute right-0 top-[50px] w-[250px] transform rounded-md border-[1px] border-gray-200 bg-white p-3 opacity-0 shadow-sm transition-all duration-300 ease-out ${open ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
+        ref={dropdownRef}
+        className={` absolute right-0 top-[50px] w-max transform rounded-md border-[1px] border-gray-200 bg-white py-4 opacity-0 shadow-sm transition-all duration-300 ease-out ${open ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
       >
         {/* avatar section */}
-        <div className="flex flex-row items-center gap-3">
+        <div className="ml-4 mr-20 flex flex-row items-center gap-3">
           <div
             className={`h-[38px] w-[38px] rounded-full border-[1px] border-gray-300 p-[2px] shadow-sm`}
           >
@@ -30,12 +51,16 @@ const Profile = () => {
         </div>
         {/* Links */}
         {/* divider */}
-        <div className=" my-4 h-[1px] w-full bg-gray-300" />
-        <ul>
-          <li className="py-2">Profile</li>
-          <li className="py-2">Settings</li>
-          <li className="py-2">Logout</li>
-        </ul>
+        <div className="my-4 h-[1px] w-full bg-gray-300" />
+        <div className="ml-4 mr-3 flex flex-col">
+          <MyLink text="My Profile" href="/profile" />
+          <MyLink text="Account Settings" href="/" />
+          <MyLink text="Activity Log" href="/activity-log" />
+        </div>
+        <div className="my-4 h-[1px] w-full bg-gray-300" />
+        <div className="ml-4 mr-3 flex flex-col">
+          <MyLink danger text="Sign Out" href="/logout" />
+        </div>
       </div>
     </div>
   );
@@ -62,6 +87,21 @@ const Avatar = ({
   );
 };
 
-const Links = () => {
-  return <div className="text-"></div>;
+const MyLink = ({
+  text,
+  href,
+  danger = false,
+}: {
+  text: string;
+  href: string;
+  danger?: boolean;
+}) => {
+  return (
+    <Link
+      href={href}
+      className={`cursor-pointer rounded-sm py-2 pl-2.5 text-sm transition-colors ${danger ? 'text-red-500 hover:bg-red-500 hover:text-white' : 'text-black hover:bg-gray-100'}`}
+    >
+      {text}
+    </Link>
+  );
 };
