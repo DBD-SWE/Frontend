@@ -2,6 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 interface SidebarLinkProps {
   title: string;
@@ -13,9 +14,11 @@ interface SidebarLinkProps {
   };
 }
 const SidebarLink = (props: SidebarLinkProps) => {
+  const currentPath = usePathname();
+
   return (
     <Link
-      className="my-1 flex cursor-pointer flex-row items-center rounded-sm py-2 pl-4 text-sm font-semibold transition-colors hover:bg-gray-100 "
+      className={`my-1 flex cursor-pointer flex-row items-center rounded-sm py-2 pl-4 text-sm font-semibold transition-colors hover:bg-gray-100 ${currentPath === props.href ? 'bg-gray-100' : 'bg-white'}`}
       href={props.href}
     >
       <div className="flex h-[20px] w-[20px] flex-row items-center justify-center">
