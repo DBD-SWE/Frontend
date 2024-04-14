@@ -1,13 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowIcon } from '@/icons';
 import SidebarLink from './link';
 import DropDownLink from './dropdown-link';
 
 const Sidebar = () => {
   return (
     <aside className="fixed bottom-0 left-0 top-0 h-screen pl-5">
-      <div className="mt-[96px] flex h-full w-48 flex-col items-start justify-between border-r-[1px] border-gray-100 pb-[112px]">
+      <div className="md:mt-[96px] flex h-full w-48 flex-col items-start justify-between border-r-[1px] border-gray-100 pb-[112px]">
         {/* Overview */}
         <div className="mt-6 flex w-full flex-col ">
           <div className="relative mb-4 w-full">
