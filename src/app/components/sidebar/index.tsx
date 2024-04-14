@@ -29,13 +29,13 @@ const Sidebar = () => {
     <div>
       {/* Overlay: shown when sidebar is open */}
       <div
-        className={`fixed inset-0 z-20 bg-black bg-opacity-50 transition-opacity ${isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+        className={`fixed inset-0 bg-black bg-opacity-50 transition-opacity max-md:z-20 ${isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
         onClick={toggleSidebar}
       ></div>
 
       {/* Sidebar */}
       <aside
-        className={`fixed bottom-0 left-0 top-0 z-30 h-screen transform bg-white pl-3.5 transition-transform duration-300 ease-in-out md:pl-5 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        className={`fixed bottom-0 left-0 top-0 z-30 h-screen transform bg-white pl-3.5 transition-transform duration-300 ease-in-out md:pl-5 ${isOpen ? 'max-md:translate-x-0' : 'max-md:-translate-x-full'}`}
       >
         {/* Toggle Button */}
         <button
