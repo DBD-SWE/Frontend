@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { ArrowIcon } from '@/icons';
+
 const Sidebar = () => {
   return (
     <aside className="fixed bottom-0 left-0 top-0 h-screen pl-10 ">
@@ -21,14 +23,23 @@ const Sidebar = () => {
           >
             Dashboard
           </MyLink>
-          <MyLink
-            href="/"
-            width={14}
-            height={14}
-            src="/images/sidebar/services.png"
-          >
-            Services
-          </MyLink>
+          <div className="my-1 flex cursor-pointer flex-row items-center justify-between rounded-sm py-2 pl-4 transition-colors hover:bg-gray-100">
+            <div className="flex flex-row items-center">
+              <div className="flex h-[20px] w-[20px] flex-row items-center justify-center">
+                <Image
+                  src="/images/sidebar/services.png"
+                  alt="Services"
+                  width={14}
+                  height={14}
+                  className="object-contain"
+                />
+              </div>
+              <p className="ml-2.5 text-sm font-medium">Services</p>
+            </div>
+            <div className="mr-3 -rotate-90 text-black [&_svg]:h-[12px] [&_svg]:w-[12px]">
+              <ArrowIcon />
+            </div>
+          </div>
           <MyLink
             width={17}
             height={17}
@@ -74,47 +85,6 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
-const upper_links = [
-  {
-    href: '/dashboard',
-    text: 'Dashboard',
-    src: '/icons/dashboard.png',
-  },
-
-  {
-    text: 'services',
-    src: '/icons/services.png',
-    group: [
-      {
-        href: '/services/guest-houses',
-        text: 'Guest Houses',
-        src: '/icons/services.png',
-      },
-      {
-        href: '/services/attractions',
-        text: 'Attractions',
-        src: '/icons/products.svg',
-      },
-    ],
-  },
-  {
-    href: '/users',
-    text: 'Users',
-    src: '/icons/users.png',
-  },
-  {
-    href: '/roles',
-    text: 'Roles & Permissions',
-    src: '/icons/roles.png',
-  },
-  {
-    href: '/activity-log',
-    text: 'Activity Log',
-    src: '/icons/activity.png',
-  },
-];
-//     <Link className="my-1 flex flex-row items-center cursor-pointer rounded-sm py-2 pl-4 text-sm font-semibold transition-colors hover:bg-gray-100 " href={href}>
 
 const DropDown = () => {
   return (
