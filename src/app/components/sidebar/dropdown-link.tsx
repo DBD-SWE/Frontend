@@ -22,8 +22,6 @@ const DropDownLink = (props: DropDownLinkProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(
     currentPath.startsWith('/' + props.title.toLowerCase()),
   );
-  console.log(currentPath);
-  console.log(props.title);
 
   return (
     <div>
