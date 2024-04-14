@@ -19,7 +19,7 @@ const SearchInput = () => {
         className="flex w-0 cursor-text rounded border-[1px] border-white px-5 py-2 text-sm text-black shadow-sm outline-none transition-all duration-250 ease-in-out placeholder:text-gray-500 hover:border-gray-400 max-md:focus:w-44 md:focus:w-72 focus:border-black md:w-60 md:px-3 md:pl-10"
       />
       <div
-        className={`absolute right-0 max-md:hidden top-1/2 mr-4 flex h-4 w-4 flex-shrink-0 -translate-y-1/2 transform cursor-pointer flex-row items-center justify-center rounded-full bg-black text-white transition-transform duration-500 ease-in-out [&_svg]:h-3 [&_svg]:w-3 ${text ? 'scale-100' : 'scale-0'}`}
+        className={`absolute right-0 hidden top-1/2 mr-4 md:flex h-4 w-4 flex-shrink-0 -translate-y-1/2 transform cursor-pointer flex-row items-center justify-center rounded-full bg-black text-white transition-transform duration-500 ease-in-out [&_svg]:h-3 [&_svg]:w-3 ${text ? 'scale-100' : 'scale-0'}`}
       >
         <CloseIcon />
       </div>
