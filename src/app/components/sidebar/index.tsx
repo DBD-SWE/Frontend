@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowIcon } from '@/icons';
 import SidebarLink from './link';
+import DropDownLink from './dropdown-link';
 
 const Sidebar = () => {
   return (
@@ -25,31 +26,19 @@ const Sidebar = () => {
             title="Dashboard"
             href="/"
           />
-          <div className="my-1 flex cursor-pointer flex-row items-center justify-between rounded-sm py-2 pl-4 transition-colors hover:bg-gray-100">
-            <div className="flex flex-row items-center">
-              <div className="flex h-[20px] w-[20px] flex-row items-center justify-center">
-                <Image
-                  src="/images/sidebar/services.png"
-                  alt="Services"
-                  width={14}
-                  height={14}
-                  className="object-contain"
-                />
-              </div>
-              <p className="ml-2.5 text-sm font-medium">Services</p>
-            </div>
-            <div className="mr-3 -rotate-90 text-black [&_svg]:h-[12px] [&_svg]:w-[12px]">
-              <ArrowIcon />
-            </div>
-          </div>
-          <div className="flex flex-col">
-            <MyLink width={17} height={17} href="/" src="">
-              Users
-            </MyLink>
-            <MyLink width={17} height={17} href="/" src="">
-              Users
-            </MyLink>
-          </div>
+          <DropDownLink
+            title="Services"
+            image={{
+              src: '/images/sidebar/services.png',
+              width: 15,
+              height: 15,
+            }}
+            group={[
+              { title: 'Guest Houses', href: '/services/guest-houses' },
+
+              { title: 'Attractions', href: '/services/attractions' },
+            ]}
+          />
           <SidebarLink
             image={{ src: '/images/sidebar/users.png', width: 17, height: 17 }}
             title="Users"

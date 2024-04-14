@@ -11,12 +11,10 @@ interface DropDownLinkProps {
     height?: number;
     src: string;
   };
-  group: [
-    {
-      title: string;
-      href: string;
-    },
-  ];
+  group: {
+    title: string;
+    href: string;
+  }[];
 }
 const DropDownLink = (props: DropDownLinkProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -39,14 +37,31 @@ const DropDownLink = (props: DropDownLinkProps) => {
           <p className="ml-2.5 text-sm font-medium">{props.title}</p>
         </div>
         <div
-          className={`mr-3 transform text-black transition-transform duration-200 ease-out [&_svg]:h-[12px] [&_svg]:w-[12px] ${isOpen ? 'rotate-0' : '-rotate-90'}`}
+          className={`mr-3 transform text-black transition-transform duration-200 ease-out [&_svg]:h-[12px] [&_svg]:w-[12px] ${isOpen ? '-rotate-90' : 'rotate-0'}`}
         >
           <ArrowIcon />
         </div>
       </div>
-      <div className="flex flex-col">
-        
+      <div
+        className={`flex flex-col ${
+          isOpen ? 'h-0' : 'h-[88px]'
+        } overflow-hidden transition-all duration-200 ease-out`}
+      >
+        {props.group.map((link) => (
+          <Link
+            key={link.href}
+            className="my-1 ml-4 flex cursor-pointer flex-row items-center rounded-sm py-2 pl-2 text-sm font-semibold transition-colors hover:bg-gray-100 "
+            href={link.href}
+          >
+            <div className="flex h-[20px] w-[20px] flex-row items-center justify-center">
+              <div className="h-[10px] w-[10px] rounded-full border-2 border-gray-200 bg-white" />
+            </div>
+            <p className="ml-1 text-sm font-medium">{link.title}</p>
+          </Link>
+        ))}
       </div>
     </div>
   );
 };
+
+export default DropDownLink;
