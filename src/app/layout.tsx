@@ -18,16 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body
-        className={cn(
-          'min-h-screen bg-background font-sans antialiased',
-          fontSans.variable,
-        )}
-      >
+      <body className={cn('bg-white font-sans antialiased', fontSans.variable)}>
         <CustomNextUiProvider>
           <Header />
           <Sidebar />
-          {children}
+          <div className="w-[calc(100% - 530px)] ml-64 mr-[48px] mt-32">
+            {children}
+          </div>
         </CustomNextUiProvider>
       </body>
     </html>

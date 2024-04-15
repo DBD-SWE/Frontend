@@ -9,7 +9,7 @@ import Profile from './profile';
 
 const Header = () => {
   return (
-    <header className="fixed left-0 right-0 top-0 z-10 flex w-full flex-row items-center justify-between border-b-[1px] border-gray-100 px-7 py-3 md:z-50">
+    <header className="fixed left-0 right-0 top-0 z-10 flex w-full flex-row items-center justify-between border-b-[1px] border-gray-100 px-7 py-3 md:z-50 bg-white">
       <Link href="/">
         <Image
           src="/images/general/big-logo.png"
