@@ -1,5 +1,6 @@
-import { PageTitle, SubTitle } from '@/components/text';
+import { PageTitle, SubTitle } from '@/components/ui/text';
 import { DownloadButton } from '@/components/ui/button';
+import AdvancedTable from '@/components/ui/table/advanced-table';
 
 export default function Users() {
   return (
@@ -11,6 +12,10 @@ export default function Users() {
           <SubTitle>Users</SubTitle>
         </div>
         <DownloadButton />
+      </div>
+      {/* Table Section */}
+      <div className="mt-6">
+        <AdvancedTable />
       </div>
     </div>
   );
