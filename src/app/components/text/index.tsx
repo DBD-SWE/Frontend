@@ -1,3 +1,5 @@
 import PageTitle from './page-title';
+import SubTitle from './subtitle';
 
-export { PageTitle };
+
+export { PageTitle, SubTitle };
