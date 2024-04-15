@@ -1,5 +1,4 @@
 import { PageTitle, SubTitle } from '@/components/text';
-import { Button } from '@nextui-org/react';
 import { DownloadButton } from '@/components/ui/button';
 
 export default function Users() {
