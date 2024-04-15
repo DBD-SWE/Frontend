@@ -60,7 +60,7 @@ const Sidebar = () => {
           </svg>
         </button>
         {/* Mobile Header */}
-        <div className="flex w-full flex-row items-center justify-center py-1 md:hidden">
+        <div className="flex w-full flex-row items-center justify-center py-3 md:hidden">
           <Link href="/">
             <Image
               src="/images/general/small-logo.png"
@@ -74,7 +74,7 @@ const Sidebar = () => {
         {/* Sidebar Content */}
         <div className="flex h-full w-48 flex-col items-start justify-between border-r-[1px] border-gray-100 pb-[75px] md:mt-[96px] md:pb-[112px]">
           {/* Content Sections */}
-          <div className="mt-6 flex w-full flex-col">
+          <div className="mt-2 flex w-full flex-col md:mt-6">
             <div className="relative mb-4 w-full">
               <h2 className="text-lg font-normal">Overview</h2>
               <div className="absolute -left-[11px] top-[14px] h-[1px] w-[10px] bg-gray-100" />

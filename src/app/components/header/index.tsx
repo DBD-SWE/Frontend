@@ -9,14 +9,14 @@ import Profile from './profile';
 
 const Header = () => {
   return (
-    <header className="fixed left-0 right-0 top-0 flex w-full flex-row items-center justify-between border-b-[1px] border-gray-100 px-7 py-3 md:z-10">
+    <header className="fixed left-0 right-0 top-0 z-10 flex w-full flex-row items-center justify-between border-b-[1px] border-gray-100 px-7 py-3 md:z-50">
       <Link href="/">
         <Image
           src="/images/general/big-logo.png"
           alt="Logo"
           width={110}
           height={110}
-          className="max-md:hidden"
+          className="hidden md:block"
         />
       </Link>
       <div className="flex flex-row items-center gap-3">
