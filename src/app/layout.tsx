@@ -22,7 +22,7 @@ export default function RootLayout({
         <CustomNextUiProvider>
           <Header />
           <Sidebar />
-          <div className="w-[calc(100% - 530px)] ml-64 mr-[48px] mt-32">
+          <div className="w-[calc(100% - 530px)] ml-64 mr-[28px] mt-32">
             {children}
           </div>
         </CustomNextUiProvider>

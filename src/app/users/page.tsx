@@ -1,16 +1,17 @@
 import { PageTitle, SubTitle } from '@/components/text';
 import { Button } from '@nextui-org/react';
+import { DownloadButton } from '@/components/ui/button';
 
 export default function Users() {
   return (
     <div className="flex w-full flex-col">
       {/* Head Section */}
-      <div className="flex w-full flex-row items-start">
+      <div className="items-star flex w-full flex-row justify-between">
         <div className="flex flex-col">
           <PageTitle>User Management</PageTitle>
           <SubTitle>Users</SubTitle>
         </div>
-        {/* <Button>Download</Button> */}
+        <DownloadButton />
       </div>
     </div>
   );
