@@ -24,11 +24,11 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
-        <CustomNextUiProvider>
+        {/* <CustomNextUiProvider>
           <Header />
-          <Sidebar />
+          <Sidebar /> */}
           {children}
-        </CustomNextUiProvider>
+        {/* </CustomNextUiProvider> */}
       </body>
     </html>
   );
