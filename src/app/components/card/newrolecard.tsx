@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import { Button } from '@nextui-org/react';
 import add from '../../../../public/images/RoleImages/add.svg';
-import edit from '../../../../public/images/RoleImages/edit.svg';
 import plus from '../../../../public/images/RoleImages/plus.svg';
 import hands from '../../../../public/images/RoleImages/hands.png';
 export default function NewRoleCard() {
