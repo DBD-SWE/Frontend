@@ -1,7 +1,7 @@
 'use client';
 import RoleCard from '@/components/card/rolecard';
 import list from '@/components/card/rolecardlist';
-
+import NewRoleCard from '@/components/card/newrolecard';
 export default function Test() {
   return (
     <div className="flex flex-wrap">
@@ -18,6 +18,10 @@ export default function Test() {
           />
         </div>
       ))}
+      <div className="p-5">
+        <NewRoleCard/>
+      </div>
+      <div/>
     </div>
   );
 }

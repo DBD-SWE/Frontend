@@ -15,8 +15,8 @@ const roles = [
         "Full Access Control",
         "System Audits"
       ],
-      borderColor: "border-t-red-500",
-      bulletColor: "before:bg-red-500"
+      borderColor: "border-t-blue-500",
+      bulletColor: "before:bg-blue-500"
     },
     {
       iconName: developer,
@@ -41,8 +41,8 @@ const roles = [
         "Product Assistance",
         "Customer Follow-ups"
       ],
-      borderColor: "border-t-blue-500",
-      bulletColor: "before:bg-blue-500"
+      borderColor: "border-t-pink-500",
+      bulletColor: "before:bg-pink-500"
     },
     {
       iconName: dataentry,
@@ -54,8 +54,8 @@ const roles = [
         "Record Management",
         "Reporting Discrepancies"
       ],
-      borderColor: "border-t-yellow-500",
-      bulletColor: "before:bg-yellow-500"
+      borderColor: "border-t-orange-500",
+      bulletColor: "before:bg-orange-500"
     }
   ];
   
