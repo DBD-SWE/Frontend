@@ -20,7 +20,7 @@ const SummaryCard = ({ title, amount, lastModified, color, icon }: Props) => {
           >
             {amount}
           </p>
-          <p className="text-[.6rem] opacity-60">
+          <p className="text-[.6rem] text-zinc-500">
             Last modified - {lastModified}
           </p>
         </div>

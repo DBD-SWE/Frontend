@@ -7,8 +7,8 @@ type Props = {};
 const ActivityLog = (props: Props) => {
   return (
     <div>
-      <div className="relative mt-12 flex flex-col space-y-12 rounded-md border px-12 pb-16 shadow-md">
-        <div className="absolute left-[72px] top-12 h-[350px] w-[1px] bg-[#f4f4f5]"></div>
+      <div className="relative mt-12 flex flex-col space-y-12 rounded-md border border-b-black px-12 pb-16 shadow-md">
+        <div className="absolute left-[72px] top-12 h-[200px] w-[1px] bg-[#f4f4f5]"></div>
 
         <UserActivityCard
           action="update"
@@ -20,13 +20,12 @@ const ActivityLog = (props: Props) => {
           actor="Peter Chahid"
           dateTime="17 Jan, 2024 - 10:45"
         />
-        <UserActivityCard
+        {/* <UserActivityCard
           action="create"
           actor="Peter Chahid"
           dateTime="17 Jan, 2024 - 10:45"
-        />
+        /> */}
       </div>
-      <div className="m-auto h-1 w-[99%] rounded-full bg-black"></div>
     </div>
   );
 };
@@ -53,7 +52,7 @@ const UserActivityCard = ({ action, actor, dateTime }: UserProps) => {
               A user has been {action}d by
               <span className="ml-1 font-bold italic underline"> {actor}</span>
             </p>
-            <p className="text-xs opacity-60 sm:text-sm md:text-base">
+            <p className="text-xs text-zinc-500 sm:text-sm md:text-base">
               {dateTime}
             </p>
           </div>

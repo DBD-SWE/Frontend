@@ -25,7 +25,7 @@ const PieSummaryCard = ({
       <div className="flex flex-col items-center text-center sm:items-start sm:text-start">
         <p className="text-xl font-semibold">Total {title}</p>
         <p className="mt-1 text-4xl font-bold">{total}</p>
-        <p className="mt-3 text-xs opacity-60">
+        <p className="mt-3 text-xs text-zinc-500">
           Services distribution on districts <br />
           Last modified - {lastModified}
         </p>
@@ -33,11 +33,7 @@ const PieSummaryCard = ({
       <div className="mt-12 flex w-full flex-col items-center justify-between space-y-10 sm:mt-0 sm:flex-row sm:items-end sm:space-y-0">
         <ChartLabelsList colors={colors} labels={labels} />
         <div className="w-45 h-45 sm:h-40 sm:w-40">
-          <DoughnutChart
-            labels={labels}
-            stats={stats}
-            colors={colors}
-          />
+          <DoughnutChart labels={labels} stats={stats} colors={colors} />
         </div>
       </div>
     </div>
