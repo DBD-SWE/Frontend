@@ -1,14 +1,14 @@
 'use client';
-import RoleCard from '@/components/card/rolecard';
-import list from '@/components/card/rolecardlist';
-import NewRoleCard from '@/components/card/newrolecard';
-import RoleHeader from '@/components/card/roleheader';
+import RoleCard from '@/roles-and-permissions/card/rolecard';
+import list from '@/roles-and-permissions/card/rolecardlist';
+import NewRoleCard from '@/roles-and-permissions/card/newrolecard';
+import RoleHeader from '@/roles-and-permissions/card/roleheader';
 export default function Test() {
   const HeaderContent = ['List of Roles','○', 'Permissions for Each'];
   return (
     <>
       <RoleHeader items={HeaderContent} />
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap ">
         {list.map((role, index) => (
           <div className="p-5">
             <RoleCard

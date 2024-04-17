@@ -7,7 +7,7 @@ interface RoleHeaderProps {
 export default function RoleHeader({ items }: RoleHeaderProps) {
   return (
     <div className="pb-3 pl-5">
-      <h1 className="text-3xl font-bold">Roles & Permissions</h1>
+      <h1 className="text-3xl font-bold pb-3 pt-5">Roles & Permissions</h1>
       <div>
         <ul className=" flex">
           {items.map((item, index) => (
