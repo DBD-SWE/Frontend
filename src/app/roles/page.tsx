@@ -3,7 +3,7 @@ import RoleCard from '@/roles/components/card/rolecard';
 import list from '@/roles/components/card/rolecardlist';
 import NewRoleCard from '@/roles/components/card/newrolecard';
 import RoleHeader from '@/roles/components/card/roleheader';
-export default function Test() {
+export default function Roles() {
   const HeaderContent = ['List of Roles', '○', 'Permissions for Each'];
   return (
     <>
