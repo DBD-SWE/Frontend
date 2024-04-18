@@ -17,7 +17,7 @@ export default function ViewRoles() {
           borderColor={firstRole.borderColor}
           bulletColor={firstRole.bulletColor}
         />
-        <DeleteCard/>
+        <DeleteCard roleName={firstRole.roleName} />
       </div>
     </>
   );
