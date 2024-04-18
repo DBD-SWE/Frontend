@@ -7,14 +7,16 @@ export default function DeleteCard() {
   const Trash = <Image src={trash} alt="trash icon" />;
 
   return (
-    <div className="flex w-[90%] md:w-[4/5] flex-col justify-between rounded-lg border-2 border-t-red-600">
+    <div className="flex w-[4/5] flex-col justify-between rounded-lg border-2 border-t-red-600 md:w-[4/5]">
       <div className="flex-grow p-4 pl-8">
-        <h1 className="pb-10 text-base md:text-lg font-bold">Delete User Role</h1>
-        <p className="text-base md:text-lg font-medium leading-relaxed text-zinc-500">
+        <h1 className="pb-10 text-base font-bold md:text-lg">
+          Delete User Role
+        </h1>
+        <p className="text-base font-medium leading-relaxed text-zinc-500 md:text-lg">
           By deleting this role, you will revert affected users to the default
           user role, effectively revoking their current permissions and
-          dismissing any specialized access they have been granted. This action is irreversible
-          and should be considered carefully.
+          dismissing any specialized access they have been granted. This action
+          is irreversible and should be considered carefully.
         </p>
       </div>
 
