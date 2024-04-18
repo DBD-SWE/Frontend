@@ -1,8 +1,8 @@
 'use client';
-import dataentry from '../../../../public/images/RoleImages/dataentry.svg';
-import developer from '../../../../public/images/RoleImages/developer.svg';
-import support from '../../../../public/images/RoleImages/support.svg';
-import admin from '../../../../public/images/RoleImages/admin.svg';
+import dataentry from '../../../../../public/images/RoleImages/dataentry.svg';
+import developer from '../../../../../public/images/RoleImages/developer.svg';
+import support from '../../../../../public/images/RoleImages/support.svg';
+import admin from '../../../../../public/images/RoleImages/admin.svg';
 
 const roles = [
     {

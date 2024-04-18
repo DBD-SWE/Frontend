@@ -1,8 +1,8 @@
 'use client';
-import RoleCard from '@/roles/card/rolecard';
-import list from '@/roles/card/rolecardlist';
-import NewRoleCard from '@/roles/card/newrolecard';
-import RoleHeader from '@/roles/card/roleheader';
+import RoleCard from '@/roles/components/card/rolecard';
+import list from '@/roles/components/card/rolecardlist';
+import NewRoleCard from '@/roles/components/card/newrolecard';
+import RoleHeader from '@/roles/components/card/roleheader';
 export default function Test() {
   const HeaderContent = ['List of Roles', '○', 'Permissions for Each'];
   return (

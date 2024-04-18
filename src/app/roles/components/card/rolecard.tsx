@@ -1,7 +1,7 @@
 'use client';
 import Image, { StaticImageData } from 'next/image';
 import { Button } from '@nextui-org/react';
-import edit from '../../../../public/images/RoleImages/edit.svg';
+import edit from '../../../../../public/images/RoleImages/edit.svg';
 
 interface RoleCardProps {
   iconName: StaticImageData;  

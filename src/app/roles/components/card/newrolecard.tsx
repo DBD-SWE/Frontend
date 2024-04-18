@@ -1,9 +1,9 @@
 'use client';
 import Image from 'next/image';
 import { Button } from '@nextui-org/react';
-import add from '../../../../public/images/RoleImages/add.svg';
-import plus from '../../../../public/images/RoleImages/plus.svg';
-import hands from '../../../../public/images/RoleImages/hands.png';
+import add from '../../../../../public/images/RoleImages/add.svg';
+import plus from '../../../../../public/images/RoleImages/plus.svg';
+import hands from '../../../../../public/images/RoleImages/hands.png';
 
 export default function NewRoleCard() {
   const Plus = <Image src={plus} alt="edit" />;
