@@ -8,11 +8,13 @@ const roles = [
       'Configure Settings',
       'Full Access Control',
       'System Audits',
+      'Full Access Control',
+      'System Audits',
     ],
     color: 'blue-500',
   },
   {
-    iconName: '/images/RoleImages/developer.svg',
+    iconName: '/images/RoleImages/developer.png',
     roleName: 'Developer',
     userCount: 75,
     listItems: [
