@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import ArrowIcon from '@/_lib/icons/arrow';
+import ArrowIcon from '@/icons/arrow';
 import { usePathname } from 'next/navigation';
 
 interface DropDownLinkProps {
@@ -55,7 +55,7 @@ const DropDownLink = (props: DropDownLinkProps) => {
         {props.group.map((link) => (
           <Link
             key={link.href}
-            className={`my-1 ml-2 flex cursor-pointer flex-row items-center rounded-sm py-2 pl-2 text-sm font-semibold transition-colors hover:bg-gray-100 md:ml-4 ${currentPath === link.href ? 'bg-blue-500 hover:bg-blue-500' : 'bg-white'}`}
+            className={`my-1 ml-2 md:ml-4 flex cursor-pointer flex-row items-center rounded-sm py-2 pl-2 text-sm font-semibold transition-colors hover:bg-gray-100 ${currentPath === link.href ? 'bg-blue-500 hover:bg-blue-500' : 'bg-white'}`}
             href={link.href}
           >
             <div className="flex h-[20px] w-[20px] flex-row items-center justify-center">

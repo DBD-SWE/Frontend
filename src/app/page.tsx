@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import SummaryCardsList from './_components/ui/Dashboard/SummaryCardsList';
+import SummaryCardsList from './components/ui/Dashboard/SummaryCardsList';
 import { Doughnut } from 'react-chartjs-2';
-import DoughnutChart from './_components/ui/Dashboard/DoughnutChart';
-import ChartLabelsList from './_components/ui/Dashboard/ChartLabelsList';
-import DoughnutSummaryCard from './_components/ui/Dashboard/DoughnutSummaryCard';
+import DoughnutChart from './components/ui/Dashboard/DoughnutChart';
+import ChartLabelsList from './components/ui/Dashboard/ChartLabelsList';
+import DoughnutSummaryCard from './components/ui/Dashboard/DoughnutSummaryCard';
 
 // make the label circle
 export default function Home() {

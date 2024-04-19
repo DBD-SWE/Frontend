@@ -1,9 +1,9 @@
 import '@/styles/globals.css';
 import { Inter as FontSans } from 'next/font/google';
-import { cn } from '@/_lib/utils/utils';
-import CustomNextUiProvider from '@/_lib/context/next-ui';
-import Header from '@/_components/header';
-import Sidebar from '@/_components/sidebar';
+import { cn } from '@/lib/utils';
+import CustomNextUiProvider from '@/context/next-ui';
+import Header from '@/components/header';
+import Sidebar from '@/components/sidebar';
 
 const fontSans = FontSans({
   subsets: ['latin'],
