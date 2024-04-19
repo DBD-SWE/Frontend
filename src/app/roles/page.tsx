@@ -20,7 +20,8 @@ export default function Roles() {
               roleName={role.roleName}
               userCount={role.userCount}
               listItems={role.listItems}
-              color={role.color}
+              borderColor={role.borderColor}
+              bulletColor={role.bulletColor}
             />
           </div>
         ))}

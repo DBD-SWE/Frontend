@@ -9,7 +9,8 @@ const roles = [
       'Full Access Control',
       'System Audits',
     ],
-    color: 'blue-500',
+    borderColor: 'border-t-blue-500',
+    bulletColor: 'before:bg-blue-500',
   },
   {
     iconName: '/images/roles/developer.png',
@@ -21,7 +22,8 @@ const roles = [
       'Code Reviews',
       'Unit Testing',
     ],
-    color: 'green-500',
+    borderColor: 'border-t-green-500',
+    bulletColor: 'before:bg-green-500',
   },
   {
     iconName: '/images/roles/support.svg',
@@ -33,7 +35,8 @@ const roles = [
       'Product Assistance',
       'Customer Follow-ups',
     ],
-    color: 'pink-500',
+    borderColor: 'border-t-pink-500',
+    bulletColor: 'before:bg-pink-500',
   },
   {
     iconName: '/images/roles/dataentry.svg',
@@ -45,7 +48,8 @@ const roles = [
       'Record Management',
       'Reporting Discrepancies',
     ],
-    color: 'orange-500',
+    borderColor: 'border-t-orange-500',
+    bulletColor: 'before:bg-orange-500',
   },
 ];
 
