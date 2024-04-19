@@ -2,7 +2,7 @@ import Image, { StaticImageData } from 'next/image';
 import { Button } from '@nextui-org/react';
 
 interface RoleCardProps {
-  iconName: StaticImageData;
+  iconName: string;
   roleName: string;
   userCount: number;
   listItems: string[];
