@@ -27,7 +27,7 @@ export default function RoleCard({
 
   return (
     <div
-      className={`h-72 w-80 rounded border-2 border-b-transparent border-l-transparent border-r-transparent p-4 shadow-sm border-t-${color}`}
+      className={`h-72 w-full rounded border-2 border-b-transparent border-l-transparent border-r-transparent p-4 shadow-sm border-t-${color}`}
     >
       <div className="mb-1 flex items-center justify-between">
         <h1 className="text-lg font-bold">{roleName}</h1>

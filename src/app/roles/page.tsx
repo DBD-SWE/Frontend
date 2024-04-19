@@ -11,9 +11,9 @@ export default function Roles() {
         <PageTitle>Roles & Permissions</PageTitle>
         <SubTitle content={['List of Roles', '○', 'Permissions for Each']} />
       </div>
-      <div className="flex flex-wrap">
+      <div className="grid auto-cols-max grid-flow-row grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-4 py-10">
         {list.map((role, index) => (
-          <div key={index} className="p-5">
+          <div key={index} className="w-full">
             <RoleCard
               key={index}
               iconName={role.iconName}
