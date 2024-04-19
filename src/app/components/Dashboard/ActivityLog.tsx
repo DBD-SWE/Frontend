@@ -7,8 +7,8 @@ type Props = {};
 const ActivityLog = (props: Props) => {
   return (
     <div>
-      <div className="relative mt-12 flex flex-col space-y-12 rounded-md border border-b-black px-12 pb-16 shadow-md">
-        <div className="absolute left-[72px] top-12 h-[200px] w-[1px] bg-[#f4f4f5]"></div>
+      <div className="relative mt-12 flex flex-col justify-between rounded-md border border-b-black px-4 py-12 shadow-md md:px-12">
+        <div className="absolute top-12 w-[1px] bg-black"></div>
 
         <UserActivityCard
           action="update"
@@ -41,31 +41,33 @@ type UserProps = {
 const UserActivityCard = ({ action, actor, dateTime }: UserProps) => {
   return (
     <div className="relative">
-      <div className="flex space-x-5">
+      <div className="flex space-x-2 md:space-x-5">
         <Icon type={action} />
         <div className="relative">
           <div className="bg-grey"></div>
         </div>
         <div className="space-y-5">
           <div>
-            <p className="text-sm sm:text-base md:text-lg">
+            <p className="text-xs sm:text-base md:text-lg">
               A user has been {action}d by
-              <span className="ml-1 font-bold italic underline"> {actor}</span>
+              <span className="ml-1 font-bold italic underline">{actor}</span>
             </p>
             <p className="text-xs text-zinc-500 sm:text-sm md:text-base">
               {dateTime}
             </p>
           </div>
-          <div className="flex w-[550px] items-center justify-between rounded-md border border-gray-200 px-5 py-2 shadow-sm">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f5f5f5] p-2">
+          <div className="flex items-center justify-between space-x-1 rounded-md border border-gray-200 px-2 py-2 shadow-sm md:space-x-5 md:px-5 md:py-2">
+            <div className="hidden items-center justify-center rounded-full bg-[#f5f5f5] md:flex md:h-8 md:w-8 md:p-2">
               <p className="text-xs font-bold text-black">PC</p>
             </div>
-            <p>{actor}</p>
-            <div className="flex items-center justify-center space-x-4 rounded-md px-2 py-1 shadow-sm">
-              <MailIcon />
+            <p className="text-xs md:text-base">{actor}</p>
+            <div className="hidden items-center justify-center space-x-4 rounded-md px-4 py-1 text-xs shadow-sm md:flex md:text-base">
+              <div>
+                <MailIcon />
+              </div>
               <p>peter@gmail.com</p>
             </div>
-            <div className="flex items-center justify-center space-x-4 rounded-md px-2 py-1 shadow-sm">
+            <div className="flex items-center justify-center space-x-4 rounded-md bg-[#f4f4f5] px-3 py-1 text-xs shadow-sm md:px-4 md:text-base">
               <MailIcon />
               <p>Data Entry</p>
             </div>
