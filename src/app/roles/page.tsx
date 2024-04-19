@@ -11,7 +11,7 @@ export default function Roles() {
         <PageTitle>Roles & Permissions</PageTitle>
         <SubTitle content={['List of Roles', '○', 'Permissions for Each']} />
       </div>
-      <div className="flex flex-wrap ">
+      <div className="flex flex-wrap">
         {list.map((role, index) => (
           <div key={index} className="p-5">
             <RoleCard
