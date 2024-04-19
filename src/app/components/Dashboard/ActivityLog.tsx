@@ -8,18 +8,19 @@ const ActivityLog = (props: Props) => {
   return (
     <div>
       <div className="relative mt-12 flex flex-col justify-between rounded-md border border-b-black px-4 py-12 shadow-md md:px-12">
-        <div className="absolute top-12 w-[1px] bg-black"></div>
-
+        <div className="absolute left-[72px] top-12 h-48 w-[1px] bg-zinc-200 max-md:left-10 max-md:top-14 max-md:h-44"></div>
         <UserActivityCard
           action="update"
           actor="Peter Chahid"
           dateTime="17 Jan, 2024 - 10:45"
         />
-        <UserActivityCard
-          action="delete"
-          actor="Peter Chahid"
-          dateTime="17 Jan, 2024 - 10:45"
-        />
+        <div className="mt-12">
+          <UserActivityCard
+            action="delete"
+            actor="Peter Chahid"
+            dateTime="17 Jan, 2024 - 10:45"
+          />
+        </div>
         {/* <UserActivityCard
           action="create"
           actor="Peter Chahid"
