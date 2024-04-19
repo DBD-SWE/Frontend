@@ -8,7 +8,7 @@ export default function Users() {
       <div className="flex w-full flex-row items-start">
         <div className="flex flex-col">
           <PageTitle>User Management</PageTitle>
-          <SubTitle>Users</SubTitle>
+          <SubTitle content={["Users"]} />
         </div>
         {/* <Button>Download</Button> */}
       </div>
