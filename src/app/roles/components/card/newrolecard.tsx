@@ -3,7 +3,7 @@ import { Button } from '@nextui-org/react';
 
 export default function NewRoleCard() {
   return (
-    <div className="h-72 w-80 rounded-lg border-2 border-t-black">
+    <div className="h-72 w-full rounded-lg border-2 border-t-black">
       <div className="p-4">
         <div className="flex justify-between pb-2">
           <h1 className="h-4 w-24 text-lg font-bold">Administrator</h1>

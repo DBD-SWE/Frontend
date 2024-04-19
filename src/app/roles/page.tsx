@@ -24,7 +24,7 @@ export default function Roles() {
             />
           </div>
         ))}
-        <div className="p-5">
+        <div className="w-full p-5">
           <NewRoleCard />
         </div>
         <div />
