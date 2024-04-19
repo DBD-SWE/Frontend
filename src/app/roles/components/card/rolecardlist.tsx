@@ -1,6 +1,6 @@
 const roles = [
   {
-    iconName: '/images/RoleImages/admin.svg',
+    iconName: '/images/roles/admin.svg',
     roleName: 'Administrator',
     userCount: 120,
     listItems: [
@@ -8,13 +8,11 @@ const roles = [
       'Configure Settings',
       'Full Access Control',
       'System Audits',
-      'Full Access Control',
-      'System Audits',
     ],
     color: 'blue-500',
   },
   {
-    iconName: '/images/RoleImages/developer.png',
+    iconName: '/images/roles/developer.png',
     roleName: 'Developer',
     userCount: 75,
     listItems: [
@@ -26,7 +24,7 @@ const roles = [
     color: 'green-500',
   },
   {
-    iconName: '/images/RoleImages/support.svg',
+    iconName: '/images/roles/support.svg',
     roleName: 'Support ',
     userCount: 45,
     listItems: [
@@ -38,7 +36,7 @@ const roles = [
     color: 'pink-500',
   },
   {
-    iconName: '/images/RoleImages/dataentry.svg',
+    iconName: '/images/roles/dataentry.svg',
     roleName: 'Data Entry',
     userCount: 30,
     listItems: [

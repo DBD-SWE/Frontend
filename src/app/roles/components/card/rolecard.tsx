@@ -9,6 +9,18 @@ interface RoleCardProps {
   color: string;
 }
 
+const Edit = (
+  <div className="flex h-full w-full flex-row items-center">
+    <Image
+      width={13}
+      height={13}
+      className="object-contain"
+      src={'/images/general/edit.png'}
+      alt="edit"
+    />
+  </div>
+);
+
 export default function RoleCard({
   iconName,
   roleName,
@@ -16,15 +28,6 @@ export default function RoleCard({
   listItems,
   color,
 }: RoleCardProps) {
-  const Edit = (
-    <Image
-      width={8}
-      height={9}
-      src={'/images/RoleImages/edit.svg'}
-      alt="edit"
-    />
-  );
-
   return (
     <div
       className={`flex h-72 w-full flex-col justify-between rounded border-2 border-b-transparent border-l-transparent border-r-transparent p-4 shadow-sm border-t-${color}`}
