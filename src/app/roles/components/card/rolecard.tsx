@@ -6,8 +6,7 @@ interface RoleCardProps {
   roleName: string;
   userCount: number;
   listItems: string[];
-  borderColor: string;
-  bulletColor: string;
+  color: string;
 }
 
 export default function RoleCard({
@@ -15,8 +14,7 @@ export default function RoleCard({
   roleName,
   userCount,
   listItems,
-  borderColor,
-  bulletColor,
+  color,
 }: RoleCardProps) {
   const Edit = (
     <Image
@@ -28,7 +26,7 @@ export default function RoleCard({
   );
 
   return (
-    <div className={`h-72 w-80 rounded-lg border-2 ${borderColor}`}>
+    <div className={`h-72 w-80 rounded-lg border-2 border-t-${color}`}>
       <div className="p-4">
         <div className="flex justify-between pb-2">
           <h1 className="h-4 w-24 text-lg font-bold">{roleName}</h1>
@@ -41,7 +39,7 @@ export default function RoleCard({
           {listItems.map((item, index) => (
             <li
               key={index}
-              className={`relative pl-6 text-sm font-normal leading-6 text-zinc-500 before:absolute before:left-0 before:top-1/2 before:h-[2px] before:w-4 before:-translate-y-1/2 ${bulletColor}`}
+              className={`relative pl-6 text-sm font-normal leading-6 text-zinc-500 before:absolute before:left-0 before:top-1/2 before:h-[2px] before:w-4 before:-translate-y-1/2 ${color}`}
             >
               <span>{item}</span>
             </li>
