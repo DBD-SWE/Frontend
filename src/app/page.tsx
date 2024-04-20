@@ -10,16 +10,19 @@ import ActivityLog from './components/Dashboard/ActivityLog';
 // make the label circle
 export default function Home() {
   return (
-    <div className="flex items-center justify-center">
-      {/* <DoughnutSummaryCard
-        title="Services"
-        total={216}
-        lastModified="Jan 8, 2024"
-        stats={[200, 40, 20]}
-        labels={['Blat', 'Amchit', 'Mastita']}
-        colors={['#ff0000', '#3d85c6', '#f4cccc']}
-      /> */}
-      <ActivityLog />
+    <div className="px-2 sm:px-12 py-12 flex flex-col gap-12">
+      <SummaryCardsList />
+      <div className='flex gap-12 max-md:flex-col'>
+        <DoughnutSummaryCard
+          title="Test"
+          total={100}
+          lastModified="21, Jan 2022"
+          labels={['First', 'Second', 'Third']}
+          stats={[20, 30, 50]}
+          colors={['red', 'blue', 'green']}
+        />
+        <ActivityLog />
+      </div>
     </div>
   );
 }

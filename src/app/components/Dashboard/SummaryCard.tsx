@@ -12,11 +12,12 @@ type Props = {
 const SummaryCard = ({ title, amount, lastModified, color, icon }: Props) => {
   return (
     <div className="flex h-full min-w-64 flex-col items-center">
-      <div className="flex w-full items-start justify-between space-x-24 rounded-xl px-6 py-10 shadow-xl md:space-x-0">
+      <div className="flex w-full items-start justify-between space-x-24 rounded-xl px-6 py-10 shadow-sm border md:space-x-0" style={{borderBottom: `1px solid ${color}`}}>
         <div>
           <p className="mb-4 text-base font-bold sm:text-base">Total {title}</p>
           <p
-            className={`text-[${color}] mb-2 text-2xl font-extrabold sm:text-4xl`}
+            className={`mb-2 text-2xl font-extrabold sm:text-4xl`}
+            style={{ color: color }}
           >
             {amount}
           </p>

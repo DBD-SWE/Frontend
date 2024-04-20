@@ -7,8 +7,8 @@ type Props = {};
 const ActivityLog = (props: Props) => {
   return (
     <div>
-      <div className="relative mt-12 flex flex-col justify-between rounded-md border border-b-black px-4 py-12 shadow-md md:px-12">
-        <div className="absolute left-[72px] top-12 h-48 w-[1px] bg-zinc-200 max-md:left-10 max-md:top-14 max-md:h-44"></div>
+      <div className="relative flex flex-col justify-between rounded-md border border-b-black px-8 py-12 shadow-sm md:px-12">
+        <div className="absolute left-[72px] top-12 h-48 w-[1px] bg-zinc-200 max-md:left-[55px] max-md:top-14 max-md:h-44"></div>
         <UserActivityCard
           action="update"
           actor="Peter Chahid"
@@ -51,19 +51,16 @@ const UserActivityCard = ({ action, actor, dateTime }: UserProps) => {
           <div>
             <p className="text-xs sm:text-base md:text-lg">
               A user has been {action}d by
-              <span className="ml-1 font-bold italic underline">{actor}</span>
+              <span className="ml-1 font-bold italic underline min-w-[91px]">{actor}</span>
             </p>
             <p className="text-xs text-zinc-500 sm:text-sm md:text-base">
               {dateTime}
             </p>
           </div>
-          <div className="flex items-center justify-between space-x-1 rounded-md border border-gray-200 px-2 py-2 shadow-sm md:space-x-5 md:px-5 md:py-2">
-            <div className="hidden items-center justify-center rounded-full bg-[#f5f5f5] md:flex md:h-8 md:w-8 md:p-2">
-              <p className="text-xs font-bold text-black">PC</p>
-            </div>
+          <div className="flex items-center justify-between space-x-1 rounded-md border border-gray-200 px-2 py-2 shadow-sm md:gap-5 md:px-5 md:py-2">
             <p className="text-xs md:text-base">{actor}</p>
             <div className="hidden items-center justify-center space-x-4 rounded-md px-4 py-1 text-xs shadow-sm md:flex md:text-base">
-              <div>
+              <div className='min-w-[20px]'>
                 <MailIcon />
               </div>
               <p>peter@gmail.com</p>
