@@ -1,5 +1,6 @@
 import { PageTitle, SubTitle } from '@/components/text';
 import { Button } from '@nextui-org/react';
+import AdvancedTable from '@/components/table/advanced-table';
 
 export default function Users() {
   return (
@@ -13,6 +14,10 @@ export default function Users() {
         <Button color="primary" className="h-8 rounded px-4 text-sm">
           Download
         </Button>
+      </div>
+      {/* Table Section */}
+      <div className="mt-12 flex w-full flex-col">
+        <AdvancedTable />
       </div>
     </div>
   );
