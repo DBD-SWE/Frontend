@@ -26,7 +26,7 @@ const roles = [
     bulletColor: 'before:bg-green-500',
   },
   {
-    iconName: '/images/roles/support.svg',
+    iconName: '/images/roles/support.png',
     roleName: 'Support ',
     userCount: 45,
     listItems: [

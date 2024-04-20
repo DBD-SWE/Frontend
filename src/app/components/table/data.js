@@ -1,9 +1,9 @@
 const columns = [
   { name: 'name', uid: 'name', sortable: true },
-  { name: 'role', uid: 'role', sortable: true },
   { name: 'email', uid: 'email' },
   { name: 'status', uid: 'status', sortable: true },
   { name: 'ban', uid: 'ban', sortable: true },
+  { name: 'role', uid: 'role', sortable: true },
   { name: 'actions', uid: 'actions' },
 ];
 
@@ -21,7 +21,7 @@ const users = [
   {
     id: 1,
     name: 'Tony Reichert',
-    role: 'CEO',
+    role: 'Administrator',
     team: 'Management',
     status: 'active',
     age: '29',
@@ -31,7 +31,7 @@ const users = [
   {
     id: 2,
     name: 'Zoey Lang',
-    role: 'Tech Lead',
+    role: 'Developer',
     team: 'Development',
     status: 'paused',
     age: '25',
@@ -41,7 +41,7 @@ const users = [
   {
     id: 3,
     name: 'Jane Fisher',
-    role: 'Sr. Dev',
+    role: 'Data Entry',
     team: 'Development',
     status: 'active',
     age: '22',
@@ -51,7 +51,7 @@ const users = [
   {
     id: 4,
     name: 'William Howard',
-    role: 'C.M.',
+    role: 'Data Entry',
     team: 'Marketing',
     status: 'vacation',
     age: '28',
@@ -61,7 +61,7 @@ const users = [
   {
     id: 5,
     name: 'Kristen Copper',
-    role: 'S. Manager',
+    role: 'Support',
     team: 'Sales',
     status: 'active',
     age: '24',
@@ -71,7 +71,7 @@ const users = [
   {
     id: 6,
     name: 'Brian Kim',
-    role: 'P. Manager',
+    role: 'Administrator',
     team: 'Management',
     age: '29',
     avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
@@ -81,7 +81,7 @@ const users = [
   {
     id: 7,
     name: 'Michael Hunt',
-    role: 'Designer',
+    role: 'Developer',
     team: 'Design',
     status: 'paused',
     age: '27',
@@ -91,7 +91,7 @@ const users = [
   {
     id: 8,
     name: 'Samantha Brooks',
-    role: 'HR Manager',
+    role: 'Data Entry',
     team: 'HR',
     status: 'active',
     age: '31',
@@ -101,7 +101,7 @@ const users = [
   {
     id: 9,
     name: 'Frank Harrison',
-    role: 'F. Manager',
+    role: 'Data Entry',
     team: 'Finance',
     status: 'vacation',
     age: '33',
@@ -111,7 +111,7 @@ const users = [
   {
     id: 10,
     name: 'Emma Adams',
-    role: 'Ops Manager',
+    role: 'Support',
     team: 'Operations',
     status: 'active',
     age: '35',
@@ -121,7 +121,7 @@ const users = [
   {
     id: 11,
     name: 'Brandon Stevens',
-    role: 'Jr. Dev',
+    role: 'Support',
     team: 'Development',
     status: 'active',
     age: '22',
@@ -131,7 +131,7 @@ const users = [
   {
     id: 12,
     name: 'Megan Richards',
-    role: 'P. Manager',
+    role: 'Support',
     team: 'Product',
     status: 'paused',
     age: '28',
@@ -141,7 +141,7 @@ const users = [
   {
     id: 13,
     name: 'Oliver Scott',
-    role: 'S. Manager',
+    role: 'User',
     team: 'Security',
     status: 'active',
     age: '37',
@@ -151,7 +151,7 @@ const users = [
   {
     id: 14,
     name: 'Grace Allen',
-    role: 'M. Specialist',
+    role: 'User',
     team: 'Marketing',
     status: 'active',
     age: '30',
@@ -161,7 +161,7 @@ const users = [
   {
     id: 15,
     name: 'Noah Carter',
-    role: 'IT Specialist',
+    role: 'User',
     team: 'I. Technology',
     status: 'paused',
     age: '31',
@@ -171,7 +171,7 @@ const users = [
   {
     id: 16,
     name: 'Ava Perez',
-    role: 'Manager',
+    role: 'Developer',
     team: 'Sales',
     status: 'active',
     age: '29',
@@ -181,7 +181,7 @@ const users = [
   {
     id: 17,
     name: 'Liam Johnson',
-    role: 'Data Analyst',
+    role: 'Developer',
     team: 'Analysis',
     status: 'active',
     age: '28',
@@ -191,7 +191,7 @@ const users = [
   {
     id: 18,
     name: 'Sophia Taylor',
-    role: 'QA Analyst',
+    role: 'Administrator',
     team: 'Testing',
     status: 'active',
     age: '27',
@@ -211,7 +211,7 @@ const users = [
   {
     id: 20,
     name: 'Mia Robinson',
-    role: 'Coordinator',
+    role: 'User',
     team: 'Operations',
     status: 'active',
     age: '26',

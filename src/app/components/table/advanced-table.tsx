@@ -26,7 +26,7 @@ import { ChevronDownIcon } from './ChevronDownIcon';
 import { SearchIcon } from './SearchIcon';
 import { columns, users, statusOptions, bannedOptions } from './data';
 import { capitalize } from './utils';
-
+import Image from 'next/image';
 const statusColorMap: Record<string, ChipProps['color']> = {
   active: 'success',
   paused: 'danger',
@@ -44,6 +44,31 @@ type statusColor =
 const INITIAL_VISIBLE_COLUMNS = ['name', 'role', 'status', 'actions'];
 
 type User = (typeof users)[0];
+
+const rolesImages: {
+  [key: string]: { iconName: string; borderColor: string };
+} = {
+  Administrator: {
+    iconName: '/images/roles/admin.svg',
+    borderColor: 'border-blue-500',
+  },
+  Developer: {
+    iconName: '/images/roles/developer.png',
+    borderColor: 'border-green-500',
+  },
+  Support: {
+    iconName: '/images/roles/support.png',
+    borderColor: 'border-pink-500',
+  },
+  'Data Entry': {
+    iconName: '/images/roles/dataentry.svg',
+    borderColor: 'border-orange-500',
+  },
+  Other: {
+    iconName: '/images/roles/user.png',
+    borderColor: 'border-black',
+  },
+};
 
 export default function AdvancedTable() {
   const [filterValue, setFilterValue] = React.useState('');
@@ -128,12 +153,27 @@ export default function AdvancedTable() {
           </User>
         );
       case 'role':
+        let roleImage = rolesImages[cellValue]
+          ? rolesImages[cellValue]
+          : rolesImages['Other'];
         return (
-          <div className="flex flex-col">
-            <p className="text-bold text-small capitalize">{cellValue}</p>
-            <p className="text-bold text-tiny capitalize text-default-500">
-              {user.team}
-            </p>
+          <div className="flex flex-col ">
+            <div
+              className={`flex w-[120px] flex-row items-center justify-start rounded-full   px-2 py-1`}
+            >
+              <div
+                className={`${roleImage.borderColor} flex h-[20px] w-[20px] flex-row items-center justify-center rounded-full border-[1px]`}
+              >
+                <Image
+                  width={13}
+                  height={13}
+                  src={roleImage.iconName}
+                  alt="role icon"
+                />
+              </div>
+
+              <p className="text-bold ml-2 text-xs capitalize">{cellValue}</p>
+            </div>
           </div>
         );
       case 'status':
@@ -379,7 +419,7 @@ export default function AdvancedTable() {
     <Table
       isCompact
       removeWrapper
-      aria-label="Example table with custom cells, pagination and sorting"
+      aria-label="Users Table"
       bottomContent={bottomContent}
       bottomContentPlacement="outside"
       checkboxesProps={{
@@ -403,7 +443,7 @@ export default function AdvancedTable() {
             align={column.uid === 'actions' ? 'center' : 'start'}
             allowsSorting={column.sortable}
           >
-            {column.name}
+            {capitalize(column.name)}
           </TableColumn>
         )}
       </TableHeader>
