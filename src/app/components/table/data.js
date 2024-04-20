@@ -26,6 +26,7 @@ const users = [
     status: 'Verified',
     age: '29',
     // avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
+    ban: 'Active',
     email: 'tony.reichert@example.com',
   },
   {
@@ -36,6 +37,7 @@ const users = [
     status: 'Not Verified',
     age: '25',
     avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704d',
+    ban: 'Active',
     email: 'zoey.lang@example.com',
   },
   {
@@ -46,6 +48,7 @@ const users = [
     status: 'Verified',
     age: '22',
     avatar: 'https://i.pravatar.cc/150?u=a04258114e29026702d',
+    ban: 'Banned',
     email: 'jane.fisher@example.com',
   },
   {
@@ -56,6 +59,7 @@ const users = [
     status: 'Verified',
     age: '28',
     avatar: 'https://i.pravatar.cc/150?u=a048581f4e29026701d',
+    ban: 'Active',
     email: 'william.howard@example.com',
   },
   {
@@ -66,6 +70,7 @@ const users = [
     status: 'Verified',
     age: '24',
     avatar: 'https://i.pravatar.cc/150?u=a092581d4ef9026700d',
+    ban: 'Banned',
     email: 'kristen.cooper@example.com',
   },
   {
@@ -75,6 +80,7 @@ const users = [
     team: 'Management',
     age: '29',
     avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
+    ban: 'Active',
     email: 'brian.kim@example.com',
     status: 'Verified',
   },
@@ -86,6 +92,7 @@ const users = [
     status: 'Not Verified',
     age: '27',
     avatar: 'https://i.pravatar.cc/150?u=a042581f4e29027007d',
+    ban: 'Banned',
     email: 'michael.hunt@example.com',
   },
   {
@@ -96,6 +103,7 @@ const users = [
     status: 'Verified',
     age: '31',
     avatar: 'https://i.pravatar.cc/150?u=a042581f4e27027008d',
+    ban: 'Banned',
     email: 'samantha.brooks@example.com',
   },
   {
@@ -106,6 +114,7 @@ const users = [
     status: 'Verified',
     age: '33',
     avatar: 'https://i.pravatar.cc/150?img=4',
+    ban: 'Banned',
     email: 'frank.harrison@example.com',
   },
   {
@@ -116,6 +125,7 @@ const users = [
     status: 'Verified',
     age: '35',
     avatar: 'https://i.pravatar.cc/150?img=5',
+    ban: 'Active',
     email: 'emma.adams@example.com',
   },
   {
@@ -126,6 +136,7 @@ const users = [
     status: 'Verified',
     age: '22',
     avatar: 'https://i.pravatar.cc/150?img=8',
+    ban: 'Active',
     email: 'brandon.stevens@example.com',
   },
   {
@@ -136,6 +147,7 @@ const users = [
     status: 'Not Verified',
     age: '28',
     avatar: 'https://i.pravatar.cc/150?img=10',
+    ban: 'Active',
     email: 'megan.richards@example.com',
   },
   {
@@ -146,6 +158,7 @@ const users = [
     status: 'Verified',
     age: '37',
     avatar: 'https://i.pravatar.cc/150?img=12',
+    ban: 'Active',
     email: 'oliver.scott@example.com',
   },
   {
@@ -156,6 +169,7 @@ const users = [
     status: 'Verified',
     age: '30',
     avatar: 'https://i.pravatar.cc/150?img=16',
+    ban: 'Active',
     email: 'grace.allen@example.com',
   },
   {
@@ -166,6 +180,7 @@ const users = [
     status: 'Not Verified',
     age: '31',
     avatar: 'https://i.pravatar.cc/150?img=15',
+    ban: 'Active',
     email: 'noah.carter@example.com',
   },
   {
@@ -176,6 +191,7 @@ const users = [
     status: 'Verified',
     age: '29',
     avatar: 'https://i.pravatar.cc/150?img=20',
+    ban: 'Active',
     email: 'ava.perez@example.com',
   },
   {
@@ -186,6 +202,7 @@ const users = [
     status: 'Verified',
     age: '28',
     avatar: 'https://i.pravatar.cc/150?img=33',
+    ban: 'Active',
     email: 'liam.johnson@example.com',
   },
   {
@@ -196,6 +213,7 @@ const users = [
     status: 'Verified',
     age: '27',
     avatar: 'https://i.pravatar.cc/150?img=29',
+    ban: 'Active',
     email: 'sophia.taylor@example.com',
   },
   {
@@ -206,6 +224,7 @@ const users = [
     status: 'Not Verified',
     age: '32',
     avatar: 'https://i.pravatar.cc/150?img=50',
+    ban: 'Active',
     email: 'lucas.harris@example.com',
   },
   {
@@ -216,6 +235,7 @@ const users = [
     status: 'Verified',
     age: '26',
     avatar: 'https://i.pravatar.cc/150?img=45',
+    ban: 'Active',
     email: 'mia.robinson@example.com',
   },
 ];

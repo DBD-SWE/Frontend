@@ -33,6 +33,16 @@ const statusColorMap: Record<string, ChipProps['color']> = {
   'Not Verified': 'warning',
 };
 
+interface BanStatusProperties {
+  bg: string; // Extend or modify as necessary based on the ChipProps['color'] type
+  text: string;
+}
+
+const banColorMap: Record<string, BanStatusProperties> = {
+  Banned: { bg: 'bg-red-50', text: 'text-red-400' },
+  Active: { bg: 'bg-green-50', text: 'text-green-400' },
+};
+
 type statusColor =
   | 'primary'
   | 'default'
@@ -150,7 +160,7 @@ export default function AdvancedTable() {
               showFallback: true,
               fallback: (
                 <div className="flex h-full w-full items-center justify-center">
-                  <h1 className="text-black text-xs font-semibold">
+                  <h1 className="text-xs font-semibold text-black">
                     {user.name
                       .split(' ')
                       .map((name) => name[0])
@@ -196,12 +206,24 @@ export default function AdvancedTable() {
         return (
           <Chip
             className="gap-1 border-none capitalize text-default-600"
-            color={statusColorMap[cellValue]}
+            color={statusColorMap[cellValue as any as string]}
             size="sm"
             variant="dot"
           >
             {cellValue}
           </Chip>
+        );
+      case 'ban':
+        return (
+          <div
+            className={`flex w-[60px] flex-row items-center justify-center gap-1 py-1 ${banColorMap[cellValue as any as string].bg} rounded-full capitalize text-default-600`}
+          >
+            <p
+              className={`text-xs ${banColorMap[cellValue as any as string].text}`}
+            >
+              {cellValue}
+            </p>
+          </div>
         );
       case 'actions':
         return (
