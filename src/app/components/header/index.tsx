@@ -20,7 +20,7 @@ const Header = () => {
         />
       </Link>
       <div className="flex flex-row items-center gap-3">
-        <SearchInput />
+        <SearchInput placeholder='Search Services'/>
         <NotificationBell />
         <Profile />
       </div>
