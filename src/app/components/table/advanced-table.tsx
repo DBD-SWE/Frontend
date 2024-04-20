@@ -28,6 +28,31 @@ import { columns, users, statusOptions, bannedOptions } from './data';
 import { capitalize } from './utils';
 import Image from 'next/image';
 
+const ViewIcon = (
+  <Image
+    src="/images/general/view.png"
+    width={17}
+    height={17}
+    alt="View User"
+  />
+);
+const EditIcon = (
+  <Image
+    src="/images/general/edit.png"
+    width={17}
+    height={17}
+    alt="Edit User"
+  />
+);
+const DeleteIcon = (
+  <Image
+    src="/images/general/delete-colored.png"
+    width={17}
+    height={17}
+    alt="Delete User"
+  />
+);
+
 const statusColorMap: Record<string, ChipProps['color']> = {
   Verified: 'success',
   'Not Verified': 'warning',
@@ -234,10 +259,17 @@ export default function AdvancedTable() {
                   <VerticalDotsIcon className="text-default-400" />
                 </Button>
               </DropdownTrigger>
-              <DropdownMenu>
-                <DropdownItem>View</DropdownItem>
-                <DropdownItem>Edit</DropdownItem>
-                <DropdownItem>Delete</DropdownItem>
+              <DropdownMenu variant="faded">
+                <DropdownItem startContent={ViewIcon}>View</DropdownItem>
+                <DropdownItem startContent={EditIcon}>Edit</DropdownItem>
+                <DropdownItem
+                  startContent={DeleteIcon}
+                  key="delete"
+                  className="text-danger"
+                  color="danger"
+                >
+                  Delete
+                </DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </div>
