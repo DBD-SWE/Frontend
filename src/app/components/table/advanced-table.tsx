@@ -204,8 +204,8 @@ export default function AdvancedTable() {
           </User>
         );
       case 'role':
-        let roleImage = rolesImages[cellValue]
-          ? rolesImages[cellValue]
+        let roleImage = rolesImages[cellValue as any as string]
+          ? rolesImages[cellValue as any as string]
           : rolesImages['Other'];
         return (
           <div className="flex flex-col ">

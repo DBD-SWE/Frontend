@@ -16,7 +16,7 @@ export default function Users() {
         </Button>
       </div>
       {/* Table Section */}
-      <div className="mt-12 flex w-full flex-col">
+      <div className="my-12 flex w-full flex-col">
         <AdvancedTable />
       </div>
     </div>
