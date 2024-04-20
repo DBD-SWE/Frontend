@@ -112,6 +112,15 @@ const Sidebar = () => {
               }}
             />
             <SidebarLink
+              title="Roles"
+              href="/roles"
+              image={{
+                src: '/images/sidebar/roles.png',
+                width: 20,
+                height: 20,
+              }}
+            />
+            <SidebarLink
               title="Activity Log"
               href="/activity-log"
               image={{
