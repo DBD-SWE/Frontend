@@ -27,11 +27,12 @@ import { SearchIcon } from './SearchIcon';
 import { columns, users, statusOptions, bannedOptions } from './data';
 import { capitalize } from './utils';
 import Image from 'next/image';
+
 const statusColorMap: Record<string, ChipProps['color']> = {
-  active: 'success',
-  paused: 'danger',
-  vacation: 'warning',
+  Verified: 'success',
+  'Not Verified': 'warning',
 };
+
 type statusColor =
   | 'primary'
   | 'default'
@@ -142,7 +143,22 @@ export default function AdvancedTable() {
       case 'name':
         return (
           <User
-            avatarProps={{ radius: 'full', size: 'sm', src: user.avatar }}
+            avatarProps={{
+              radius: 'full',
+              size: 'sm',
+              src: user.avatar,
+              showFallback: true,
+              fallback: (
+                <div className="flex h-full w-full items-center justify-center">
+                  <h1 className="text-black text-xs font-semibold">
+                    {user.name
+                      .split(' ')
+                      .map((name) => name[0])
+                      .join('')}
+                  </h1>
+                </div>
+              ),
+            }}
             classNames={{
               description: 'text-default-500',
             }}
@@ -180,7 +196,7 @@ export default function AdvancedTable() {
         return (
           <Chip
             className="gap-1 border-none capitalize text-default-600"
-            color={statusColorMap[user.status]}
+            color={statusColorMap[cellValue]}
             size="sm"
             variant="dot"
           >
