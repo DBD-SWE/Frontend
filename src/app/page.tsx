@@ -10,9 +10,9 @@ import ActivityLog from './components/Dashboard/ActivityLog';
 // make the label circle
 export default function Home() {
   return (
-    <div className="px-2 sm:px-12 py-12 flex flex-col gap-12">
+    <div className="flex flex-col gap-12 px-2 py-12 sm:px-12">
       <SummaryCardsList />
-      <div className='flex gap-12 max-md:flex-col'>
+      <div className='flex gap-12'>
         <DoughnutSummaryCard
           title="Test"
           total={100}

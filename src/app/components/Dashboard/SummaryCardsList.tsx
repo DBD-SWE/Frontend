@@ -49,7 +49,7 @@ const SummaryCardsList = (props: Props) => {
     },
   ];
   return (
-    <div className="flex flex-wrap gap-12">
+    <div className="flex flex-wrap gap-4">
       {data.map((item, index) => (
         <SummaryCard
           key={index}
