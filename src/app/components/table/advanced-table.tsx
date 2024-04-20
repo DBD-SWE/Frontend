@@ -24,7 +24,7 @@ import { PlusIcon } from './PlusIcon';
 import { VerticalDotsIcon } from './VerticalDotsIcon';
 import { ChevronDownIcon } from './ChevronDownIcon';
 import { SearchIcon } from './SearchIcon';
-import { columns, users, statusOptions } from './data';
+import { columns, users, statusOptions, bannedOptions } from './data';
 import { capitalize } from './utils';
 
 const statusColorMap: Record<string, ChipProps['color']> = {
@@ -32,6 +32,14 @@ const statusColorMap: Record<string, ChipProps['color']> = {
   paused: 'danger',
   vacation: 'warning',
 };
+type statusColor =
+  | 'primary'
+  | 'default'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | undefined;
 
 const INITIAL_VISIBLE_COLUMNS = ['name', 'role', 'status', 'actions'];
 
@@ -185,7 +193,7 @@ export default function AdvancedTable() {
           <Input
             isClearable
             classNames={{
-              base: 'w-full sm:max-w-[44%]',
+              base: 'w-full sm:max-w-[38%]',
               inputWrapper: ['border-1', 'rounded'],
             }}
             placeholder="Search by name..."
@@ -209,8 +217,7 @@ export default function AdvancedTable() {
                 </Button>
               </DropdownTrigger>
               <DropdownMenu
-                disallowEmptySelection
-                aria-label="Table Columns"
+                aria-label="Status"
                 closeOnSelect={false}
                 selectedKeys={statusFilter}
                 selectionMode="multiple"
@@ -218,7 +225,46 @@ export default function AdvancedTable() {
               >
                 {statusOptions.map((status) => (
                   <DropdownItem key={status.uid} className="capitalize">
-                    {capitalize(status.name)}
+                    <Chip
+                      className="gap-1 border-none"
+                      color={status.color as statusColor}
+                      size="sm"
+                      variant="dot"
+                    >
+                      {status.name}
+                    </Chip>
+                  </DropdownItem>
+                ))}
+              </DropdownMenu>
+            </Dropdown>
+            <Dropdown>
+              <DropdownTrigger className="hidden sm:flex">
+                <Button
+                  endContent={<ChevronDownIcon className="text-small" />}
+                  size="sm"
+                  variant="flat"
+                  className="rounded"
+                >
+                  Ban
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu
+                aria-label="Ban Status"
+                closeOnSelect={false}
+                selectedKeys={visibleColumns}
+                selectionMode="multiple"
+                onSelectionChange={setVisibleColumns}
+              >
+                {bannedOptions.map((bannedOption) => (
+                  <DropdownItem key={bannedOption.uid} className="capitalize">
+                    <Chip
+                      className="gap-1 border-none"
+                      color={bannedOption.color as statusColor}
+                      size="sm"
+                      variant="dot"
+                    >
+                      {bannedOption.name}
+                    </Chip>
                   </DropdownItem>
                 ))}
               </DropdownMenu>
@@ -254,7 +300,7 @@ export default function AdvancedTable() {
               endContent={<PlusIcon />}
               size="sm"
             >
-              Add New
+              Create User
             </Button>
           </div>
         </div>
