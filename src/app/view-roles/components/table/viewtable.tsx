@@ -9,8 +9,10 @@ import {
   TableCell,
   getKeyValue,
 } from '@nextui-org/react';
+import Image from 'next/image';
+import check from '../../../../../public/images/RoleImages/check.png';
+import negative from '../../../../../public/images/RoleImages/negative.png';
 
-// Define the interface for the Permission type
 interface Permission {
   key: string;
   Permissions: string;
@@ -49,7 +51,7 @@ const columns = [
   },
 ];
 
-const ViewTable: React.FC<ViewTableProps> = ({ data }) => {
+export default function ViewTable({ data }: ViewTableProps) {
   return (
     <Table
       isHeaderSticky
@@ -66,7 +68,15 @@ const ViewTable: React.FC<ViewTableProps> = ({ data }) => {
         {(item) => (
           <TableRow key={item.key}>
             {(columnKey) => (
-              <TableCell>{getKeyValue(item, columnKey)}</TableCell>
+              <TableCell>
+                {columnKey === 'Permissions' ? (
+                  getKeyValue(item, columnKey)
+                ) : getKeyValue(item, columnKey) === 'Yes' ? (
+                  <Image src={check} alt="Check" />
+                ) : (
+                  <Image src={negative} alt="Negative" />
+                )}
+              </TableCell>
             )}
           </TableRow>
         )}
@@ -74,5 +84,3 @@ const ViewTable: React.FC<ViewTableProps> = ({ data }) => {
     </Table>
   );
 }
-
-export default ViewTable;
