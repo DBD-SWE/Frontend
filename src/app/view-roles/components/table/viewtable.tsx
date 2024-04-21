@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import {
   Table,
@@ -8,7 +9,21 @@ import {
   TableCell,
   getKeyValue,
 } from '@nextui-org/react';
-import mockData from './tablelist'; // Adjust the import path as necessary
+
+// Define the interface for the Permission type
+interface Permission {
+  key: string;
+  Permissions: string;
+  Read: string;
+  Create: string;
+  Update: string;
+  Delete: string;
+}
+
+// Define the interface for the component props
+interface ViewTableProps {
+  data: Permission[]; // This prop will be used to pass the row data
+}
 
 // Define the columns based on the Permission interface
 const columns = [
@@ -34,11 +49,11 @@ const columns = [
   },
 ];
 
-export default function ViewTable() {
+const ViewTable: React.FC<ViewTableProps> = ({ data }) => {
   return (
     <Table
       isHeaderSticky
-      aria-label="Example table with static data"
+      aria-label="Dynamic Example Table"
       classNames={{
         base: 'max-h-[520px] overflow-scroll',
         table: 'min-h-[400px]',
@@ -47,7 +62,7 @@ export default function ViewTable() {
       <TableHeader columns={columns}>
         {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
       </TableHeader>
-      <TableBody items={mockData}>
+      <TableBody items={data}>
         {(item) => (
           <TableRow key={item.key}>
             {(columnKey) => (
@@ -59,3 +74,5 @@ export default function ViewTable() {
     </Table>
   );
 }
+
+export default ViewTable;
