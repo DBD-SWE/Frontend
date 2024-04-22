@@ -23,8 +23,11 @@ export default function CreateUser() {
             </p>
           </div>
           {/* Right Inputs */}
-          <div className="flex flex-wrap">
-            <Input size="sm" type="email" label="Email" />
+          <div className="ml-16 grid grid-cols-1 grid-rows-4 gap-x-5 gap-y-4 sm:grid-cols-2 sm:grid-rows-2">
+            <Input type="text" label="First Name" />
+            <Input type="text" label="Last Name" />
+            <Input type="email" label="Email" />
+            <Input type="tel" label="Phone Number" />
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { PageTitle, SubTitle } from '@/components/text';
 import { Button } from '@nextui-org/react';
-import AdvancedTable from '@/components/table/advanced-table';
+import AdvancedTable from '@/components/table/users-table';
 
 export default function Users() {
   return (
