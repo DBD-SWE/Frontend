@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { PageTitle, SubTitle } from '@/components/text';
+import { PageTitle, SubTitle } from '@/components/ui/text';
 
 const Title = ({ title }: { title: string }) => {
   return (
