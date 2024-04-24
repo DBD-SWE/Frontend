@@ -6,7 +6,7 @@ const InputComponent = (props: any) => {
       {...props}
       size="sm"
       classNames={{
-        inputWrapper: ['rounded', ''],
+        inputWrapper: ['rounded'],
       }}
     />
   );
