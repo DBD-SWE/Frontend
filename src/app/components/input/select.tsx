@@ -22,9 +22,7 @@ const SelectComponent = (props: SelectComponentProps) => {
       placeholder={placeholder}
       size="sm"
       classNames={{
-        base: ['rounded'],
-				mainWrapper: ['rounded'],
-				
+        trigger: ['rounded'],
       }}
     >
       {(item) => <SelectItem key={item.value}>{item.label}</SelectItem>}
