@@ -27,7 +27,7 @@ const DropDownLink = (props: DropDownLinkProps) => {
     <div>
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className={`my-1 flex cursor-pointer flex-row items-center justify-between rounded-sm py-2 pl-2 transition-colors hover:bg-gray-100 md:pl-4 ${currentPath.startsWith('/' + props.title.toLowerCase()) ? 'bg-gray-100' : 'bg-white'} `}
+        className={`my-1 flex cursor-pointer flex-row items-center justify-between rounded-sm py-2 pl-2 transition-colors hover:bg-gray-100 lg:pl-4 ${currentPath.startsWith('/' + props.title.toLowerCase()) ? 'bg-gray-100' : 'bg-white'} `}
       >
         <div className="flex flex-row items-center">
           <div className="flex h-[20px] w-[20px] flex-row items-center justify-center">

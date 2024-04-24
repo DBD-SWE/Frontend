@@ -42,7 +42,7 @@ const Profile = () => {
 
       <div
         ref={dropdownRef}
-        className={` absolute right-0 top-[50px] w-max transform rounded-md border-[1px] border-gray-200 bg-white py-4 opacity-0 shadow-sm transition-all duration-300 ease-out ${open ? 'block scale-100 opacity-100' : 'hidden scale-95 opacity-0'}`}
+        className={`absolute right-0 top-[50px] w-max transform rounded-md border-[1px] border-gray-200 bg-white py-4 opacity-0 shadow-sm transition-all duration-300 ease-out ${open ? 'block scale-100 opacity-100' : 'hidden scale-95 opacity-0'}`}
       >
         {/* avatar section */}
         <div className="ml-4 mr-28 flex flex-row items-center gap-3">

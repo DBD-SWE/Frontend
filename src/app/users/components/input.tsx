@@ -6,9 +6,10 @@ const InputComponent = (props: any) => {
       {...props}
       size="sm"
       classNames={{
-        inputWrapper: ['rounded', 'w-[290px]'],
+        inputWrapper: ['rounded', ''],
       }}
     />
   );
 };
+
 export default InputComponent;
