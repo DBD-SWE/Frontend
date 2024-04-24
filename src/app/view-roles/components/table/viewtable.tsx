@@ -11,7 +11,6 @@ import {
 } from '@nextui-org/react';
 import Image from 'next/image';
 import check from '../../../../../public/images/RoleImages/check.png';
-import negative from '../../../../../public/images/RoleImages/negative.png';
 
 interface Permission {
   key: string;
@@ -22,12 +21,10 @@ interface Permission {
   Delete: string;
 }
 
-// Define the interface for the component props
 interface ViewTableProps {
-  data: Permission[]; // This prop will be used to pass the row data
+  data: Permission[];
 }
 
-// Define the columns based on the Permission interface
 const columns = [
   {
     key: 'Permissions',
@@ -59,6 +56,8 @@ export default function ViewTable({ data }: ViewTableProps) {
       classNames={{
         base: 'max-h-[520px] overflow-scroll',
         table: 'min-h-[400px]',
+        th: 'h-12',
+        tr: 'border-b-[1px] border-[#F4F4F5]',
       }}
     >
       <TableHeader columns={columns}>
@@ -72,9 +71,21 @@ export default function ViewTable({ data }: ViewTableProps) {
                 {columnKey === 'Permissions' ? (
                   getKeyValue(item, columnKey)
                 ) : getKeyValue(item, columnKey) === 'Yes' ? (
-                  <Image src={check} alt="Check" />
+                  <Image
+                    src={'/images/RoleImages/check.png'}
+                    width={20}
+                    height={20}
+                    alt="Positive"
+                    className="object-contain"
+                  />
                 ) : (
-                  <Image src={negative} alt="Negative" />
+                  <Image
+                    src={'/images/RoleImages/negative.png'}
+                    width={20}
+                    height={20}
+                    alt="Negative"
+                    className="object-contain"
+                  />
                 )}
               </TableCell>
             )}
