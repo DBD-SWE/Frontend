@@ -4,6 +4,7 @@ import { Section, FileInput } from '../../components';
 import { Button } from '@nextui-org/react';
 import { PlusIcon } from '../../../../../public/icons/jsx/PlusIcon';
 import Image from 'next/image';
+import roles from '@/users/create/roles';
 
 export default function CreateUser() {
   return (
@@ -63,11 +64,23 @@ export default function CreateUser() {
 
         {/* Software Information */}
         <Section
+          start
           title="Software Information"
           description="This information is related directly to this software"
           form={
-            <div className="flex w-[100%] max-w-[700px] flex-1 max-md:mt-7 lg:max-w-[340px]">
-              <Select items={[]} placeholder="User role" label="Role" />
+            <div className="grid w-[100%] max-w-[400px] flex-1 grid-cols-1 grid-rows-4 gap-y-4 max-md:mt-7">
+              <InputSection>
+                <Label label="User Role" />
+                <Select
+                  size="md"
+                  items={roles}
+                  placeholder=""
+                  label=""
+                  startContent={
+                    <Icon src="/images/users/user-role.png" alt="User role" />
+                  }
+                />
+              </InputSection>
             </div>
           }
         />
@@ -77,6 +90,7 @@ export default function CreateUser() {
           title="Photo Information"
           description="Upload a photo for the user"
           last
+          start
           form={
             <div className="flex w-[100%] max-w-[700px] flex-1 max-md:mt-7 max-md:justify-center lg:max-w-[340px]">
               <FileInput />

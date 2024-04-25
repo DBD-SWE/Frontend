@@ -10,17 +10,20 @@ interface SelectComponentProps {
   items: Item[];
   label: string;
   placeholder: string;
+  size?: 'sm' | 'md' | 'lg' | undefined;
+  startContent?: React.ReactNode;
 }
 
 const SelectComponent = (props: SelectComponentProps) => {
-  const { items, label, placeholder } = props;
+  const { items, label, placeholder, size, startContent } = props;
 
   return (
     <Select
+      startContent={startContent}
       items={items}
       label={label}
       placeholder={placeholder}
-      size="sm"
+      size={size ? size : 'sm'}
       classNames={{
         trigger: ['rounded'],
       }}
