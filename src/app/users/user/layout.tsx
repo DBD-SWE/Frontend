@@ -1,5 +1,5 @@
 import { PageTitle, SubTitle } from '@/components/text';
-import { Tabs, Selection } from './components';
+import { Tabs } from './components';
 
 export default function RootLayout({
   children,
