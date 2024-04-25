@@ -26,6 +26,7 @@ import { ChevronDownIcon } from './ChevronDownIcon';
 import { SearchIcon } from './SearchIcon';
 import { columns, statusOptions, attractions } from './attractionsData';
 import { capitalize } from './utils';
+import Image from 'next/image';
 
 const INITIAL_VISIBLE_COLUMNS = ['name', 'coordinates', 'rating', 'actions'];
 
@@ -116,6 +117,24 @@ export default function App() {
             >
               {attraction.address}
             </User>
+          );
+        case 'rating':
+          return (
+            <div className="flex gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Image
+                  key={i}
+                  alt="star"
+                  src={
+                    i < attraction.rating
+                      ? '/icons/star.png'
+                      : '/icons/emptyStar.png'
+                  }
+                  width={10}
+                  height={10}
+                />
+              ))}
+            </div>
           );
         case 'actions':
           return (
