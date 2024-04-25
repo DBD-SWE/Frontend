@@ -14,7 +14,7 @@ export default function Selection() {
         variant="underlined"
         classNames={{
           cursor: 'w-[50%] rounded shadow-none',
-          tabContent: 'text-zinc-900 font-semibold',
+          tabContent: 'text-zinc-600 font-semibold',
         }}
       >
         <Tab key="profile" title="Profile" />
