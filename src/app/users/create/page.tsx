@@ -1,7 +1,7 @@
 import { PageTitle, SubTitle } from '@/components/text';
-import { Input, Select } from '../../components/input';
+import { Input, Select } from '@/components/input';
 import roles from './roles';
-import { Section } from './components';
+import { Section, FileInput } from './components';
 
 export default function CreateUser() {
   return (
@@ -20,7 +20,7 @@ export default function CreateUser() {
           title="Personal Information"
           description="Fill in basic information to establish the profile"
           form={
-            <div className="grid w-[100%] max-w-[700px] grid-cols-1 grid-rows-4 gap-x-5 gap-y-4 max-md:mt-7 lg:grid-cols-2 lg:grid-rows-2">
+            <div className="grid w-[100%] max-w-[700px] flex-1 grid-cols-1 grid-rows-4 gap-x-5 gap-y-4 max-md:mt-7 lg:grid-cols-2 lg:grid-rows-2">
               <Input type="text" label="First Name" />
               <Input type="text" label="Last Name" />
               <Input type="email" label="Email" />
@@ -34,7 +34,7 @@ export default function CreateUser() {
           title="Software Information"
           description="This information is related directly to this software"
           form={
-            <div className="flex w-[100%] max-w-[700px] flex-1 max-md:mt-7 lg:max-w-[340px]">
+            <div className="flex w-[100%] max-w-[700px] flex-1 flex-1 max-md:mt-7 lg:max-w-[340px]">
               <Select items={roles} placeholder="User role" label="Role" />
             </div>
           }
@@ -44,9 +44,10 @@ export default function CreateUser() {
         <Section
           title="Photo Information"
           description="Upload a photo for the user"
+          last
           form={
             <div className="flex w-[100%] max-w-[700px] flex-1 max-md:mt-7 lg:max-w-[340px]">
-              <Input type="file" label="Photo" />
+              <FileInput />
             </div>
           }
         />
