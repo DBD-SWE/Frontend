@@ -46,11 +46,13 @@ export default function CreateUser() {
           description="Upload a photo for the user"
           last
           form={
-            <div className="flex w-[100%] max-w-[700px] flex-1 max-md:mt-7 lg:max-w-[340px]">
+            <div className="flex w-[100%] max-w-[700px] flex-1 max-md:mt-7 max-md:justify-center lg:max-w-[340px]">
               <FileInput />
             </div>
           }
         />
+
+        {/* Buttons */}
       </div>
     </div>
   );
