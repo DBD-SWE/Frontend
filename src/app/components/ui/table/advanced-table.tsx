@@ -24,22 +24,20 @@ import { PlusIcon } from './PlusIcon';
 import { VerticalDotsIcon } from './VerticalDotsIcon';
 import { ChevronDownIcon } from './ChevronDownIcon';
 import { SearchIcon } from './SearchIcon';
-import { columns, statusOptions, guestHouses } from './guestHousesData';
+import { columns, users, statusOptions } from './data';
 import { capitalize } from './utils';
 
-const INITIAL_VISIBLE_COLUMNS = [
-  'name',
-  'address',
-  'bathrooms',
-  'bedrooms',
-  'rating',
-  'actions',
-];
+const statusColorMap: Record<string, ChipProps['color']> = {
+  active: 'success',
+  paused: 'danger',
+  vacation: 'warning',
+};
 
-type GuestHouse = (typeof guestHouses)[0];
+const INITIAL_VISIBLE_COLUMNS = ['name', 'role', 'status', 'actions'];
+
+type User = (typeof users)[0];
 
 export default function App() {
-  const [categoryFilter, setCategoryFilter] = React.useState<Selection>('all');
   const [filterValue, setFilterValue] = React.useState('');
   const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
     new Set([]),
@@ -47,14 +45,15 @@ export default function App() {
   const [visibleColumns, setVisibleColumns] = React.useState<Selection>(
     new Set(INITIAL_VISIBLE_COLUMNS),
   );
+  const [statusFilter, setStatusFilter] = React.useState<Selection>('all');
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [sortDescriptor, setSortDescriptor] = React.useState<SortDescriptor>({
-    column: 'rating',
+    column: 'age',
     direction: 'ascending',
   });
   const [page, setPage] = React.useState(1);
 
-  const pages = Math.ceil(guestHouses.length / rowsPerPage);
+  const pages = Math.ceil(users.length / rowsPerPage);
 
   const hasSearchFilter = Boolean(filterValue);
 
@@ -67,23 +66,24 @@ export default function App() {
   }, [visibleColumns]);
 
   const filteredItems = React.useMemo(() => {
-    let filteredGuestHouses = [...guestHouses];
+    let filteredUsers = [...users];
 
     if (hasSearchFilter) {
-      filteredGuestHouses = filteredGuestHouses.filter((guestHouse) =>
-        guestHouse.name.toLowerCase().includes(filterValue.toLowerCase()),
+      filteredUsers = filteredUsers.filter((user) =>
+        user.name.toLowerCase().includes(filterValue.toLowerCase()),
       );
     }
-    // if (
-    //   categoryFilter !== 'all' &&
-    //   Array.from(categoryFilter).length !== statusOptions.length
-    // ) {
-    //   filteredGuestHouses = filteredGuestHouses.filter((guestHouse) =>
-    //     Array.from(categoryFilter).includes(guestHouse.category),
-    //   );
-    // }
-    return filteredGuestHouses;
-  }, [filterValue, hasSearchFilter]);
+    if (
+      statusFilter !== 'all' &&
+      Array.from(statusFilter).length !== statusOptions.length
+    ) {
+      filteredUsers = filteredUsers.filter((user) =>
+        Array.from(statusFilter).includes(user.status),
+      );
+    }
+
+    return filteredUsers;
+  }, [users, filterValue, statusFilter]);
 
   const items = React.useMemo(() => {
     const start = (page - 1) * rowsPerPage;
@@ -93,62 +93,73 @@ export default function App() {
   }, [page, filteredItems, rowsPerPage]);
 
   const sortedItems = React.useMemo(() => {
-    return [...items].sort((a: GuestHouse, b: GuestHouse) => {
-      const first = a[sortDescriptor.column as keyof GuestHouse] as number;
-      const second = b[sortDescriptor.column as keyof GuestHouse] as number;
+    return [...items].sort((a: User, b: User) => {
+      const first = a[sortDescriptor.column as keyof User] as number;
+      const second = b[sortDescriptor.column as keyof User] as number;
       const cmp = first < second ? -1 : first > second ? 1 : 0;
 
       return sortDescriptor.direction === 'descending' ? -cmp : cmp;
     });
   }, [sortDescriptor, items]);
 
-  const renderCell = React.useCallback(
-    (guestHouse: GuestHouse, columnKey: React.Key) => {
-      const cellValue = guestHouse[columnKey as keyof GuestHouse];
+  const renderCell = React.useCallback((user: User, columnKey: React.Key) => {
+    const cellValue = user[columnKey as keyof User];
 
-      switch (columnKey) {
-        case 'name':
-          return (
-            <User
-              avatarProps={{
-                radius: 'full',
-                size: 'sm',
-                src: guestHouse.images[0],
-              }}
-              classNames={{
-                description: 'text-default-500',
-              }}
-              description={guestHouse.address}
-              name={cellValue}
-            >
-              {guestHouse.address}
-            </User>
-          );
-        case 'actions':
-          return (
-            <div className="relative flex items-center justify-start gap-2">
-              <Dropdown className="border-1 border-default-200 bg-background">
-                <DropdownTrigger>
-                  <Button isIconOnly radius="full" size="sm" variant="light">
-                    <VerticalDotsIcon />
-                  </Button>
-                </DropdownTrigger>
-                <DropdownMenu>
-                  <DropdownItem>View</DropdownItem>
-                  <DropdownItem>Edit</DropdownItem>
-                  <DropdownItem>Delete</DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-            </div>
-          );
-        default:
-          return (
-            <div className="flex items-center justify-start">{cellValue}</div>
-          );
-      }
-    },
-    [],
-  );
+    switch (columnKey) {
+      case 'name':
+        return (
+          <User
+            avatarProps={{ radius: 'full', size: 'sm', src: user.avatar }}
+            classNames={{
+              description: 'text-default-500',
+            }}
+            description={user.email}
+            name={cellValue}
+          >
+            {user.email}
+          </User>
+        );
+      case 'role':
+        return (
+          <div className="flex flex-col">
+            <p className="text-bold text-small capitalize">{cellValue}</p>
+            <p className="text-bold text-tiny capitalize text-default-500">
+              {user.team}
+            </p>
+          </div>
+        );
+      case 'status':
+        return (
+          <Chip
+            className="gap-1 border-none capitalize text-default-600"
+            color={statusColorMap[user.status]}
+            size="sm"
+            variant="dot"
+          >
+            {cellValue}
+          </Chip>
+        );
+      case 'actions':
+        return (
+          <div className="relative flex items-center justify-end gap-2">
+            <Dropdown className="border-1 border-default-200 bg-background">
+              <DropdownTrigger>
+                <Button isIconOnly radius="full" size="sm" variant="light">
+                  <VerticalDotsIcon className="text-default-400" />
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu>
+                <DropdownItem>View</DropdownItem>
+                <DropdownItem>Edit</DropdownItem>
+                <DropdownItem>Delete</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </div>
+        );
+      default:
+        return cellValue;
+    }
+  }, []);
 
   const onRowsPerPageChange = React.useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -186,7 +197,7 @@ export default function App() {
             onValueChange={onSearchChange}
           />
           <div className="flex gap-3">
-            {/* <Dropdown>
+            <Dropdown>
               <DropdownTrigger className="hidden sm:flex">
                 <Button
                   endContent={<ChevronDownIcon className="text-small" />}
@@ -200,9 +211,9 @@ export default function App() {
                 disallowEmptySelection
                 aria-label="Table Columns"
                 closeOnSelect={false}
-                selectedKeys={categoryFilter}
+                selectedKeys={statusFilter}
                 selectionMode="multiple"
-                onSelectionChange={setCategoryFilter}
+                onSelectionChange={setStatusFilter}
               >
                 {statusOptions.map((status) => (
                   <DropdownItem key={status.uid} className="capitalize">
@@ -210,7 +221,7 @@ export default function App() {
                   </DropdownItem>
                 ))}
               </DropdownMenu>
-            </Dropdown> */}
+            </Dropdown>
             <Dropdown>
               <DropdownTrigger className="hidden sm:flex">
                 <Button
@@ -247,7 +258,7 @@ export default function App() {
         </div>
         <div className="flex items-center justify-between">
           <span className="text-small text-default-400">
-            Total {guestHouses.length} guest houses
+            Total {users.length} users
           </span>
           <label className="flex items-center text-small text-default-400">
             Rows per page:
@@ -263,7 +274,15 @@ export default function App() {
         </div>
       </div>
     );
-  }, [filterValue, visibleColumns, onSearchChange, onRowsPerPageChange]);
+  }, [
+    filterValue,
+    statusFilter,
+    visibleColumns,
+    onSearchChange,
+    onRowsPerPageChange,
+    users.length,
+    hasSearchFilter,
+  ]);
 
   const bottomContent = React.useMemo(() => {
     return (
@@ -340,7 +359,7 @@ export default function App() {
           </TableColumn>
         )}
       </TableHeader>
-      <TableBody emptyContent={'No guest house found'} items={sortedItems}>
+      <TableBody emptyContent={'No users found'} items={sortedItems}>
         {(item) => (
           <TableRow key={item.id}>
             {(columnKey) => (

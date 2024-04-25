@@ -24,19 +24,12 @@ import { PlusIcon } from './PlusIcon';
 import { VerticalDotsIcon } from './VerticalDotsIcon';
 import { ChevronDownIcon } from './ChevronDownIcon';
 import { SearchIcon } from './SearchIcon';
-import { columns, statusOptions, guestHouses } from './guestHousesData';
+import { columns, statusOptions, attractions } from './attractionsData';
 import { capitalize } from './utils';
 
-const INITIAL_VISIBLE_COLUMNS = [
-  'name',
-  'address',
-  'bathrooms',
-  'bedrooms',
-  'rating',
-  'actions',
-];
+const INITIAL_VISIBLE_COLUMNS = ['name', 'coordinates', 'rating', 'actions'];
 
-type GuestHouse = (typeof guestHouses)[0];
+type Attraction = (typeof attractions)[0];
 
 export default function App() {
   const [categoryFilter, setCategoryFilter] = React.useState<Selection>('all');
@@ -54,7 +47,7 @@ export default function App() {
   });
   const [page, setPage] = React.useState(1);
 
-  const pages = Math.ceil(guestHouses.length / rowsPerPage);
+  const pages = Math.ceil(attractions.length / rowsPerPage);
 
   const hasSearchFilter = Boolean(filterValue);
 
@@ -67,22 +60,22 @@ export default function App() {
   }, [visibleColumns]);
 
   const filteredItems = React.useMemo(() => {
-    let filteredGuestHouses = [...guestHouses];
+    let filteredAttractions = [...attractions];
 
     if (hasSearchFilter) {
-      filteredGuestHouses = filteredGuestHouses.filter((guestHouse) =>
-        guestHouse.name.toLowerCase().includes(filterValue.toLowerCase()),
+      filteredAttractions = filteredAttractions.filter((attraction) =>
+        attraction.name.toLowerCase().includes(filterValue.toLowerCase()),
       );
     }
     // if (
     //   categoryFilter !== 'all' &&
     //   Array.from(categoryFilter).length !== statusOptions.length
     // ) {
-    //   filteredGuestHouses = filteredGuestHouses.filter((guestHouse) =>
-    //     Array.from(categoryFilter).includes(guestHouse.category),
+    //   filteredAttractions = filteredAttractions.filter((attraction) =>
+    //     Array.from(categoryFilter).includes(attraction.category),
     //   );
     // }
-    return filteredGuestHouses;
+    return filteredAttractions;
   }, [filterValue, hasSearchFilter]);
 
   const items = React.useMemo(() => {
@@ -93,9 +86,9 @@ export default function App() {
   }, [page, filteredItems, rowsPerPage]);
 
   const sortedItems = React.useMemo(() => {
-    return [...items].sort((a: GuestHouse, b: GuestHouse) => {
-      const first = a[sortDescriptor.column as keyof GuestHouse] as number;
-      const second = b[sortDescriptor.column as keyof GuestHouse] as number;
+    return [...items].sort((a: Attraction, b: Attraction) => {
+      const first = a[sortDescriptor.column as keyof Attraction] as number;
+      const second = b[sortDescriptor.column as keyof Attraction] as number;
       const cmp = first < second ? -1 : first > second ? 1 : 0;
 
       return sortDescriptor.direction === 'descending' ? -cmp : cmp;
@@ -103,8 +96,8 @@ export default function App() {
   }, [sortDescriptor, items]);
 
   const renderCell = React.useCallback(
-    (guestHouse: GuestHouse, columnKey: React.Key) => {
-      const cellValue = guestHouse[columnKey as keyof GuestHouse];
+    (attraction: Attraction, columnKey: React.Key) => {
+      const cellValue = attraction[columnKey as keyof Attraction];
 
       switch (columnKey) {
         case 'name':
@@ -113,15 +106,15 @@ export default function App() {
               avatarProps={{
                 radius: 'full',
                 size: 'sm',
-                src: guestHouse.images[0],
+                src: attraction.images[0],
               }}
               classNames={{
                 description: 'text-default-500',
               }}
-              description={guestHouse.address}
+              description={attraction.address}
               name={cellValue}
             >
-              {guestHouse.address}
+              {attraction.address}
             </User>
           );
         case 'actions':
@@ -247,7 +240,7 @@ export default function App() {
         </div>
         <div className="flex items-center justify-between">
           <span className="text-small text-default-400">
-            Total {guestHouses.length} guest houses
+            Total {attractions.length} users
           </span>
           <label className="flex items-center text-small text-default-400">
             Rows per page:
@@ -340,7 +333,7 @@ export default function App() {
           </TableColumn>
         )}
       </TableHeader>
-      <TableBody emptyContent={'No guest house found'} items={sortedItems}>
+      <TableBody emptyContent={'No attraction found'} items={sortedItems}>
         {(item) => (
           <TableRow key={item.id}>
             {(columnKey) => (
