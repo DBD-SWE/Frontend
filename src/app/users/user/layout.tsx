@@ -1,4 +1,4 @@
-import { PageTitle, SubTitle } from "@/components/text";
+import { PageTitle, SubTitle } from '@/components/text';
 
 export default function RootLayout({
   children,
@@ -14,8 +14,8 @@ export default function RootLayout({
           <SubTitle content={['Users', '○', 'User Details']} />
         </div>
       </div>
-      {/* Table Section */}
-      {children}
+      {/* Body Section */}
+      <div className="">{children}</div>
     </div>
   );
 }

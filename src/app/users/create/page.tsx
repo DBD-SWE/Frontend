@@ -1,7 +1,7 @@
 import { PageTitle, SubTitle } from '@/components/text';
 import { Input, Select } from '@/components/input';
 import roles from './roles';
-import { Section, FileInput } from './components';
+import { Section, FileInput } from '../components';
 import { Button } from '@nextui-org/react';
 import { PlusIcon } from '../../../../public/icons/jsx/PlusIcon';
 import Image from 'next/image';
