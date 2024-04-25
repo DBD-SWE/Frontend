@@ -34,7 +34,7 @@ export default function CreateUser() {
           title="Software Information"
           description="This information is related directly to this software"
           form={
-            <div className="flex w-[100%] max-w-[700px] flex-1 flex-1 max-md:mt-7 lg:max-w-[340px]">
+            <div className="flex w-[100%] max-w-[700px] flex-1 max-md:mt-7 lg:max-w-[340px]">
               <Select items={roles} placeholder="User role" label="Role" />
             </div>
           }
