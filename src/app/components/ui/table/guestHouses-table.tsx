@@ -108,6 +108,20 @@ export default function App() {
       const cellValue = guestHouse[columnKey as keyof GuestHouse];
 
       switch (columnKey) {
+        case 'accessibility':
+          let bgColor = 'bg-red-50';
+          let textColor = 'text-red-500';
+          if (guestHouse.accessibility === 'Accessible') {
+            bgColor = 'bg-green-50';
+            textColor = 'text-green-500';
+          }
+          return (
+            <div
+              className={`flex w-[100px] flex-row items-center justify-center gap-1 py-1 ${bgColor} rounded-full capitalize text-default-600`}
+            >
+              <p className={`text-xs ${textColor}`}>{cellValue}</p>
+            </div>
+          );
         case 'rating':
           return (
             <div className="flex gap-1">

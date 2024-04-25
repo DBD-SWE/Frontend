@@ -33,6 +33,10 @@ const INITIAL_VISIBLE_COLUMNS = ['name', 'accessibility', 'rating', 'actions'];
 type Attraction = (typeof attractions)[0];
 
 export default function App() {
+  const accessibilityColorMap: Record<string, { bg: string; text: string }> = {
+    Accessible: { bg: 'bg-green-50', text: 'text-green-400' },
+    NotAccessible: { bg: 'bg-red-50', text: 'text-red-400' },
+  };
   const [categoryFilter, setCategoryFilter] = React.useState<Selection>('all');
   const [filterValue, setFilterValue] = React.useState('');
   const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
@@ -101,6 +105,20 @@ export default function App() {
       const cellValue = attraction[columnKey as keyof Attraction];
 
       switch (columnKey) {
+        case 'accessibility':
+          let bgColor = 'bg-red-50';
+          let textColor = 'text-red-500';
+          if (attraction.accessibility === 'Accessible') {
+            bgColor = 'bg-green-50';
+            textColor = 'text-green-500';
+          }
+          return (
+            <div
+              className={`flex w-[100px] flex-row items-center justify-center gap-1 py-1 ${bgColor} rounded-full capitalize text-default-600`}
+            >
+              <p className={`text-xs ${textColor}`}>{cellValue}</p>
+            </div>
+          );
         case 'name':
           return (
             <User
