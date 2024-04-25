@@ -1,4 +1,5 @@
 import { PageTitle, SubTitle } from '@/components/text';
+import { Tabs, Selection } from './components';
 
 export default function RootLayout({
   children,
@@ -15,7 +16,10 @@ export default function RootLayout({
         </div>
       </div>
       {/* Body Section */}
-      <div className="">{children}</div>
+      <div className="mt-10">
+        <Tabs />
+        <div className="mt-5">{children}</div>
+      </div>
     </div>
   );
 }
