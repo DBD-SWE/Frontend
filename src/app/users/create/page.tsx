@@ -2,10 +2,23 @@ import { PageTitle, SubTitle } from '@/components/text';
 import { Input, Select } from '@/components/input';
 import roles from './roles';
 import { Section, FileInput } from './components';
+import { Button } from '@nextui-org/react';
+import { PlusIcon } from '../../../../public/icons/jsx/PlusIcon';
+import Image from 'next/image';
+
+const DeleteIcon = (
+  <Image
+    className="object-contain"
+    src="/images/general/delete.png"
+    alt="delete"
+    width={17}
+    height={17}
+  />
+);
 
 export default function CreateUser() {
   return (
-    <div className="flex w-full flex-col">
+    <div className="flex w-full flex-col pb-10">
       {/* Head Section */}
       <div className="flex w-full flex-row items-start justify-between">
         <div className="flex flex-col">
@@ -40,7 +53,7 @@ export default function CreateUser() {
           }
         />
 
-        {/* Photo Information */}
+        {/* Photo Upload */}
         <Section
           title="Photo Information"
           description="Upload a photo for the user"
@@ -53,6 +66,22 @@ export default function CreateUser() {
         />
 
         {/* Buttons */}
+        <div className="mt-10 flex gap-x-3 max-[475px]:flex-col">
+          <Button
+            className="rounded bg-foreground px-6 text-sm text-background max-sm:px-4"
+            endContent={<PlusIcon />}
+            size="md"
+          >
+            Create User
+          </Button>
+          <Button
+            size="md"
+            endContent={DeleteIcon}
+            className="rounded border border-black bg-white px-6 text-sm max-sm:px-4"
+          >
+            Discard
+          </Button>
+        </div>
       </div>
     </div>
   );

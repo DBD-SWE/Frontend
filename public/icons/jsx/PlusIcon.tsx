@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface PlusIconProps {
   size?: number;
@@ -6,7 +6,12 @@ interface PlusIconProps {
   height?: number;
 }
 
-export const PlusIcon = ({size = 24, width, height, ...props} : PlusIconProps) => (
+export const PlusIcon = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}: PlusIconProps) => (
   <svg
     aria-hidden="true"
     fill="none"
