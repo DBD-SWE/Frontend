@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Table,
   TableHeader,
@@ -7,10 +7,9 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  getKeyValue,
+  Input,
 } from '@nextui-org/react';
 import Image from 'next/image';
-import check from '../../../../../public/images/RoleImages/check.png';
 
 interface Permission {
   key: string;
@@ -49,49 +48,70 @@ const columns = [
 ];
 
 export default function ViewTable({ data }: ViewTableProps) {
+  const [filterValue, setFilterValue] = useState('');
+
+  // Filter data based on filterValue
+  const filteredData = data.filter((item) =>
+    Object.values(item).some((value) =>
+      value.toLowerCase().includes(filterValue.toLowerCase()),
+    ),
+  );
+
   return (
-    <Table
-      isHeaderSticky
-      aria-label="Dynamic Example Table"
-      classNames={{
-        base: 'max-h-[520px] overflow-scroll',
-        table: 'min-h-[400px]',
-        th: 'h-12',
-        tr: 'border-b-[1px] border-[#F4F4F5]',
-      }}
-    >
-      <TableHeader columns={columns}>
-        {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
-      </TableHeader>
-      <TableBody items={data}>
-        {(item) => (
-          <TableRow key={item.key}>
-            {(columnKey) => (
-              <TableCell>
-                {columnKey === 'Permissions' ? (
-                  getKeyValue(item, columnKey)
-                ) : getKeyValue(item, columnKey) === 'Yes' ? (
-                  <Image
-                    src={'/images/RoleImages/check.png'}
-                    width={20}
-                    height={20}
-                    alt="Positive"
-                    className="object-contain"
-                  />
-                ) : (
-                  <Image
-                    src={'/images/RoleImages/negative.png'}
-                    width={20}
-                    height={20}
-                    alt="Negative"
-                    className="object-contain"
-                  />
-                )}
-              </TableCell>
-            )}
-          </TableRow>
-        )}
-      </TableBody>
-    </Table>
+    <>
+      <Input
+        isClearable
+        placeholder="Search Permissions"
+        value={filterValue}
+        onChange={(e) => setFilterValue(e.target.value)}
+        fullWidth
+
+      />
+      <Table
+        isHeaderSticky
+        aria-label="Dynamic Example Table"
+        classNames={{
+          base: 'max-h-[520px] overflow-scroll',
+          table: 'min-h-[400px]',
+          th: 'h-12',
+          tr: 'border-b-[1px] border-[#F4F4F5]',
+        }}
+      >
+        <TableHeader columns={columns}>
+          {(column) => (
+            <TableColumn key={column.key}>{column.label}</TableColumn>
+          )}
+        </TableHeader>
+        <TableBody items={filteredData}>
+          {(item) => (
+            <TableRow key={item.key}>
+              {(columnKey) => (
+                <TableCell>
+                  {columnKey === 'Permissions' ? (
+                    item[columnKey as keyof Permission]
+                  ) : item[columnKey as keyof Permission] === 'Yes' ? (
+                    <Image
+                      src={'/images/RoleImages/check.png'}
+                      width={20}
+                      height={20}
+                      alt="Positive"
+                      className="object-contain"
+                    />
+                  ) : (
+                    <Image
+                      src={'/images/RoleImages/negative.png'}
+                      width={20}
+                      height={20}
+                      alt="Negative"
+                      className="object-contain"
+                    />
+                  )}
+                </TableCell>
+              )}
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
+    </>
   );
 }
