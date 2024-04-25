@@ -26,6 +26,7 @@ import { ChevronDownIcon } from './ChevronDownIcon';
 import { SearchIcon } from './SearchIcon';
 import { columns, statusOptions, guestHouses } from './guestHousesData';
 import { capitalize } from './utils';
+import Image from 'next/image';
 
 const INITIAL_VISIBLE_COLUMNS = [
   'name',
@@ -107,6 +108,24 @@ export default function App() {
       const cellValue = guestHouse[columnKey as keyof GuestHouse];
 
       switch (columnKey) {
+        case 'rating':
+          return (
+            <div className="flex gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Image
+                  key={i}
+                  alt="star"
+                  src={
+                    i < guestHouse.rating
+                      ? '/icons/star.png'
+                      : '/icons/emptyStar.png'
+                  }
+                  width={10}
+                  height={10}
+                />
+              ))}
+            </div>
+          );
         case 'name':
           return (
             <User

@@ -28,7 +28,7 @@ import { columns, statusOptions, attractions } from './attractionsData';
 import { capitalize } from './utils';
 import Image from 'next/image';
 
-const INITIAL_VISIBLE_COLUMNS = ['name', 'coordinates', 'rating', 'actions'];
+const INITIAL_VISIBLE_COLUMNS = ['name', 'accessibility', 'rating', 'actions'];
 
 type Attraction = (typeof attractions)[0];
 
@@ -136,6 +136,7 @@ export default function App() {
               ))}
             </div>
           );
+
         case 'actions':
           return (
             <div className="relative flex items-center justify-start gap-2">
