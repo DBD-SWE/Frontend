@@ -16,10 +16,10 @@ export default function CreateUser() {
           start
           form={
             <div className="grid w-[100%] max-w-[400px] flex-1 grid-cols-1 grid-rows-4 gap-y-4 max-md:mt-7">
-              <div className="flex items-center">
+              <InputSection>
                 <Label label="First Name" />
                 <Input type="text" label="First Name" />
-              </div>
+              </InputSection>
 
               <Input type="text" label="Last Name" />
               <Input type="email" label="Email" />
@@ -84,9 +84,11 @@ const DeleteIcon = (
 );
 
 const Label = ({ label }: { label: string }) => {
-  return <h6 className="w-max text-xs font-light text-zinc-500">{label}</h6>;
+  return (
+    <h6 className="block w-32 text-xs font-light text-zinc-500">{label}:</h6>
+  );
 };
 
 const InputSection = ({ children }: { children: React.ReactNode }) => {
-  return <div className="grid-row-1 grid grid-cols-2">{children}</div>;
+  return <div className="flex flex-row items-center">{children}</div>;
 };
