@@ -17,6 +17,8 @@ const FileInput = () => {
         type="file"
         className="absolute bottom-0 left-0 right-0 top-0 h-full w-full cursor-pointer rounded-full opacity-0"
       />
+      {/* Just now for testing */}
+      
     </div>
   );
 };

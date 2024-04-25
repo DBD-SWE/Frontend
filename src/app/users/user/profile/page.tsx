@@ -92,20 +92,35 @@ export default function CreateUser() {
           start
           center
           form={
-            <div className="flex w-[100%] max-w-[700px] flex-1 max-md:mt-7 max-md:justify-center lg:max-w-[340px]">
-              <FileInput />
+            <div className="grid w-[100%] max-w-[400px] flex-1 gap-y-4 max-md:mt-7">
+              <InputSection>
+                <Label label="User Photo" />
+                <div className="flex h-full w-10 flex-1 flex-col justify-end bg-red-500">
+                  {/* <FileInput /> */}
+                </div>
+                {/* <Select
+                  size="md"
+                  items={roles}
+                  placeholder=""
+                  label=""
+                  startContent={
+                    <Icon src="/images/users/user-role.png" alt="User role" />
+                  }
+                /> */}
+                {/* group flex flex-col w-full transition-background motion-reduce:transition-none !duration-150 group relative justify-end data-[has-label=true]:mt-[calc(theme(fontSize.small)_+_10px)] */}
+              </InputSection>
             </div>
           }
         />
 
         {/* Buttons */}
-        <div className="mt-10 flex gap-x-3 max-[475px]:flex-col">
+        <div className="mt-10 flex gap-x-3">
           <Button
             className="rounded bg-foreground px-6 text-sm text-background max-sm:px-4"
-            endContent={<PlusIcon />}
+            endContent={<DeleteIcon />}
             size="md"
           >
-            Create User
+            Edit User
           </Button>
           {/* <Button
             size="md"
@@ -125,6 +140,15 @@ const Icon = ({ src, alt }: { src: string; alt: string }) => (
     className="mr-2 flex-shrink-0 object-contain"
     src={src}
     alt={alt}
+    width={17}
+    height={17}
+  />
+);
+const DeleteIcon = () => (
+  <Image
+    className="-mt-[2px] ml-2 flex-shrink-0 object-contain"
+    src="/images/general/edit-white.png"
+    alt="Edit User"
     width={17}
     height={17}
   />
