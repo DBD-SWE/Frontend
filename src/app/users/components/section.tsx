@@ -10,7 +10,7 @@ const Section = (props: SectionProps) => {
   const { title, description, form, last, start } = props;
   return (
     <div
-      className={`flex ${start ? 'items-start' : 'items-center'} justify-start border-t-[1px] border-l-transparent border-r-transparent border-t-[#F4F4F5] px-4 py-14 max-md:flex-col max-md:items-start max-md:px-2 max-md:py-6 ${last && 'border-b-[1px] border-b-[#F4F4F5]'}`}
+      className={`flex ${start ? 'items-start max-md:flex-col max-md:items-center' : 'items-center'} justify-start border-t-[1px] border-l-transparent border-r-transparent border-t-[#F4F4F5] px-4 py-14 max-md:flex-col max-md:items-start max-md:px-2 max-md:py-6 ${last && 'border-b-[1px] border-b-[#F4F4F5]'}`}
     >
       {/* Left Part */}
       <div
