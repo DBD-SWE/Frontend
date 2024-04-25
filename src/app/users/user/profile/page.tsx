@@ -18,12 +18,45 @@ export default function CreateUser() {
             <div className="grid w-[100%] max-w-[400px] flex-1 grid-cols-1 grid-rows-4 gap-y-4 max-md:mt-7">
               <InputSection>
                 <Label label="First Name" />
-                <Input type="text" label="First Name" />
+                <Input
+                  type="text"
+                  size="md"
+                  startContent={
+                    <Icon src="/images/users/user.png" alt="First Name" />
+                  }
+                />
               </InputSection>
-
-              <Input type="text" label="Last Name" />
-              <Input type="email" label="Email" />
-              <Input type="tel" name="phone" label="Phone Number" />
+              <InputSection>
+                <Label label="Last Name" />
+                <Input
+                  type="text"
+                  size="md"
+                  startContent={
+                    <Icon src="/images/users/user.png" alt="Last Name" />
+                  }
+                />
+              </InputSection>
+              <InputSection>
+                <Label label="Email" />
+                <Input
+                  type="email"
+                  size="md"
+                  startContent={
+                    <Icon src="/images/users/email.png" alt="Email" />
+                  }
+                />
+              </InputSection>
+              <InputSection>
+                <Label label="Phone Number" />
+                <Input
+                  size="md"
+                  type="tel"
+                  name="phone"
+                  startContent={
+                    <Icon src="/images/users/telephone.png" alt="Email" />
+                  }
+                />
+              </InputSection>
             </div>
           }
         />
@@ -60,24 +93,24 @@ export default function CreateUser() {
           >
             Create User
           </Button>
-          <Button
+          {/* <Button
             size="md"
             endContent={DeleteIcon}
             className="rounded border border-black bg-white px-6 text-sm max-sm:px-4"
           >
             Discard
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>
   );
 }
 
-const DeleteIcon = (
+const Icon = ({ src, alt }: { src: string; alt: string }) => (
   <Image
-    className="object-contain"
-    src="/images/general/delete.png"
-    alt="delete"
+    className="mr-2 flex-shrink-0 object-contain"
+    src={src}
+    alt={alt}
     width={17}
     height={17}
   />
@@ -85,7 +118,7 @@ const DeleteIcon = (
 
 const Label = ({ label }: { label: string }) => {
   return (
-    <h6 className="block w-32 text-xs font-light text-zinc-500">{label}:</h6>
+    <h6 className="block w-44 text-sm font-light text-zinc-500">{label}:</h6>
   );
 };
 

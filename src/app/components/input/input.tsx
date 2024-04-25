@@ -4,7 +4,7 @@ const InputComponent = (props: any) => {
   return (
     <Input
       {...props}
-      size="sm"
+      size={props.size ? props.size : 'sm'}
       classNames={{
         inputWrapper: ['rounded'],
       }}
