@@ -68,7 +68,7 @@ export default function ViewTable({ data }: ViewTableProps) {
 
   return (
     <>
-      <div className='flex justify-between'>
+      <div className="flex justify-between">
         <Input
           isClearable
           classNames={{
@@ -97,7 +97,7 @@ export default function ViewTable({ data }: ViewTableProps) {
         aria-label="Dynamic Example Table"
         classNames={{
           base: 'max-h-[520px] overflow-scroll',
-          table: 'min-h-[400px]',
+          table: 'min-h-[400px] ',
           th: 'h-12',
           tr: 'border-b-[1px] border-[#F4F4F5]',
         }}

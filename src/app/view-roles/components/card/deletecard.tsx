@@ -12,11 +12,11 @@ export default function DeleteCard({ roleName }: DeleteCardProps) {
 
   return (
     <div className="flex w-[4/5] flex-col justify-between rounded-lg border-2 border-t-red-600 md:w-[4/5]">
-      <div className="flex-grow p-4 pl-8">
-        <h1 className="pb-10 text-base font-bold md:text-lg">
+      <div className="p-2 md:p-3">
+        <h1 className="text-sm md:text-md font-bold">
           Delete {roleName} Role
         </h1>
-        <p className="text-base font-medium leading-relaxed text-zinc-500 md:text-lg">
+        <p className="text-xs md:text-sm font-medium leading-tight text-zinc-500">
           By deleting the {roleName} role, you will revert affected users to the default
           user role, effectively revoking their current permissions and
           dismissing any specialized access they have been granted. This action
@@ -24,10 +24,10 @@ export default function DeleteCard({ roleName }: DeleteCardProps) {
         </p>
       </div>
 
-      <div className="flex justify-end p-4">
+      <div className="flex justify-end p-2">
         <Button
           endContent={Trash}
-          className="flex h-10 items-center rounded bg-red-600 px-8 text-sm text-white"
+          className="flex items-center rounded bg-red-600 px-4 py-1 text-xs md:text-sm text-white"
         >
           Delete {roleName}
         </Button>
