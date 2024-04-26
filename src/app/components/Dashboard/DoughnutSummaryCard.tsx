@@ -21,7 +21,7 @@ const PieSummaryCard = ({
   colors,
 }: Props) => {
   return (
-    <div className="flex min-h-[390px] w-[800px] justify-between gap-12 rounded-md border border-b-black px-24 py-12 pb-16 shadow-sm max-md:flex-col max-sm:w-full">
+    <div className="flex min-h-[390px] justify-between gap-12 rounded-md border border-b-black px-12 py-8 pb-16 shadow-sm max-md:flex-col max-sm:w-full">
       <div className="flex flex-col justify-between gap-y-8">
         <div>
           <p className="text-xl font-semibold">Total {title}</p>

@@ -24,7 +24,7 @@ export default function Home() {
       </div>
       <div className="my-12 flex w-full flex-col">
         <SummaryCardsList />
-        <div className="mt-12 flex w-full justify-between">
+        <div className="grid auto-cols-max grid-flow-row grid-cols-[repeat(auto-fill,minmax(550px,1fr))] gap-5 py-10">
           <DoughnutSummaryCard
             title="Summary"
             total={100}

@@ -6,7 +6,7 @@ type Props = {};
 
 const ActivityLog = (props: Props) => {
   return (
-    <div className="w-[800px]">
+    <div>
       <div className="relative flex flex-col justify-between rounded-md border border-b-black px-8 py-12 shadow-sm md:px-12">
         <div className="absolute left-[76px] top-12 h-48 w-[1px] bg-zinc-200 max-md:left-[55px] max-md:top-14 max-md:h-44"></div>
         <UserActivityCard
