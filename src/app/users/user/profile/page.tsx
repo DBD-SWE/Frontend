@@ -98,17 +98,7 @@ export default function CreateUser() {
                 <div className="relative flex w-full flex-col items-start justify-start max-md:items-center">
                   <FileInput />
                 </div>
-                {/* <Select
-                  size="md"
-                  items={roles}
-                  placeholder=""
-                  label=""
-                  startContent={
-                    <Icon src="/images/users/user-role.png" alt="User role" />
-                  }
-                /> */}
-                {/* group flex flex-col w-full transition-background motion-reduce:transition-none !duration-150 group relative justify-end data-[has-label=true]:mt-[calc(theme(fontSize.small)_+_10px)] */}
-                {/* class="group flex flex-col w-full transition-background motion-reduce:transition-none !duration-150 group relative justify-end data-[has-label=true]:mt-[calc(theme(fontSize.small)_+_10px)]" */}
+                
               </InputSection>
             </div>
           }
