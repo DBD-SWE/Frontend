@@ -6,7 +6,7 @@ type Props = {};
 
 const ActivityLog = (props: Props) => {
   return (
-    <div className='max-w-[750px]'>
+    <div className="w-[800px]">
       <div className="relative flex flex-col justify-between rounded-md border border-b-black px-8 py-12 shadow-sm md:px-12">
         <div className="absolute left-[72px] top-12 h-48 w-[1px] bg-zinc-200 max-md:left-[55px] max-md:top-14 max-md:h-44"></div>
         <UserActivityCard
@@ -47,7 +47,7 @@ const UserActivityCard = ({ action, actor, dateTime }: UserProps) => {
         <div className="relative">
           <div className="bg-grey"></div>
         </div>
-        <div className="space-y-5">
+        <div className="w-[800px] space-y-5">
           <div>
             <p className="text-xs sm:text-base md:text-lg">
               A user has been {action}d by
