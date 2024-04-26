@@ -4,7 +4,7 @@ import { Button } from '@nextui-org/react';
 import Image from 'next/image';
 import roles from '@/users/create/roles';
 
-export default function CreateUser() {
+export default function Profile() {
   return (
     <div className="flex w-full flex-col pb-10">
       {/* Body Section */}
