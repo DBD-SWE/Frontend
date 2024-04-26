@@ -68,16 +68,15 @@ export default function ViewTable({ data }: ViewTableProps) {
 
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end gap-4 mb-4">
         <Input
           isClearable
           classNames={{
-            base: 'w-full sm:max-w-[38%] pb-8',
+            base: 'w-full sm:max-w-xs md:max-w-sm',
             inputWrapper: ['border-1', 'rounded'],
           }}
           placeholder="Search by name..."
           size="sm"
-          // startContent={<SearchIcon className="text-default-300" />}
           value={filterValue}
           variant="bordered"
           onClear={() => setFilterValue('')}
@@ -86,7 +85,7 @@ export default function ViewTable({ data }: ViewTableProps) {
 
         <Button
           color="primary"
-          className="h-8 rounded text-sm"
+          className="w-full sm:w-auto sm:shrink-0 h-8 rounded text-sm"
           endContent={Edit}
         >
           View Role
