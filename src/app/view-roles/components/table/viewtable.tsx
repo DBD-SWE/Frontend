@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import {
+  Button,
   Table,
   TableHeader,
   TableColumn,
@@ -48,6 +49,14 @@ const columns = [
 ];
 
 export default function ViewTable({ data }: ViewTableProps) {
+  const Edit = (
+    <Image
+      src={'/images/RoleImages/edit.svg'}
+      alt="edit"
+      width={20}
+      height={20}
+    />
+  );
   const [filterValue, setFilterValue] = useState('');
 
   // Filter data based on filterValue
@@ -61,12 +70,22 @@ export default function ViewTable({ data }: ViewTableProps) {
     <>
       <Input
         isClearable
-        placeholder="Search Permissions"
+        classNames={{
+          base: 'w-full sm:max-w-[38%] pb-8',
+          inputWrapper: ['border-1', 'rounded'],
+        }}
+        placeholder="Search by name..."
+        size="sm"
+        // startContent={<SearchIcon className="text-default-300" />}
         value={filterValue}
+        variant="bordered"
+        onClear={() => setFilterValue('')}
         onChange={(e) => setFilterValue(e.target.value)}
-        fullWidth
-
       />
+
+      <Button color="primary" className="h-8 rounded text-sm" endContent={Edit}>
+        View Role
+      </Button>
       <Table
         isHeaderSticky
         aria-label="Dynamic Example Table"
