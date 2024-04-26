@@ -10,7 +10,7 @@ export default function ViewRoles() {
   return (
     <>
       <div>
-        {/* <ViewCard
+        <ViewCard
           iconName={firstRole.iconName}
           roleName={firstRole.roleName}
           userCount={firstRole.userCount}
@@ -18,8 +18,8 @@ export default function ViewRoles() {
           borderColor={firstRole.borderColor}
           bulletColor={firstRole.bulletColor}
         />
-        <DeleteCard roleName={firstRole.roleName} /> */}
         <ViewTable data={mockData} />
+        <DeleteCard roleName={firstRole.roleName} />
       </div>
     </>
   );

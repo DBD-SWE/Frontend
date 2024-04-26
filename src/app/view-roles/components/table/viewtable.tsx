@@ -51,10 +51,10 @@ const columns = [
 export default function ViewTable({ data }: ViewTableProps) {
   const Edit = (
     <Image
-      src={'/images/RoleImages/edit.svg'}
+      src={'/images/RoleImages/whiteEdit.png'}
       alt="edit"
-      width={20}
-      height={20}
+      width={15}
+      height={15}
     />
   );
   const [filterValue, setFilterValue] = useState('');
@@ -68,24 +68,30 @@ export default function ViewTable({ data }: ViewTableProps) {
 
   return (
     <>
-      <Input
-        isClearable
-        classNames={{
-          base: 'w-full sm:max-w-[38%] pb-8',
-          inputWrapper: ['border-1', 'rounded'],
-        }}
-        placeholder="Search by name..."
-        size="sm"
-        // startContent={<SearchIcon className="text-default-300" />}
-        value={filterValue}
-        variant="bordered"
-        onClear={() => setFilterValue('')}
-        onChange={(e) => setFilterValue(e.target.value)}
-      />
+      <div className='flex justify-between'>
+        <Input
+          isClearable
+          classNames={{
+            base: 'w-full sm:max-w-[38%] pb-8',
+            inputWrapper: ['border-1', 'rounded'],
+          }}
+          placeholder="Search by name..."
+          size="sm"
+          // startContent={<SearchIcon className="text-default-300" />}
+          value={filterValue}
+          variant="bordered"
+          onClear={() => setFilterValue('')}
+          onChange={(e) => setFilterValue(e.target.value)}
+        />
 
-      <Button color="primary" className="h-8 rounded text-sm" endContent={Edit}>
-        View Role
-      </Button>
+        <Button
+          color="primary"
+          className="h-8 rounded text-sm"
+          endContent={Edit}
+        >
+          View Role
+        </Button>
+      </div>
       <Table
         isHeaderSticky
         aria-label="Dynamic Example Table"
