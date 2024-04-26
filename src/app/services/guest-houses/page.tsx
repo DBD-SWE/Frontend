@@ -1,6 +1,6 @@
 import React from 'react';
 import { Title } from '../components';
-import { PageTitle, SubTitle } from '@/components/ui/text';
+import { PageTitle, SubTitle } from '@/components/text';
 import { DownloadButton } from '@/components/ui/button';
 import AdvancedTable from '@/components/ui/table/guestHouses-table';
 
