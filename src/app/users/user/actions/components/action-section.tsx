@@ -18,7 +18,9 @@ const ActionSection = (props: ActionSectionProps) => {
         </p>
       </div>
       {/* Right Part */}
-      <div className="mt-6 flex justify-end">{button}</div>
+      <div className="mt-6 flex justify-end max-md:mt-9 max-md:justify-start">
+        {button}
+      </div>
     </div>
   );
 };
