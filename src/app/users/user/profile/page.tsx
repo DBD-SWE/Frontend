@@ -1,7 +1,6 @@
 import { Input, Select } from '@/components/input';
 import { Section, FileInput } from '../../components';
 import { Button } from '@nextui-org/react';
-import { PlusIcon } from '../../../../../public/icons/jsx/PlusIcon';
 import Image from 'next/image';
 import roles from '@/users/create/roles';
 
@@ -98,7 +97,6 @@ export default function CreateUser() {
                 <div className="relative flex w-full flex-col items-start justify-start max-md:items-center">
                   <FileInput />
                 </div>
-                
               </InputSection>
             </div>
           }
