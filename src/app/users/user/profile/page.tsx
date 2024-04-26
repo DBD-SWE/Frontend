@@ -95,8 +95,8 @@ export default function CreateUser() {
             <div className="grid w-[100%] max-w-[400px] flex-1 gap-y-4 max-md:mt-7">
               <InputSection>
                 <Label label="User Photo" />
-                <div className="flex h-full w-10 flex-1 flex-col justify-end bg-red-500">
-                  {/* <FileInput /> */}
+                <div className="relative flex w-full flex-col items-start justify-start max-md:items-center">
+                  <FileInput />
                 </div>
                 {/* <Select
                   size="md"
@@ -108,6 +108,7 @@ export default function CreateUser() {
                   }
                 /> */}
                 {/* group flex flex-col w-full transition-background motion-reduce:transition-none !duration-150 group relative justify-end data-[has-label=true]:mt-[calc(theme(fontSize.small)_+_10px)] */}
+                {/* class="group flex flex-col w-full transition-background motion-reduce:transition-none !duration-150 group relative justify-end data-[has-label=true]:mt-[calc(theme(fontSize.small)_+_10px)]" */}
               </InputSection>
             </div>
           }
