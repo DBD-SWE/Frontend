@@ -103,9 +103,9 @@ export default function Profile() {
         />
 
         {/* Buttons */}
-        <div className="mt-10 flex gap-x-3">
+        <div className="mt-10 flex gap-x-3 max-lg:justify-end  max-md:justify-center">
           <Button
-            className="rounded bg-foreground px-6 text-sm text-background max-sm:px-4"
+            className="rounded bg-foreground px-6 text-sm text-background max-md:w-full max-md:max-w-[400px] max-sm:px-4"
             endContent={<DeleteIcon />}
             size="md"
           >
