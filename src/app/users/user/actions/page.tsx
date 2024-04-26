@@ -13,11 +13,42 @@ export default function Actions() {
           <ButtonWithIcon text="Edit User" src="/images/general/edit-2.png" />
         }
       />
+      <ActionSection
+        title="Suspend User"
+        description="By suspending the user, you are permanently restricting his access to this software"
+        button={
+          <ButtonWithIcon
+            className="border-[#A7141C]"
+            text="Suspend User"
+            src="/images/users/suspend.png"
+          />
+        }
+      />
+      <ActionSection
+        title="Delete User"
+        description="By deleting the user, you are removing his record from this software"
+        last
+        button={
+          <ButtonWithIcon
+            className="border-none bg-[#A7141C] text-white"
+            text="Edit User"
+            src="/images/users/delete.png"
+          />
+        }
+      />
     </div>
   );
 }
 
-const ButtonWithIcon = ({ text, src }: { text: string; src: string }) => {
+const ButtonWithIcon = ({
+  text,
+  src,
+  className,
+}: {
+  text: string;
+  src: string;
+  className?: string;
+}) => {
   return (
     <Button
       endContent={
@@ -29,7 +60,7 @@ const ButtonWithIcon = ({ text, src }: { text: string; src: string }) => {
           alt={text}
         />
       }
-      className="flex h-10 items-center rounded border border-black bg-white px-10 text-sm"
+      className={`flex h-10 w-40 max-sm:w-full items-center rounded border border-black bg-white text-sm ${className}`}
     >
       {text}
     </Button>

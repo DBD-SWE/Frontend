@@ -1,4 +1,3 @@
-//      ={`flex ${start && !center ? 'items-start' : 'items-center'} ${start ? 'max-md:flex-col max-md:items-center' : 'items-center'} justify-start   max-md:flex-col max-md:items-start max-md:px-2 max-md:py-6 ${last && 'border-b-[1px] border-b-[#F4F4F5]'}`}
 interface ActionSectionProps {
   title: string;
   description: string;
