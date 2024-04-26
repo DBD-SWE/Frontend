@@ -1,3 +1,8 @@
 export default function Actions() {
-  return <h1>Actions</h1>;
+  return (
+    <div className="flex w-full flex-col pb-10">
+      {/* Body Section */}
+      <h1>Actions</h1>
+    </div>
+  );
 }
