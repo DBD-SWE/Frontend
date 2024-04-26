@@ -8,7 +8,9 @@ interface ActionSectionProps {
 const ActionSection = (props: ActionSectionProps) => {
   const { title, description, button, last } = props;
   return (
-    <div className="border-t-[1px] border-l-transparent border-r-transparent border-t-[#F4F4F5] px-4 py-7">
+    <div
+      className={`border-t-[1px] border-l-transparent border-r-transparent border-t-[#F4F4F5] px-4 py-7 ${last && 'border-b-[1px] border-b-[#F4F4F5]'}`}
+    >
       {/* Left Part */}
       <div className="flex flex-col items-stretch">
         <h3>{title}</h3>
