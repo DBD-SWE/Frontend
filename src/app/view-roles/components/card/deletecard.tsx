@@ -1,4 +1,3 @@
-'use client';
 import Image, { StaticImageData } from 'next/image';
 import { Button } from '@nextui-org/react';
 import trash from '../../../../../public/images/RoleImages/trash.svg';
@@ -13,12 +12,10 @@ export default function DeleteCard({ roleName }: DeleteCardProps) {
   return (
     <div className="flex w-[4/5] flex-col justify-between rounded-lg border-2 border-t-red-600 md:w-[4/5]">
       <div className="p-2 md:p-3">
-        <h1 className="text-sm md:text-md font-bold">
-          Delete {roleName} Role
-        </h1>
-        <p className="text-xs md:text-sm font-medium leading-tight text-zinc-500">
-          By deleting the {roleName} role, you will revert affected users to the default
-          user role, effectively revoking their current permissions and
+        <h1 className="md:text-md text-sm font-bold">Delete {roleName} Role</h1>
+        <p className="text-xs font-medium leading-tight text-zinc-500 md:text-sm">
+          By deleting the {roleName} role, you will revert affected users to the
+          default user role, effectively revoking their current permissions and
           dismissing any specialized access they have been granted. This action
           is irreversible and should be considered carefully.
         </p>
@@ -27,7 +24,7 @@ export default function DeleteCard({ roleName }: DeleteCardProps) {
       <div className="flex justify-end p-2">
         <Button
           endContent={Trash}
-          className="flex items-center rounded bg-red-600 px-4 py-1 text-xs md:text-sm text-white"
+          className="flex items-center rounded bg-red-600 px-4 py-1 text-xs text-white md:text-sm"
         >
           Delete {roleName}
         </Button>
