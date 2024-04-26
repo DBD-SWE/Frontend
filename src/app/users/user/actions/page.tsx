@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Actions() {
   return (
-    <div className="flex w-full flex-col pb-10">
+    <div className="flex w-full flex-col pb-12">
       {/* Body Section */}
       <ActionSection
         title="Edit User"
@@ -60,7 +60,7 @@ const ButtonWithIcon = ({
           alt={text}
         />
       }
-      className={`flex h-10 w-40 max-sm:w-full items-center rounded border border-black bg-white text-sm ${className}`}
+      className={`flex h-10 w-40 items-center rounded border border-black bg-white text-sm max-sm:w-full ${className}`}
     >
       {text}
     </Button>
