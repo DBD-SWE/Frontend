@@ -20,7 +20,7 @@ export default function ViewCard({
 }: ViewCardProps) {
   return (
     <div
-      className={`flex w-full flex-col justify-between rounded-b border-2 border-b-transparent border-l-transparent border-r-transparent px-8 py-5 shadow-sm ${borderColor}`}
+      className={`flex w-full flex-col justify-between rounded-b border-2 border-b-transparent border-l-transparent border-r-transparent px-8 py-5 shadow-sm max-sm:px-4 max-sm:py-3 ${borderColor}`}
     >
       <div>
         <div className="mb-1 flex items-center justify-between">
@@ -41,10 +41,11 @@ export default function ViewCard({
           ))}
         </ul>
       </div>
-      <div className="flex justify-end pt-2">
+      <div className="flex justify-end pt-2 max-sm:justify-start max-sm:pt-7">
         <Button
           variant="light"
-          className="rounded border border-black bg-white px-3 py-1 text-xs text-black md:text-sm"
+          size="sm"
+          className="rounded border border-black bg-white px-5 py-1 text-xs text-black"
         >
           View {roleName}s
         </Button>
