@@ -1,7 +1,7 @@
-import '@/styles/globals.css';
+import '@/lib/styles/globals.css';
 import { Inter as FontSans } from 'next/font/google';
 import { cn } from '@/lib/utils';
-import CustomNextUiProvider from '@/context/next-ui';
+import CustomNextUiProvider from '@/lib/context/next-ui';
 import Header from '@/components/header';
 import Sidebar from '@/components/sidebar';
 
@@ -22,9 +22,7 @@ export default function RootLayout({
         <CustomNextUiProvider>
           <Header />
           <Sidebar />
-          <div className="w-[calc(100% - 530px)] ml-64 mr-[48px] mt-32">
-            {children}
-          </div>
+          <div className="ml-64 mr-7 mt-32 max-lg:ml-7">{children}</div>
         </CustomNextUiProvider>
       </body>
     </html>
