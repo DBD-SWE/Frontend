@@ -87,19 +87,24 @@ export default function ViewTable({ data }: ViewTableProps) {
 
         <Button
           color="primary"
-          className="h-10 w-full rounded px-5 text-xs sm:w-auto sm:shrink-0"
+          className="h-8 w-full rounded px-5 text-xs sm:w-auto sm:shrink-0"
           endContent={Edit}
         >
           Edit Permissions
         </Button>
       </div>
+      <p className="z-10 mb-1 ml-4 text-xs font-light leading-6 text-zinc-500">
+        Detailed{' '}
+        <span className="font-medium italic underline">Administrator</span>{' '}
+        Permissions
+      </p>
       <Table
         isHeaderSticky
         aria-label="Dynamic Example Table"
         classNames={{
           base: 'max-h-[520px] overflow-scroll',
           table: 'min-h-[400px]',
-          wrapper: 'shadow-none',
+          wrapper: 'shadow-none mx-4 p-0',
           th: 'h-12',
           tr: 'border-b-[1px] border-[#F4F4F5]',
         }}
