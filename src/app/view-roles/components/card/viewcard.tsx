@@ -2,7 +2,7 @@ import Image, { StaticImageData } from 'next/image';
 import { Button } from '@nextui-org/react';
 
 interface ViewCardProps {
-  iconName: StaticImageData;
+  iconName: string;
   roleName: string;
   userCount: number;
   listItems: string[];
@@ -20,31 +20,34 @@ export default function ViewCard({
 }: ViewCardProps) {
   return (
     <div
-      className={`flex w-[4/5] flex-col justify-between rounded-lg border-2 ${borderColor} md:w-[4/5]`}
+      className={`flex w-full flex-col justify-between rounded-b border-2 border-b-transparent border-l-transparent border-r-transparent px-8 py-5 shadow-sm ${borderColor}`}
     >
-      <div className="p-2 md:p-3">
-        <div className="flex justify-between pb-1">
-          <h1 className="md:text-md text-sm font-bold">{roleName}</h1>
-          <Image src={iconName} alt="role icon" />
+      <div>
+        <div className="mb-1 flex items-center justify-between">
+          <h1 className="text-lg font-bold">{roleName}</h1>
+          <Image width={25} height={25} src={iconName} alt="role icon" />
         </div>
-        <p className="text-xs font-medium leading-tight text-zinc-500 md:text-sm">
+        <p className={`text-xs font-normal text-zinc-500`}>
           Total Users With This Role: {userCount}
         </p>
-        <ul className="pl-2 pt-2 text-xs font-normal leading-tight md:text-sm">
+        <ul className="ml-2 mt-4 text-sm font-normal leading-6">
           {listItems.map((item, index) => (
             <li
               key={index}
-              className={`relative pl-4 text-zinc-500 before:absolute before:left-0 before:top-1/2 before:h-[2px] before:w-3 before:-translate-y-1/2 ${bulletColor}`}
+              className={`relative pl-5 text-xs font-light leading-6 text-zinc-500 before:absolute before:left-0 before:top-1/2 before:h-[2px] before:w-3 before:-translate-y-1/2 before:rounded ${bulletColor}`}
             >
-              {item}
+              <span>{item}</span>
             </li>
           ))}
         </ul>
-        <div className="flex justify-end pt-2">
-          <Button className="rounded border border-black bg-white px-3 py-1 text-xs text-black md:text-sm">
-            View {roleName}s
-          </Button>
-        </div>
+      </div>
+      <div className="flex justify-end pt-2">
+        <Button
+          variant="light"
+          className="rounded border border-black bg-white px-3 py-1 text-xs text-black md:text-sm"
+        >
+          View {roleName}s
+        </Button>
       </div>
     </div>
   );
