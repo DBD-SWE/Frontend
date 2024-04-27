@@ -67,7 +67,7 @@ export default function ViewTable({ data }: ViewTableProps) {
   );
 
   return (
-    <>
+    <div>
       <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end gap-4 mb-4">
         <Input
           isClearable
@@ -136,6 +136,6 @@ export default function ViewTable({ data }: ViewTableProps) {
           )}
         </TableBody>
       </Table>
-    </>
+    </div>
   );
 }

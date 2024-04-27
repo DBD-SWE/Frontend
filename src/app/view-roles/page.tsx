@@ -28,8 +28,10 @@ export default function ViewRoles() {
             bulletColor={firstRole.bulletColor}
           />
         </div>
-        <ViewTable data={mockData} />
-        <div className=" pb-4 pt-8">
+        <div className="mt-4 rounded border-t-[16px] border-t-gray-100 px-4 py-7 shadow-sm">
+          <ViewTable data={mockData} />
+        </div>
+        <div className="mb-4 mt-8">
           <DeleteCard roleName={firstRole.roleName} />
         </div>
       </div>

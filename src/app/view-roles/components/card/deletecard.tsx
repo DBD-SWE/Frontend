@@ -5,19 +5,17 @@ import trash from '../../../../../public/images/RoleImages/trash.svg';
 interface DeleteCardProps {
   roleName: string; // Prop for passing the role name
 }
+const Trash = <Image src={trash} alt="trash icon" />;
 
 export default function DeleteCard({ roleName }: DeleteCardProps) {
-  const Trash = <Image src={trash} alt="trash icon" />;
-
   return (
-    <div className="flex w-[4/5] flex-col justify-between rounded-lg border-2 border-t-red-600 md:w-[4/5]">
-      <div className="p-2 md:p-3">
-        <h1 className="md:text-md text-sm font-bold">Delete {roleName} Role</h1>
-        <p className="text-xs font-medium leading-tight text-zinc-500 md:text-sm">
+    <div className="flex w-[4/5] flex-col justify-between rounded-b border-2 border-b-transparent border-l-transparent border-r-transparent border-t-[#A7141C] px-5 py-7 shadow-sm md:w-[4/5]">
+      <div className="flex flex-col items-stretch">
+        <h3>Delete {roleName} Role</h3>
+        <p className="mt-1.5 w-full max-w-[900px] text-wrap text-sm text-zinc-500">
           By deleting the {roleName} role, you will revert affected users to the
           default user role, effectively revoking their current permissions and
-          dismissing any specialized access they have been granted. This action
-          is irreversible and should be considered carefully.
+          dismissing any specialized access they have been granted.
         </p>
       </div>
 
