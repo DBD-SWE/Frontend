@@ -21,7 +21,7 @@ const PieSummaryCard = ({
   colors,
 }: Props) => {
   return (
-    <div className="flex w-full sm:justify-between max-sm:gap-4 rounded-md border border-b-black max-sm:px-4 py-8 pb-10 shadow-sm flex-col max-sm:py-4 px-4">
+    <div className="flex w-full sm:justify-between max-sm:gap-4 rounded-md border border-b-black max-sm:px-4 py-8 pb-10 shadow-sm flex-col max-sm:py-4 px-4 xl:pb-0">
       <div className="flex w-full flex-col">
         <div className="w-full">
           <p className="text-xl font-semibold max-sm:text-lg">Total {title}</p>
@@ -38,7 +38,7 @@ const PieSummaryCard = ({
         <div className="self-center ">
           <ChartLabelsList colors={colors} labels={labels} />
         </div>
-        <div className="h-40 w-40 self-center sm:h-80 sm:w-80 md:self-end max-sm:pb-2">
+        <div className="h-40 w-40 self-center sm:h-60 sm:w-60 md:self-end max-sm:pb-2 xl:-translate-y-12">
           <DoughnutChart labels={labels} stats={stats} colors={colors} />
         </div>
       </div>

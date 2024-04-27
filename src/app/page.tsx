@@ -23,7 +23,7 @@ export default function Home() {
       </div>
       <div className="flex w-full flex-col">
         <SummaryCardsList />
-        <div className="w-full grid grid-flow-row gap-8 mb-4">
+        <div className="w-full flex flex-col gap-8 mb-4 xl:flex-row">
           <DoughnutSummaryCard
             title="Summary"
             total={100}
