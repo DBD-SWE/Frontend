@@ -69,7 +69,7 @@ export default function ViewTable({ data }: ViewTableProps) {
 
   return (
     <div>
-      <div className="mb-4 flex flex-col items-center justify-between p-4 sm:flex-row sm:items-end">
+      <div className="mb-4 flex flex-col items-center justify-between gap-y-3 p-4 max-sm:p-0 sm:flex-row sm:items-end sm:gap-y-0">
         <Input
           isClearable
           classNames={{
@@ -93,7 +93,7 @@ export default function ViewTable({ data }: ViewTableProps) {
           Edit Permissions
         </Button>
       </div>
-      <p className="z-10 mb-1 ml-4 text-xs font-light leading-6 text-zinc-500">
+      <p className="z-10 mb-1 ml-4 text-xs font-light leading-6 text-zinc-500 max-sm:ml-0">
         Detailed{' '}
         <span className="font-medium italic underline">Administrator</span>{' '}
         Permissions
@@ -104,7 +104,7 @@ export default function ViewTable({ data }: ViewTableProps) {
         classNames={{
           base: 'max-h-[520px] overflow-scroll',
           table: 'min-h-[400px]',
-          wrapper: 'shadow-none mx-4 p-0',
+          wrapper: 'shadow-none mx-4 p-0 max-sm:mx-0',
           th: 'h-12',
           tr: 'border-b-[1px] border-[#F4F4F5]',
         }}
