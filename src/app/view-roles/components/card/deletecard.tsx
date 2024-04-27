@@ -1,6 +1,5 @@
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { Button } from '@nextui-org/react';
-import trash from '../../../../../public/images/RoleImages/trash.svg';
 
 interface DeleteCardProps {
   roleName: string; // Prop for passing the role name
