@@ -11,6 +11,7 @@ import {
   Input,
 } from '@nextui-org/react';
 import Image from 'next/image';
+import { SearchIcon } from './SearchIcon';
 
 interface Permission {
   key: string;
@@ -24,7 +25,14 @@ interface Permission {
 interface ViewTableProps {
   data: Permission[];
 }
-
+const Edit = (
+  <Image
+    src={'/images/RoleImages/whiteEdit.png'}
+    alt="edit"
+    width={15}
+    height={15}
+  />
+);
 const columns = [
   {
     key: 'Permissions',
@@ -49,14 +57,6 @@ const columns = [
 ];
 
 export default function ViewTable({ data }: ViewTableProps) {
-  const Edit = (
-    <Image
-      src={'/images/RoleImages/whiteEdit.png'}
-      alt="edit"
-      width={15}
-      height={15}
-    />
-  );
   const [filterValue, setFilterValue] = useState('');
 
   // Filter data based on filterValue
@@ -68,7 +68,7 @@ export default function ViewTable({ data }: ViewTableProps) {
 
   return (
     <div>
-      <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end gap-4 mb-4">
+      <div className="mb-4 flex flex-col items-center justify-between gap-4 sm:flex-row sm:items-end">
         <Input
           isClearable
           classNames={{
@@ -79,13 +79,14 @@ export default function ViewTable({ data }: ViewTableProps) {
           size="sm"
           value={filterValue}
           variant="bordered"
+          startContent={<SearchIcon className="text-default-300" />}
           onClear={() => setFilterValue('')}
           onChange={(e) => setFilterValue(e.target.value)}
         />
 
         <Button
           color="primary"
-          className="w-full sm:w-auto sm:shrink-0 h-8 rounded text-sm"
+          className="h-8 w-full rounded text-sm sm:w-auto sm:shrink-0"
           endContent={Edit}
         >
           View Role
