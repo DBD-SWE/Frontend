@@ -11,10 +11,10 @@ type Props = {
 
 const SummaryCard = ({ title, amount, lastModified, color, icon }: Props) => {
   return (
-    <div className="flex h-full min-w-64 flex-col items-center">
-      <div className="flex w-full items-start justify-between space-x-24 rounded-xl px-6 py-10 shadow-sm border md:space-x-0" style={{borderBottom: `1px solid ${color}`}}>
+    <div className="flex h-full flex-col items-center">
+      <div className="flex w-full items-start justify-between space-x-24 rounded-xl px-6 max-sm:px-4 py-6 md:py-10 shadow-sm border md:space-x-0" style={{borderBottom: `1px solid ${color}`}}>
         <div>
-          <p className="mb-4 text-base font-bold sm:text-base">Total {title}</p>
+          <p className="mb-4 max-sm:mb-1 text-sm font-bold sm:text-base">Total {title}</p>
           <p
             className={`mb-2 text-2xl font-extrabold sm:text-4xl`}
             style={{ color: color }}
@@ -27,7 +27,6 @@ const SummaryCard = ({ title, amount, lastModified, color, icon }: Props) => {
         </div>
         <Image src={icon} alt={title} width={30} height={30} />
       </div>
-      <div className={`h-[4px] w-[95%] rounded-full bg-[${color}]`}></div>
     </div>
   );
 };

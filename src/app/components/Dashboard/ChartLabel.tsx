@@ -12,7 +12,7 @@ const ChartLabel = ({ color, title }: Props) => {
         className="h-4 w-4 rounded-full"
         style={{ backgroundColor: color }}
       ></div>
-      <p>{title}</p>
+      <p className='text-sm'>{title}</p>
     </div>
   );
 };

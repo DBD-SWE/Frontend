@@ -9,7 +9,6 @@ import ActivityLog from './components/Dashboard/ActivityLog';
 import { PageTitle, SubTitle } from './components/text';
 import { Button } from '@nextui-org/react';
 
-// make the label circle
 export default function Home() {
   return (
     <div className="flex w-full flex-col">
@@ -22,9 +21,9 @@ export default function Home() {
           Download
         </Button>
       </div>
-      <div className="my-12 flex w-full flex-col">
+      <div className="md:my-12 flex w-full flex-col">
         <SummaryCardsList />
-        <div className="grid auto-cols-max grid-flow-row grid-cols-[repeat(auto-fill,minmax(550px,1fr))] gap-5 py-10">
+        <div className="grid auto-cols-max grid-flow-row max-md:grid-cols-1 gap-8 md:py-10">
           <DoughnutSummaryCard
             title="Summary"
             total={100}

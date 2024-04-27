@@ -7,14 +7,14 @@ type Props = {};
 const ActivityLog = (props: Props) => {
   return (
     <div>
-      <div className="relative flex flex-col justify-between rounded-md border border-b-black px-8 py-12 shadow-sm md:px-12">
-        <div className="absolute left-[76px] top-12 h-48 w-[1px] bg-zinc-200 max-md:left-[55px] max-md:top-14 max-md:h-44"></div>
+      <div className="md:min-w-[730px] relative flex flex-col justify-between rounded-md border border-b-black px-4 py-6 md:py-12 shadow-sm md:px-12 max-sm:mb-4">
+        <div className="absolute max-sm:left-[32px] left-[76px] top-12 md:h-48 w-[1px] bg-zinc-200 max-md:left-[55px] max-md:top-14 max-md:h-32 max-sm:h-20"></div>
         <UserActivityCard
           action="update"
           actor="Peter Chahid"
           dateTime="17 Jan, 2024 - 10:45"
         />
-        <div className="mt-12">
+        <div className="mt-12 max-sm:mt-4">
           <UserActivityCard
             action="delete"
             actor="Peter Chahid"
@@ -47,7 +47,7 @@ const UserActivityCard = ({ action, actor, dateTime }: UserProps) => {
         <div className="relative">
           <div className="bg-grey"></div>
         </div>
-        <div className="w-[600px] space-y-5">
+        <div className="sm:w-[600px] space-y-5 max-sm:space-y-3 w-full">
           <div>
             <p className="text-xs sm:text-base md:text-lg">
               A user has been {action}d by
@@ -59,7 +59,7 @@ const UserActivityCard = ({ action, actor, dateTime }: UserProps) => {
               {dateTime}
             </p>
           </div>
-          <div className="flex items-center justify-between space-x-1 rounded-md border border-gray-200 px-2 py-2 shadow-sm md:gap-5 md:px-5 md:py-2">
+          <div className="flex items-center justify-between space-x-1 rounded-md border border-gray-200 px-2 max-sm:py-1 py-2 shadow-sm md:gap-5 md:px-5 md:py-2">
             <p className="text-xs md:text-base">{actor}</p>
             <div className="hidden items-center justify-center space-x-4 rounded-md px-4 py-1 text-xs shadow-sm md:flex md:text-base">
               <div className="min-w-[20px]">
@@ -103,10 +103,10 @@ const Icon = ({ type }: IconProps) => {
 
   return (
     <div
-      className="full flex h-14 w-14 items-center justify-center rounded-full p-4"
+      className="full flex max-sm:h-8 max-sm:w-8 h-14 w-14 items-center justify-center rounded-full max-sm:p-2 md:p-4"
       style={{ backgroundColor: color }}
     >
-      <div className="translate-x-[2px]">{icon}</div>
+      <div className="translate-x-[2px] relative">{icon}</div>
     </div>
   );
 };

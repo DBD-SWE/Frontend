@@ -49,7 +49,7 @@ const SummaryCardsList = (props: Props) => {
     },
   ];
   return (
-    <div className="grid auto-cols-max grid-flow-row grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-5 py-10">
+    <div className="grid auto-cols-max grid-flow-row grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-5 py-10 max-sm:pb-6">
       {data.map((item, index) => (
         <SummaryCard
           key={index}
