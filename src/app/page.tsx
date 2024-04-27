@@ -21,9 +21,9 @@ export default function Home() {
           Download
         </Button>
       </div>
-      <div className="md:my-12 flex w-full flex-col">
+      <div className="flex w-full flex-col">
         <SummaryCardsList />
-        <div className="grid auto-cols-max grid-flow-row max-md:grid-cols-1 gap-8 md:py-10">
+        <div className="w-full grid grid-flow-row gap-8 mb-4">
           <DoughnutSummaryCard
             title="Summary"
             total={100}

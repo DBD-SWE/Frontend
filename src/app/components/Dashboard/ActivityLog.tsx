@@ -6,15 +6,15 @@ type Props = {};
 
 const ActivityLog = (props: Props) => {
   return (
-    <div>
-      <div className="md:min-w-[730px] relative flex flex-col justify-between rounded-md border border-b-black px-4 py-6 md:py-12 shadow-sm md:px-12 max-sm:mb-4">
-        <div className="absolute max-sm:left-[32px] left-[76px] top-12 md:h-48 w-[1px] bg-zinc-200 max-md:left-[55px] max-md:top-14 max-md:h-32 max-sm:h-20"></div>
+    <div className='w-full'>
+      <div className="w-full relative flex flex-col justify-between rounded-md border border-b-black px-4 py-6 md:py-12 shadow-sm md:px-12">
+        <div className="absolute max-sm:left-[31px] left-[75px] top-12 md:h-48 w-[1px] bg-zinc-200 max-md:left-[50px] max-md:top-14 max-md:h-32 max-sm:h-20"></div>
         <UserActivityCard
           action="update"
           actor="Peter Chahid"
           dateTime="17 Jan, 2024 - 10:45"
         />
-        <div className="mt-12 max-sm:mt-4">
+        <div className="mt-12 max-sm:mt-8">
           <UserActivityCard
             action="delete"
             actor="Peter Chahid"
@@ -44,10 +44,7 @@ const UserActivityCard = ({ action, actor, dateTime }: UserProps) => {
     <div className="relative">
       <div className="flex space-x-2 md:space-x-5">
         <Icon type={action} />
-        <div className="relative">
-          <div className="bg-grey"></div>
-        </div>
-        <div className="sm:w-[600px] space-y-5 max-sm:space-y-3 w-full">
+        <div className="space-y-5 max-sm:space-y-3 w-full">
           <div>
             <p className="text-xs sm:text-base md:text-lg">
               A user has been {action}d by
