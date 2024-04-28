@@ -13,24 +13,30 @@ const SummaryCard = ({ title, amount, lastModified, color, icon }: Props) => {
   return (
     <div className="flex h-full flex-col items-center">
       <div
-        className="flex w-full items-start justify-between space-x-24 rounded-t px-6 py-6 shadow-sm max-sm:px-4 md:space-x-0 md:py-6"
+        className="flex w-full items-start justify-between space-x-24 rounded-t px-4 py-6 shadow-sm max-sm:px-4 md:space-x-0 md:py-8"
         style={{ borderBottom: `2px solid ${color}` }}
       >
         <div>
-          <p className="mb-4 text-sm font-semibold max-sm:mb-1 sm:text-base">
+          <p className="mb-6 text-sm font-medium max-sm:mb-1 sm:text-sm">
             Total {title}
           </p>
           <p
             className={`mb-1 text-2xl font-bold sm:text-4xl`}
             style={{ color: color }}
           >
-            {amount}
+            +{amount}
           </p>
-          <p className="text-[.6rem] text-zinc-500">
+          <p className="text-[.6rem] font-light text-zinc-500">
             Last modified - {lastModified}
           </p>
         </div>
-        <Image src={icon} alt={title} width={20} height={20} />
+        <Image
+          className="object-contain"
+          src={icon}
+          alt={title}
+          width={17}
+          height={17}
+        />
       </div>
     </div>
   );

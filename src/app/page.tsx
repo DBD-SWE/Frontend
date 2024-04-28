@@ -23,7 +23,7 @@ export default function Home() {
           Download
         </Button>
       </div>
-      <div className="flex w-full flex-col">
+      <div className="mt-1 flex w-full flex-col">
         <SummaryCardsList />
         <div className="mb-4 flex w-full flex-col gap-8 2xl:flex-row">
           <DoughnutSummaryCard
