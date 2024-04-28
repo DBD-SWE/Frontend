@@ -41,7 +41,7 @@ const data = [
 ];
 const SummaryCardsList = (props: Props) => {
   return (
-    <div className="grid auto-cols-max grid-flow-row grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5  py-10 max-2xl:grid-cols-[repeat(auto-fill,minmax(250px,1fr))] max-sm:pb-6">
+    <div className="my-10 grid auto-cols-max grid-flow-row grid-cols-[repeat(auto-fill,minmax(330px,1fr))] gap-4 max-2xl:grid-cols-[repeat(auto-fill,minmax(330px,1fr))] max-sm:grid-cols-[repeat(auto-fill,minmax(280px,1fr))] max-sm:pb-6">
       {data.map((item, index) => (
         <SummaryCard
           key={index}
