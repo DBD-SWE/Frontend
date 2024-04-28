@@ -13,6 +13,7 @@ export default function TabsComponent() {
           tab: 'h-[25px]',
         }}
         aria-label="Options"
+        disabledKeys={['analytics']}
       >
         <Tab key="overview" title="Overview" />
         <Tab key="analytics" title="Analytics" />
