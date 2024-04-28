@@ -10,7 +10,7 @@ const ActivityLog = (props: Props) => {
   return (
     <div className="w-full">
       <div className="relative flex w-full flex-col justify-between rounded-md border border-b-black px-4 py-6 shadow-sm md:px-12 md:py-12">
-        <div className="absolute left-[75px] top-12 w-[1px] bg-zinc-200 max-md:left-[50px] max-md:top-14 max-md:h-32 max-sm:left-[31px] max-sm:h-20 md:h-48"></div>
+        <div className="absolute left-[75px] top-12 w-[1px] bg-zinc-200 max-md:left-[50px] max-md:top-14 max-md:h-32 max-sm:left-[31px] max-sm:h-28 md:h-48"></div>
         <UserActivityCard
           action="update"
           actor="Peter Chahid"
@@ -58,11 +58,11 @@ type ServiceProps = {
 const UserActivityCard = ({ action, actor, dateTime }: UserProps) => {
   return (
     <div className="relative">
-      <div className="flex space-x-2 md:space-x-5">
+      <div className="flex space-x-3 md:space-x-5">
         <Icon type={action} />
         <div className="w-full space-y-5 max-sm:space-y-3">
           <div>
-            <p className="text-xs sm:text-base md:text-lg">
+            <p className="text-sm sm:text-base md:text-lg">
               A user has been {action}d by
               <span className="ml-1 min-w-[91px] font-bold italic underline">
                 {actor}
@@ -102,11 +102,11 @@ const ServiceActivityCard = ({
 }: ServiceProps) => {
   return (
     <div className="relative">
-      <div className="flex space-x-2 md:space-x-5">
+      <div className="flex space-x-3 md:space-x-5">
         <Icon type={action} />
         <div className="w-full space-y-5 max-sm:space-y-3">
           <div>
-            <p className="text-xs sm:text-base md:text-lg">
+            <p className="text-sm sm:text-base md:text-lg">
               A {type} has been {action}d by
               <span className="ml-1 min-w-[91px] font-bold italic underline">
                 {actor}
