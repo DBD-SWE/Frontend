@@ -8,14 +8,18 @@ import DoughnutSummaryCard from './components/Dashboard/DoughnutSummaryCard';
 import ActivityLog from './components/Dashboard/ActivityLog';
 import { PageTitle, SubTitle } from './components/text';
 import { Button } from '@nextui-org/react';
+import { Tabs, Tab, Card, CardBody } from '@nextui-org/react';
+import TabsComponent from './components/Dashboard/Tabs';
 
 export default function Home() {
   return (
     <div className="flex w-full flex-col">
       <div className="flex w-full flex-row items-start justify-between">
         <div className="flex flex-col">
-          <PageTitle>Dashboard</PageTitle>
-          <SubTitle content={['Dashboard']} />
+          <PageTitle>General Dashboard</PageTitle>
+        </div>
+        <div>
+         <TabsComponent />
         </div>
         <Button color="primary" className="h-8 rounded px-4 text-sm">
           Download
