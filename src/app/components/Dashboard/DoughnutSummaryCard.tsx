@@ -35,7 +35,7 @@ const PieSummaryCard = ({
         </div>
       </div>
       <div className='flex justify-between'>
-        <div className="self-center ">
+        <div className="max-sm:self-center self-end w-1/2 lg:-translate-y-[60px]">
           <ChartLabelsList colors={colors} labels={labels} />
         </div>
         <div className="h-40 w-40 self-center sm:h-60 sm:w-60 md:self-end max-sm:pb-2 xl:-translate-y-12">

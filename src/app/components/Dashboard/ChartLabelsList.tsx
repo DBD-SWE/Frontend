@@ -8,7 +8,7 @@ type Props = {
 
 const ChartLabels = ({ colors, labels }: Props) => {
   return (
-    <div className='flex flex-col justify-between gap-4'>
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
       {labels.map((label, index) => (
         <ChartLabel key={label} color={colors[index]} title={label} />
       ))}

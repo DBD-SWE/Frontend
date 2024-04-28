@@ -23,14 +23,14 @@ export default function Home() {
       </div>
       <div className="flex w-full flex-col">
         <SummaryCardsList />
-        <div className="w-full flex flex-col gap-8 mb-4 xl:flex-row">
+        <div className="mb-4 flex w-full flex-col gap-8 2xl:flex-row">
           <DoughnutSummaryCard
-            title="Summary"
-            total={100}
-            lastModified="15th, Jan, 2024"
-            labels={['First', 'Second', 'Third']}
-            stats={[30, 40, 30]}
-            colors={['#FF0000', '#00FF00', '#0000FF']}
+            title="Services"
+            total={216}
+            lastModified="Jan 8, 2024"
+            labels={['Blat', 'Amchit', 'Halat', 'Ehmej', 'Bchelleh']}
+            stats={[25, 20, 15, 30, 10]}
+            colors={['#FF0000', '#2ECC71', '#FFD767', '#2463EB', '#FF6B00']}
           />
           <ActivityLog />
         </div>
