@@ -17,9 +17,7 @@ export default function Home() {
       <div className="flex w-full flex-row items-start justify-between">
         <div className="flex flex-col">
           <PageTitle>General Dashboard</PageTitle>
-        </div>
-        <div>
-         <TabsComponent />
+          <TabsComponent />
         </div>
         <Button color="primary" className="h-8 rounded px-4 text-sm">
           Download
