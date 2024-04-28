@@ -1,23 +1,40 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import SummaryCardsList from './components/ui/Dashboard/SummaryCardsList';
+import SummaryCardsList from './components/Dashboard/SummaryCardsList';
 import { Doughnut } from 'react-chartjs-2';
-import DoughnutChart from './components/ui/Dashboard/DoughnutChart';
-import ChartLabelsList from './components/ui/Dashboard/ChartLabelsList';
-import DoughnutSummaryCard from './components/ui/Dashboard/DoughnutSummaryCard';
+import DoughnutChart from './components/Dashboard/DoughnutChart';
+import ChartLabelsList from './components/Dashboard/ChartLabelsList';
+import DoughnutSummaryCard from './components/Dashboard/DoughnutSummaryCard';
+import ActivityLog from './components/Dashboard/ActivityLog';
+import { PageTitle, SubTitle } from './components/text';
+import { Button } from '@nextui-org/react';
 
-// make the label circle
 export default function Home() {
   return (
-    <div className="flex items-center justify-center">
-      {/* <DoughnutSummaryCard
-        title="Services"
-        total={216}
-        lastModified="Jan 8, 2024"
-        stats={[200, 40, 20]}
-        labels={['Blat', 'Amchit', 'Mastita']}
-        colors={['#ff0000', '#3d85c6', '#f4cccc']}
-      /> */}
+    <div className="flex w-full flex-col">
+      <div className="flex w-full flex-row items-start justify-between">
+        <div className="flex flex-col">
+          <PageTitle>Dashboard</PageTitle>
+          <SubTitle content={['Dashboard']} />
+        </div>
+        <Button color="primary" className="h-8 rounded px-4 text-sm">
+          Download
+        </Button>
+      </div>
+      <div className="flex w-full flex-col">
+        <SummaryCardsList />
+        <div className="mb-4 flex w-full flex-col gap-8 2xl:flex-row">
+          <DoughnutSummaryCard
+            title="Services"
+            total={216}
+            lastModified="Jan 8, 2024"
+            labels={['Blat', 'Amchit', 'Halat', 'Ehmej', 'Bchelleh']}
+            stats={[25, 20, 15, 30, 10]}
+            colors={['#FF0000', '#2ECC71', '#FFD767', '#2463EB', '#FF6B00']}
+          />
+          <ActivityLog />
+        </div>
+      </div>
     </div>
   );
 }

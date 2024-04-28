@@ -13,43 +13,37 @@ const SummaryCardsList = (props: Props) => {
       color: '#A7141C',
     },
     {
-      title: 'Guest Houses',
-      amount: 130,
-      lastModified: 'Jan 8, 2024',
-      icon: 'icons/guestHouses.svg',
-      color: '#A7141C',
+      title: 'Attractions',
+      amount: 86,
+      lastModified: 'Feb 12, 2024',
+      icon: '/icons/location.png',
+      color: '#2ECC71',
     },
     {
-      title: 'Guest Houses',
-      amount: 130,
+      title: 'Custom Users',
+      amount: 16,
       lastModified: 'Jan 8, 2024',
-      icon: 'icons/guestHouses.svg',
-      color: '#A7141C',
+      icon: '/icons/user.png',
+      color: '#2463EB',
     },
     {
-      title: 'Guest Houses',
-      amount: 130,
+      title: 'Featured Services',
+      amount: 24,
       lastModified: 'Jan 8, 2024',
-      icon: 'icons/guestHouses.svg',
-      color: '#A7141C',
+      icon: '/icons/starIcon.png',
+      color: '#FFD767',
     },
     {
-      title: 'Guest Houses',
-      amount: 130,
+      title: 'Districts',
+      amount: 12,
       lastModified: 'Jan 8, 2024',
-      icon: 'icons/guestHouses.svg',
-      color: '#A7141C',
+      icon: '/icons/lebanon.png',
+      color: '#FF6B00',
     },
-    {
-      title: 'Guest Houses',
-      amount: 130,
-      lastModified: 'Jan 8, 2024',
-      icon: 'icons/guestHouses.svg',
-      color: '#A7141C',
-    },
+
   ];
   return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+    <div className="grid auto-cols-max grid-flow-row gap-5 py-10  max-2xl:grid-cols-[repeat(auto-fill,minmax(250px,1fr))] grid-cols-[repeat(auto-fill,minmax(300px,1fr))] max-sm:pb-6">
       {data.map((item, index) => (
         <SummaryCard
           key={index}
