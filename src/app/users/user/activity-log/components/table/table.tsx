@@ -20,54 +20,68 @@ import {
   ChipProps,
   SortDescriptor,
 } from '@nextui-org/react';
-import { PlusIcon } from '../../../../../../../public/icons/jsx/PlusIcon';
-import { VerticalDotsIcon } from './VerticalDotsIcon';
 import { ChevronDownIcon } from './ChevronDownIcon';
 import { SearchIcon } from './SearchIcon';
-import { columns, users, statusOptions, bannedOptions } from './data';
+import { columns, activityLogs, statusOptions } from './data';
 import Image from 'next/image';
+
+function formatDateTime(isoString: string): string {
+  // Create a new Date object from the ISO string
+  const date = new Date(isoString);
+
+  // Custom function to format the date as "24 Jun 2024"
+  const formatDate = (date: Date): string => {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = date.toLocaleString('en-US', { month: 'short' });
+    const year = date.getFullYear();
+    return `${day} ${month} ${year}`;
+  };
+
+  // Custom function to format the time as "8:43 PM"
+  const formatTime = (date: Date): string => {
+    const hour = date.getHours();
+    const minute = date.getMinutes().toString().padStart(2, '0');
+    const isPM = hour >= 12;
+    const formattedHour = (hour % 12 === 0 ? 12 : hour % 12).toString();
+    return `${formattedHour}:${minute} ${isPM ? 'PM' : 'AM'}`;
+  };
+
+  // Combine formatted date and time
+  return `${formatDate(date)}, ${formatTime(date).toLowerCase()}`;
+}
+const icons: {
+  [key: string]: { border: string; icon: string };
+} = {
+  'guest-house': {
+    border: 'border-[#A7141C]',
+    icon: '/icons/house.png',
+  },
+  attraction: {
+    border: 'border-[#2ECC71]',
+    icon: '/icons/location.png',
+  },
+  user: {
+    border: 'border-[#2463EB]',
+    icon: '/icons/user-2.png',
+  },
+  other: {
+    border: 'border-black',
+    icon: '/icons/other.png',
+  },
+};
 
 function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
-const ViewIcon = (
-  <Image
-    src="/images/general/view.png"
-    width={17}
-    height={17}
-    alt="View User"
-  />
-);
-const EditIcon = (
-  <Image
-    src="/images/general/edit.png"
-    width={17}
-    height={17}
-    alt="Edit User"
-  />
-);
-const DeleteIcon = (
-  <Image
-    src="/images/general/delete-colored.png"
-    width={17}
-    height={17}
-    alt="Delete User"
-  />
-);
-
-const statusColorMap: Record<string, ChipProps['color']> = {
-  Verified: 'success',
-  'Not Verified': 'warning',
-};
 
 interface BanStatusProperties {
   bg: string; // Extend or modify as necessary based on the ChipProps['color'] type
   text: string;
 }
 
-const banColorMap: Record<string, BanStatusProperties> = {
-  Banned: { bg: 'bg-red-50', text: 'text-red-400' },
-  Active: { bg: 'bg-green-50', text: 'text-green-400' },
+const statusMap: Record<string, BanStatusProperties> = {
+  failed: { bg: 'bg-red-50', text: 'text-red-400' },
+  success: { bg: 'bg-green-50', text: 'text-green-400' },
 };
 
 type statusColor =
@@ -79,34 +93,9 @@ type statusColor =
   | 'danger'
   | undefined;
 
-const INITIAL_VISIBLE_COLUMNS = ['name', 'role', 'status', 'actions'];
+const INITIAL_VISIBLE_COLUMNS = ['action', 'ip_address', 'status', 'time'];
 
-type User = (typeof users)[0];
-
-const rolesImages: {
-  [key: string]: { iconName: string; borderColor: string };
-} = {
-  Administrator: {
-    iconName: '/images/roles/admin.svg',
-    borderColor: 'border-blue-500',
-  },
-  Developer: {
-    iconName: '/images/roles/developer.png',
-    borderColor: 'border-green-500',
-  },
-  Support: {
-    iconName: '/images/roles/support.png',
-    borderColor: 'border-pink-500',
-  },
-  'Data Entry': {
-    iconName: '/images/roles/dataentry.svg',
-    borderColor: 'border-orange-500',
-  },
-  Other: {
-    iconName: '/images/roles/user.png',
-    borderColor: 'border-black',
-  },
-};
+type User = (typeof activityLogs)[0];
 
 export default function AdvancedTable() {
   const [filterValue, setFilterValue] = React.useState('');
@@ -124,7 +113,7 @@ export default function AdvancedTable() {
   });
   const [page, setPage] = React.useState(1);
 
-  const pages = Math.ceil(users.length / rowsPerPage);
+  const pages = Math.ceil(activityLogs.length / rowsPerPage);
 
   const hasSearchFilter = Boolean(filterValue);
 
@@ -137,11 +126,11 @@ export default function AdvancedTable() {
   }, [visibleColumns]);
 
   const filteredItems = React.useMemo(() => {
-    let filteredUsers = [...users];
+    let filteredUsers = [...activityLogs];
 
     if (hasSearchFilter) {
       filteredUsers = filteredUsers.filter((user) =>
-        user.name.toLowerCase().includes(filterValue.toLowerCase()),
+        user.action.toLowerCase().includes(filterValue.toLowerCase()),
       );
     }
     if (
@@ -154,7 +143,7 @@ export default function AdvancedTable() {
     }
 
     return filteredUsers;
-  }, [users, filterValue, statusFilter]);
+  }, [activityLogs, filterValue, statusFilter]);
 
   const items = React.useMemo(() => {
     const start = (page - 1) * rowsPerPage;
@@ -177,105 +166,43 @@ export default function AdvancedTable() {
     const cellValue = user[columnKey as keyof User];
 
     switch (columnKey) {
-      case 'name':
-        return (
-          <User
-            avatarProps={{
-              radius: 'full',
-              size: 'sm',
-              src: user.avatar,
-              showFallback: true,
-              fallback: (
-                <div className="flex h-full w-full items-center justify-center">
-                  <h1 className="text-xs font-semibold text-black">
-                    {user.name
-                      .split(' ')
-                      .map((name) => name[0])
-                      .join('')}
-                  </h1>
-                </div>
-              ),
-            }}
-            classNames={{
-              description: 'text-default-500',
-            }}
-            description={user.email}
-            name={cellValue}
-          >
-            {user.email}
-          </User>
-        );
-      case 'role':
-        let roleImage = rolesImages[cellValue as any as string]
-          ? rolesImages[cellValue as any as string]
-          : rolesImages['Other'];
-        return (
-          <div className="flex flex-col ">
-            <div
-              className={`flex w-[120px] flex-row items-center justify-start rounded-full   px-2 py-1`}
-            >
-              <div
-                className={`${roleImage.borderColor} flex h-[20px] w-[20px] flex-row items-center justify-center rounded-full border-[1px]`}
-              >
-                <Image
-                  width={13}
-                  height={13}
-                  src={roleImage.iconName}
-                  alt="role icon"
-                />
-              </div>
+      case 'action':
+        let actionStyle = icons[user['content_type']]
+          ? icons[user['content_type']]
+          : icons['other'];
 
-              <p className="text-bold ml-2 text-xs capitalize">{cellValue}</p>
+        return (
+          <div className="flex items-center">
+            <div
+              className={`${actionStyle.border} flex h-[20px] w-[20px] flex-row items-center justify-center rounded-full border-[1px]`}
+            >
+              <Image
+                width={10}
+                height={10}
+                src={actionStyle.icon}
+                alt="action icon"
+                className="object-contain"
+              />
             </div>
+            <p className="rounded border-[1px] border-transparent px-3 py-1 font-medium">
+              {cellValue}
+            </p>
           </div>
         );
       case 'status':
         return (
-          <Chip
-            className="gap-1 border-none capitalize text-default-600"
-            color={statusColorMap[cellValue as any as string]}
-            size="sm"
-            variant="dot"
-          >
-            {cellValue}
-          </Chip>
-        );
-      case 'ban':
-        return (
           <div
-            className={`flex w-[60px] flex-row items-center justify-center gap-1 py-1 ${banColorMap[cellValue as any as string].bg} rounded-full capitalize text-default-600`}
+            className={`flex w-[60px] flex-row items-center justify-center gap-1 py-1 ${statusMap[(cellValue as any as string).toLowerCase()].bg} rounded capitalize text-default-600`}
           >
             <p
-              className={`text-xs ${banColorMap[cellValue as any as string].text}`}
+              className={`text-xs ${statusMap[(cellValue as any as string).toLowerCase()].text}`}
             >
               {cellValue}
             </p>
           </div>
         );
-      case 'actions':
-        return (
-          <div className="relative flex items-center justify-end gap-2">
-            <Dropdown className="border-1 border-default-200 bg-background">
-              <DropdownTrigger>
-                <Button isIconOnly radius="full" size="sm" variant="light">
-                  <VerticalDotsIcon className="text-default-400" />
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu variant="faded">
-                <DropdownItem startContent={ViewIcon}>View</DropdownItem>
-                <DropdownItem startContent={EditIcon}>Edit</DropdownItem>
-                <DropdownItem
-                  startContent={DeleteIcon}
-                  key="delete"
-                  className="text-danger"
-                  color="danger"
-                >
-                  Delete
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-          </div>
-        );
+      case 'time':
+        return formatDateTime(cellValue as string);
       default:
         return cellValue;
     }
@@ -308,7 +235,7 @@ export default function AdvancedTable() {
               base: 'w-full sm:max-w-[38%]',
               inputWrapper: ['border-1', 'rounded'],
             }}
-            placeholder="Search by name..."
+            placeholder="Search by action..."
             size="sm"
             startContent={<SearchIcon className="text-default-300" />}
             value={filterValue}
@@ -357,38 +284,6 @@ export default function AdvancedTable() {
                   variant="flat"
                   className="rounded"
                 >
-                  Ban
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu
-                aria-label="Ban Status"
-                closeOnSelect={false}
-                selectedKeys={visibleColumns}
-                selectionMode="multiple"
-                onSelectionChange={setVisibleColumns}
-              >
-                {bannedOptions.map((bannedOption) => (
-                  <DropdownItem key={bannedOption.uid} className="capitalize">
-                    <Chip
-                      className="gap-1 border-none"
-                      color={bannedOption.color as statusColor}
-                      size="sm"
-                      variant="dot"
-                    >
-                      {bannedOption.name}
-                    </Chip>
-                  </DropdownItem>
-                ))}
-              </DropdownMenu>
-            </Dropdown>
-            <Dropdown>
-              <DropdownTrigger className="hidden sm:flex">
-                <Button
-                  endContent={<ChevronDownIcon className="text-small" />}
-                  size="sm"
-                  variant="flat"
-                  className="rounded"
-                >
                   Columns
                 </Button>
               </DropdownTrigger>
@@ -407,18 +302,11 @@ export default function AdvancedTable() {
                 ))}
               </DropdownMenu>
             </Dropdown>
-            <Button
-              className="rounded bg-foreground text-background"
-              endContent={<PlusIcon />}
-              size="sm"
-            >
-              Create User
-            </Button>
           </div>
         </div>
         <div className="flex items-center justify-between">
           <span className="text-small text-default-400">
-            Total {users.length} users
+            Total {activityLogs.length} logs
           </span>
           <label className="flex items-center text-small text-default-400">
             Rows per page:
@@ -440,7 +328,7 @@ export default function AdvancedTable() {
     visibleColumns,
     onSearchChange,
     onRowsPerPageChange,
-    users.length,
+    activityLogs.length,
     hasSearchFilter,
   ]);
 
@@ -500,8 +388,6 @@ export default function AdvancedTable() {
         },
       }}
       classNames={classNames}
-      selectedKeys={selectedKeys}
-      selectionMode="multiple"
       sortDescriptor={sortDescriptor}
       topContent={topContent}
       topContentPlacement="outside"
