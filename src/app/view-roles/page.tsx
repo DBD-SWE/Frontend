@@ -1,7 +1,5 @@
-import DeleteCard from './components/card/deletecard';
-import ViewCard from './components/card/viewcard';
+import { DeleteCard, ViewCard, ViewTable } from './components/index ';
 import roles from '@/roles/components/card/rolecardlist'; // Make sure the import path is correct
-import ViewTable from './components/table/viewtable';
 import mockData from './components/table/tablelist';
 import { PageTitle, SubTitle } from '@/components/text';
 

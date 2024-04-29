@@ -1,6 +1,5 @@
-import RoleCard from './components/card/rolecard';
+import { RoleCard, NewRoleCard } from './components/card/index';
 import list from './components/card/rolecardlist';
-import NewRoleCard from './components/card/newrolecard';
 import { PageTitle, SubTitle } from '@/components/text';
 
 export default function Roles() {
