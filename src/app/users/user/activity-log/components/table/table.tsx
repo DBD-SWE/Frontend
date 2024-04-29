@@ -20,8 +20,6 @@ import {
   ChipProps,
   SortDescriptor,
 } from '@nextui-org/react';
-import { PlusIcon } from '../../../../../../../public/icons/jsx/PlusIcon';
-import { VerticalDotsIcon } from './VerticalDotsIcon';
 import { ChevronDownIcon } from './ChevronDownIcon';
 import { SearchIcon } from './SearchIcon';
 import { columns, activityLogs, statusOptions } from './data';
