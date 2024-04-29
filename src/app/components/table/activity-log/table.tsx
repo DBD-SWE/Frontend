@@ -97,7 +97,7 @@ const INITIAL_VISIBLE_COLUMNS = ['action', 'ip_address', 'status', 'time'];
 
 type User = (typeof activityLogs)[0];
 
-export default function AdvancedTable() {
+export default function AdvancedTable({ allUsers }: { allUsers?: boolean }) {
   const [filterValue, setFilterValue] = React.useState('');
   const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
     new Set([]),
@@ -166,6 +166,7 @@ export default function AdvancedTable() {
     const cellValue = user[columnKey as keyof User];
 
     switch (columnKey) {
+      
       case 'action':
         let actionStyle = icons[user['content_type']]
           ? icons[user['content_type']]
