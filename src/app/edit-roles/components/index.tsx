@@ -1,2 +1,3 @@
 import RoleName from './name/rolename';
-export  { RoleName };
+import EditTable from './table/edittable';
+export  { RoleName, EditTable };
