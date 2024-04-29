@@ -177,34 +177,6 @@ export default function AdvancedTable() {
     const cellValue = user[columnKey as keyof User];
 
     switch (columnKey) {
-      case 'name':
-        return (
-          <User
-            avatarProps={{
-              radius: 'full',
-              size: 'sm',
-              src: user.avatar,
-              showFallback: true,
-              fallback: (
-                <div className="flex h-full w-full items-center justify-center">
-                  <h1 className="text-xs font-semibold text-black">
-                    {user.name
-                      .split(' ')
-                      .map((name) => name[0])
-                      .join('')}
-                  </h1>
-                </div>
-              ),
-            }}
-            classNames={{
-              description: 'text-default-500',
-            }}
-            description={user.email}
-            name={cellValue}
-          >
-            {user.email}
-          </User>
-        );
       case 'role':
         let roleImage = rolesImages[cellValue as any as string]
           ? rolesImages[cellValue as any as string]
