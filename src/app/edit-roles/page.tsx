@@ -1,5 +1,5 @@
 import { PageTitle, SubTitle } from '@/components/text';
-
+import { RoleName } from './components/index';
 export default function EditRoles() {
   return (
     <div>
@@ -15,6 +15,9 @@ export default function EditRoles() {
             'Edit',
           ]}
         />
+      </div>
+      <div>
+        <RoleName />
       </div>
     </div>
   );
