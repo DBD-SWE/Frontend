@@ -25,7 +25,7 @@ export default function Home() {
       </div>
       <div className="mt-1 flex w-full flex-col">
         <SummaryCardsList />
-        <div className="mb-4 flex w-full flex-col gap-8 2xl:flex-row">
+        <div className="mb-4 flex w-full flex-col gap-8 xl:flex-row">
           <DoughnutSummaryCard
             title="Services"
             total={216}

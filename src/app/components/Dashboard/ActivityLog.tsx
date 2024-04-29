@@ -1,7 +1,5 @@
 import { DeleteIcon, EditIcon, AddIcon, MailIcon } from '@/icons';
 import React from 'react';
-import { cn } from '@/lib/utils';
-import DataEntryIcon from '@/icons/dataEntry';
 import Image from 'next/image';
 
 type Props = {};
@@ -9,7 +7,7 @@ type Props = {};
 const ActivityLog = (props: Props) => {
   return (
     <div className="w-full">
-      <div className="relative flex w-full flex-col justify-between rounded-md border border-b-black px-4 py-6 shadow-sm md:px-12 md:py-12">
+      <div className="relative flex w-full flex-col justify-between rounded border-b-2 border-b-black px-4 py-6 shadow-sm md:px-12 md:py-12">
         <div className="absolute left-[75px] top-12 w-[1px] bg-zinc-200 max-md:left-[50px] max-md:top-14 max-md:h-32 max-sm:left-[31px] max-sm:h-28 md:h-48"></div>
         <UserActivityCard
           action="update"
@@ -62,7 +60,7 @@ const UserActivityCard = ({ action, actor, dateTime }: UserProps) => {
         <Icon type={action} />
         <div className="w-full space-y-5 max-sm:space-y-3">
           <div>
-            <p className="text-sm sm:text-base md:text-lg">
+            <p className="text-sm sm:text-base">
               A user has been {action}d by
               <span className="ml-1 min-w-[91px] font-bold italic underline">
                 {actor}
@@ -74,11 +72,11 @@ const UserActivityCard = ({ action, actor, dateTime }: UserProps) => {
           </div>
           <div className="flex items-center justify-between space-x-1 rounded-md border border-gray-200 px-2 py-2 shadow-sm max-sm:py-1 md:gap-5 md:px-5 md:py-2">
             <p className="text-sm">{actor}</p>
-            <div className="gap-2 py-2 px-3 max-sm:hidden flex items-center justify-center rounded-md text-xs shadow-sm md:text-base">
+            <div className="flex items-center justify-center gap-2 rounded-md px-3 py-2 text-xs shadow-sm max-sm:hidden md:text-base">
               <div className="min-w-[30px]">
                 <MailIcon />
               </div>
-              <p className='text-sm'>peter@gmail.com</p>
+              <p className="text-sm">peter@gmail.com</p>
             </div>
             <div className="flex items-center justify-center space-x-4 rounded-md bg-[#f4f4f5] px-3 py-1 text-xs shadow-sm md:px-4 md:text-base">
               <MailIcon />
@@ -125,9 +123,9 @@ const ServiceActivityCard = ({
                 width={20}
                 height={20}
               />
-              <p className="text-sm">{ location}</p>
+              <p className="text-sm">{location}</p>
             </div>
-            <div className="max-sm:hidden flex items-center justify-center space-x-4 rounded-md px-3 py-1 text-xs md:px-4 md:text-base">
+            <div className="flex items-center justify-center space-x-4 rounded-md px-3 py-1 text-xs max-sm:hidden md:px-4 md:text-base">
               <div className="flex gap-1">
                 {[...Array(5)].map((_, i) => (
                   <Image
