@@ -1,4 +1,4 @@
-import AdvancedTable from "./components/table/table";
+import AdvancedTable from '../../../components/table/activity-log/table';
 
 export default function Activity() {
   return (

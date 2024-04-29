@@ -21,6 +21,12 @@
       "@/*": ["./src/app/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/users/user/activity-log/components/table/SearchIcon.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/app/components/table/activity-log/SearchIcon.tsx"
+  ],
   "exclude": ["node_modules"]
 }
