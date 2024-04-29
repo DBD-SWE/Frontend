@@ -1,8 +1,8 @@
 const columns = [
-  { name: 'NAME', uid: 'name', sortable: true },
-  { name: 'RATING', uid: 'rating', sortable: true },
-  { name: 'ACCESSIBILITY', uid: 'accessibility', sortable: true },
-  { name: 'ACTIONS', uid: 'actions' },
+  { name: 'Name', uid: 'name', sortable: true },
+  { name: 'Rating', uid: 'rating', sortable: true },
+  { name: 'Accessbility', uid: 'accessibility', sortable: true },
+  { name: 'Actions', uid: 'actions' },
 ];
 
 const statusOptions = [
