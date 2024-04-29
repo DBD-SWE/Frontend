@@ -1,7 +1,6 @@
 import { PageTitle, SubTitle } from '@/components/text';
 import { Button } from '@nextui-org/react';
-import AdvancedTable from '@/components/table/activity-log/table';
-
+import AdvancedTable from '@/components/table/activity-log/activity-log';
 
 export default function ActivityLog() {
   return (

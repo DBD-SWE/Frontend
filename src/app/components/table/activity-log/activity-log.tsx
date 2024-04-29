@@ -22,7 +22,7 @@ import {
 } from '@nextui-org/react';
 import { ChevronDownIcon } from './ChevronDownIcon';
 import { SearchIcon } from './SearchIcon';
-import { columns, activityLogs, statusOptions } from './data';
+import { columns, activityLogs, statusOptions } from './data-activity';
 import Image from 'next/image';
 
 function formatDateTime(isoString: string): string {
@@ -93,11 +93,17 @@ type statusColor =
   | 'danger'
   | undefined;
 
-const INITIAL_VISIBLE_COLUMNS = ['action', 'ip_address', 'status', 'time'];
+const INITIAL_VISIBLE_COLUMNS = [
+  'name',
+  'action',
+  'ip_address',
+  'status',
+  'time',
+];
 
 type User = (typeof activityLogs)[0];
 
-export default function AdvancedTable() {
+export default function AdvancedTable({ allUsers }: { allUsers?: boolean }) {
   const [filterValue, setFilterValue] = React.useState('');
   const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
     new Set([]),
@@ -130,7 +136,7 @@ export default function AdvancedTable() {
 
     if (hasSearchFilter) {
       filteredUsers = filteredUsers.filter((user) =>
-        user.action.toLowerCase().includes(filterValue.toLowerCase()),
+        user.user.name.toLowerCase().includes(filterValue.toLowerCase()),
       );
     }
     if (
@@ -166,6 +172,34 @@ export default function AdvancedTable() {
     const cellValue = user[columnKey as keyof User];
 
     switch (columnKey) {
+      case 'name':
+        return (
+          <User
+            avatarProps={{
+              radius: 'full',
+              size: 'sm',
+              src: user.user.avatar,
+              showFallback: true,
+              fallback: (
+                <div className="flex h-full w-full items-center justify-center">
+                  <h1 className="text-xs font-semibold text-black">
+                    {user.user.name
+                      .split(' ')
+                      .map((name) => name[0])
+                      .join('')}
+                  </h1>
+                </div>
+              ),
+            }}
+            classNames={{
+              description: 'text-default-500',
+            }}
+            description={user.user.email}
+            name={user.user.name}
+          >
+            {user.user.email}
+          </User>
+        );
       case 'action':
         let actionStyle = icons[user['content_type']]
           ? icons[user['content_type']]
@@ -235,7 +269,7 @@ export default function AdvancedTable() {
               base: 'w-full sm:max-w-[38%]',
               inputWrapper: ['border-1', 'rounded'],
             }}
-            placeholder="Search by action..."
+            placeholder="Search by name..."
             size="sm"
             startContent={<SearchIcon className="text-default-300" />}
             value={filterValue}
