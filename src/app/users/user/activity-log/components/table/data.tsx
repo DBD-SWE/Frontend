@@ -17,6 +17,7 @@ const activityLogs = [
     status: 'Success',
     time: '2023-04-28T14:22:30Z',
     id: 1,
+    content_type: 'user',
   },
   {
     action: 'Failed Login Attempt',
@@ -24,13 +25,15 @@ const activityLogs = [
     status: 'Failed',
     time: '2023-04-28T14:25:10Z',
     id: 2,
+    content_type: 'user',
   },
   {
-    action: 'Viewed Report',
+    action: 'Update Guest House',
     ip_address: '192.168.1.3',
     status: 'Success',
     time: '2023-04-28T15:00:00Z',
     id: 3,
+    content_type: 'guest-house',
   },
   {
     action: 'Logout',
@@ -38,13 +41,15 @@ const activityLogs = [
     status: 'Success',
     time: '2023-04-28T16:18:45Z',
     id: 4,
+    content_type: 'user',
   },
   {
-    action: 'Updated Profile',
+    action: 'deleted attraction',
     ip_address: '192.168.1.4',
     status: 'Success',
     time: '2023-04-28T16:45:20Z',
     id: 5,
+    content_type: 'attraction',
   },
 ];
 

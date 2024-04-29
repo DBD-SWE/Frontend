@@ -49,6 +49,26 @@ function formatDateTime(isoString: string): string {
   // Combine formatted date and time
   return `${formatDate(date)}, ${formatTime(date).toLowerCase()}`;
 }
+const icons: {
+  [key: string]: { border: string; icon: string };
+} = {
+  'guest-house': {
+    border: 'border-[#A7141C]',
+    icon: '/icons/house.png',
+  },
+  attraction: {
+    border: 'border-[#2ECC71]',
+    icon: '/icons/location.png',
+  },
+  user: {
+    border: 'border-[#2463EB]',
+    icon: '/icons/user-2.png',
+  },
+  other: {
+    border: 'border-black',
+    icon: '/icons/other.png',
+  },
+};
 
 function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -147,8 +167,23 @@ export default function AdvancedTable() {
 
     switch (columnKey) {
       case 'action':
+        let actionStyle = icons[user['content_type']]
+          ? icons[user['content_type']]
+          : icons['other'];
+
         return (
-          <div className="flex items-center gap-3">
+          <div className="flex items-center">
+            <div
+              className={`${actionStyle.border} flex h-[20px] w-[20px] flex-row items-center justify-center rounded-full border-[1px]`}
+            >
+              <Image
+                width={10}
+                height={10}
+                src={actionStyle.icon}
+                alt="action icon"
+                className="object-contain"
+              />
+            </div>
             <p className="rounded border-[1px] border-transparent px-3 py-1 font-medium">
               {cellValue}
             </p>
