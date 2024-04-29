@@ -37,6 +37,31 @@ const INITIAL_VISIBLE_COLUMNS = [
   'actions',
 ];
 
+const ViewIcon = (
+  <Image
+    src="/images/general/view.png"
+    width={17}
+    height={17}
+    alt="View User"
+  />
+);
+const EditIcon = (
+  <Image
+    src="/images/general/edit.png"
+    width={17}
+    height={17}
+    alt="Edit User"
+  />
+);
+const DeleteIcon = (
+  <Image
+    src="/images/general/delete-colored.png"
+    width={17}
+    height={17}
+    alt="Delete User"
+  />
+);
+
 type GuestHouse = (typeof guestHouses)[0];
 
 export default function App() {
@@ -159,17 +184,24 @@ export default function App() {
           );
         case 'actions':
           return (
-            <div className="relative flex items-center justify-start gap-2">
+            <div className="relative flex items-center justify-end gap-2">
               <Dropdown className="border-1 border-default-200 bg-background">
                 <DropdownTrigger>
                   <Button isIconOnly radius="full" size="sm" variant="light">
-                    <VerticalDotsIcon />
+                    <VerticalDotsIcon className="text-default-400" />
                   </Button>
                 </DropdownTrigger>
-                <DropdownMenu>
-                  <DropdownItem>View</DropdownItem>
-                  <DropdownItem>Edit</DropdownItem>
-                  <DropdownItem>Delete</DropdownItem>
+                <DropdownMenu variant="faded">
+                  <DropdownItem startContent={ViewIcon}>View</DropdownItem>
+                  <DropdownItem startContent={EditIcon}>Edit</DropdownItem>
+                  <DropdownItem
+                    startContent={DeleteIcon}
+                    key="delete"
+                    className="text-danger"
+                    color="danger"
+                  >
+                    Delete
+                  </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
             </div>
@@ -207,8 +239,8 @@ export default function App() {
           <Input
             isClearable
             classNames={{
-              base: 'w-full sm:max-w-[44%]',
-              inputWrapper: 'border-1',
+              base: 'w-full sm:max-w-[38%]',
+              inputWrapper: ['border-1', 'rounded'],
             }}
             placeholder="Search by name..."
             size="sm"
@@ -250,6 +282,7 @@ export default function App() {
                   endContent={<ChevronDownIcon className="text-small" />}
                   size="sm"
                   variant="flat"
+                  className="rounded"
                 >
                   Columns
                 </Button>
@@ -270,11 +303,11 @@ export default function App() {
               </DropdownMenu>
             </Dropdown>
             <Button
-              className="bg-foreground text-background"
+              className="rounded bg-foreground text-background"
               endContent={<PlusIcon />}
               size="sm"
             >
-              Add New
+              Create Guest House
             </Button>
           </div>
         </div>
