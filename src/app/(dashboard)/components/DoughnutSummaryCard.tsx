@@ -1,5 +1,4 @@
 import React from 'react';
-import ChartLabelsList from './ChartLabelsList';
 import DoughnutChart from './DoughnutChart';
 
 // Define the properties for the PieSummaryCard component
@@ -36,15 +35,22 @@ const PieSummaryCard = ({
       </div>
       <div className="flex justify-between">
         <div className="w-1/2 self-end max-sm:self-center lg:-translate-y-[60px]">
-          <ChartLabelsList colors={colors} labels={labels} />
+          <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
+            {labels.map((label, index) => (
+              <div className="flex items-center gap-2" key={index}>
+                <div
+                  className="h-4 w-4 rounded-full max-sm:h-2 max-sm:w-2"
+                  style={{ backgroundColor: colors[index] }}
+                ></div>
+                <p className="text-sm max-sm:text-xs">{label}</p>
+              </div>
+            ))}
+          </div>
         </div>
         <div className="h-36 w-36 self-center max-sm:pb-2 sm:h-60 sm:w-60 md:self-end xl:-translate-y-12">
           <DoughnutChart labels={labels} stats={stats} colors={colors} />
         </div>
       </div>
-      {/* <div className="sm:hidden">
-        <ChartLabelsList colors={colors} labels={labels} />
-      </div> */}
     </div>
   );
 };

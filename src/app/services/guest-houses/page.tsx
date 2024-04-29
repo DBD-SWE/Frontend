@@ -1,8 +1,6 @@
 import React from 'react';
-import { Title } from '../components';
 import { PageTitle, SubTitle } from '@/components/text';
-import { DownloadButton } from '@/components/button';
-import AdvancedTable from '@/components/ui/table/guestHouses-table';
+import AdvancedTable from './components/guestHouses-table';
 import { Button } from '@nextui-org/react';
 
 type Props = {};
