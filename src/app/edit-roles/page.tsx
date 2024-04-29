@@ -17,7 +17,9 @@ export default function EditRoles() {
         />
       </div>
       <div>
-        <RoleName />
+        <RoleName 
+        defaultRoleName='Administrator'
+        />
       </div>
     </div>
   );
