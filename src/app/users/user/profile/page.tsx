@@ -6,7 +6,7 @@ import roles from '@/users/create/roles';
 
 export default function Profile() {
   return (
-    <div className="flex w-full flex-col pb-10">
+    <div className="flex w-full flex-col pb-12">
       {/* Body Section */}
       <div className="w-full">
         <Section
