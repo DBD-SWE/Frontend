@@ -1,12 +1,10 @@
 const columns = [
-  { name: 'NAME', uid: 'name', sortable: true },
-  { name: 'BATHROOMS', uid: 'bathrooms', sortable: true },
-  { name: 'BEDROOMS', uid: 'bedrooms', sortable: true },
-  { name: 'RATING', uid: 'rating', sortable: true },
-  { name: 'ACCESSIBILITY', uid: 'accessibility', sortable: true },
-  { name: 'FOOD TYPE', uid: 'foodType', sortable: true },
-  { name: 'ELECTRICITY', uid: 'electricity', sortable: true },
-  { name: 'ACTIONS', uid: 'actions' },
+  { name: 'Name', uid: 'name', sortable: true },
+  { name: 'Bathrooms', uid: 'bathrooms', sortable: true },
+  { name: 'Bedrooms', uid: 'bedrooms', sortable: true },
+  { name: 'Rating', uid: 'rating', sortable: true },
+  { name: 'Accessibility', uid: 'accessibility', sortable: true },
+  { name: 'actions', uid: 'actions' },
 ];
 
 const statusOptions = [
