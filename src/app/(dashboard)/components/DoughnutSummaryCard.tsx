@@ -1,6 +1,5 @@
 import React from 'react';
 import DoughnutChart from './DoughnutChart';
-
 // Define the properties for the PieSummaryCard component
 type Props = {
   title: string; // The title of the card
