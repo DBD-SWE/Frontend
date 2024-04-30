@@ -85,7 +85,7 @@ export default function RoleTable({ data }: EditTableProps) {
           isHeaderSticky
           aria-label="Editable Permissions Table"
           classNames={{
-            base: 'max-h-[520px] overflow-scroll',
+            // base: 'max-h-[520px] overflow-scroll',
             table: 'min-h-[400px]',
             wrapper: 'shadow-none mx-4 p-0 max-sm:mx-0 -mb-5',
             th: 'h-12',
@@ -124,10 +124,10 @@ export default function RoleTable({ data }: EditTableProps) {
           </TableBody>
         </Table>
       </div>
-      <div className="flex justify-end pt-8">
+      <div className="mt-12 flex justify-end">
         <Button
           color="primary"
-          className="mb-4 h-8 rounded px-5 text-xs"
+          className="mb-4 h-10 rounded px-6 text-xs"
           endContent={diskette}
         >
           Save Role
