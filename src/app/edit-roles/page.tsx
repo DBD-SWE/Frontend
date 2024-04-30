@@ -2,7 +2,6 @@ import { PageTitle, SubTitle } from '@/components/text';
 import { RoleName, EditTable } from './components/index';
 import { mockPermissions } from './components/table/roletablelist';
 
-
 export default function EditRoles() {
   return (
     <div>
@@ -19,9 +18,7 @@ export default function EditRoles() {
           ]}
         />
       </div>
-      <div>
-        <RoleName defaultRoleName="Administrator" />
-      </div>
+      <RoleName defaultRoleName="Administrator" />
       <div className="pt-12">
         <EditTable data={mockPermissions} />
       </div>
