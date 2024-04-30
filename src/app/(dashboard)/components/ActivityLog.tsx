@@ -1,4 +1,3 @@
-import { DeleteIcon, EditIcon, AddIcon, MailIcon } from '@/icons';
 import React from 'react';
 import Image from 'next/image';
 
@@ -74,12 +73,24 @@ const UserActivityCard = ({ action, actor, dateTime }: UserProps) => {
             <p className="text-sm">{actor}</p>
             <div className="flex items-center justify-center gap-2 rounded-md px-3 py-2 text-xs shadow-sm max-sm:hidden md:text-base">
               <div className="min-w-[30px]">
-                <MailIcon />
+                <Image
+                  src="/icons/mail.png"
+                  alt="Delete"
+                  width={20}
+                  height={20}
+                  className="h-4 w-4 md:h-6 md:w-6"
+                />
               </div>
               <p className="text-sm">peter@gmail.com</p>
             </div>
             <div className="flex items-center justify-center space-x-4 rounded-md bg-[#f4f4f5] px-3 py-1 text-xs shadow-sm md:px-4 md:text-base">
-              <MailIcon />
+              <Image
+                src="/icons/mail.png"
+                alt="Delete"
+                width={20}
+                height={20}
+                className="h-4 w-4 md:h-6 md:w-6"
+              />
               <p className="text-sm">Data Entry</p>
             </div>
           </div>
@@ -157,15 +168,21 @@ const Icon = ({ type }: IconProps) => {
 
   switch (type) {
     case 'update':
-      icon = <EditIcon />;
+      icon = (
+        <Image src="/icons/edit.png" alt="Delete" width={20} height={20} />
+      );
       color = '#CCC62E';
       break;
     case 'delete':
-      icon = <DeleteIcon />;
+      icon = (
+        <Image src="/icons/delete.png" alt="Delete" width={20} height={20} />
+      );
       color = '#A7141C';
       break;
     case 'create':
-      icon = <AddIcon />;
+      icon = (
+        <Image src="/icons/edit.png" alt="Delete" width={20} height={20} />
+      );
       color = '#2ECC71';
       break;
   }

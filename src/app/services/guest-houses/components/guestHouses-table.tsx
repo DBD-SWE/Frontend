@@ -13,20 +13,26 @@ import {
   Dropdown,
   DropdownMenu,
   DropdownItem,
-  Chip,
   User,
   Pagination,
   Selection,
-  ChipProps,
   SortDescriptor,
 } from '@nextui-org/react';
-import { PlusIcon } from './PlusIcon';
-import { VerticalDotsIcon } from './VerticalDotsIcon';
-import { ChevronDownIcon } from './ChevronDownIcon';
-import { SearchIcon } from './SearchIcon';
-import { columns, statusOptions, attractions } from './attractionsData';
-import { capitalize } from './utils';
+import { PlusIcon } from '../../../../../public/icons/jsx/PlusIcon';
+import { VerticalDotsIcon } from '@/components/table/VerticalDotsIcon';
+import { ChevronDownIcon } from '@/components/table/ChevronDownIcon';
+import { SearchIcon } from '@/components/table/SearchIcon';
+import { columns, guestHouses } from './guestHousesData';
 import Image from 'next/image';
+
+const INITIAL_VISIBLE_COLUMNS = [
+  'name',
+  'address',
+  'bathrooms',
+  'bedrooms',
+  'rating',
+  'actions',
+];
 
 const ViewIcon = (
   <Image
@@ -53,15 +59,9 @@ const DeleteIcon = (
   />
 );
 
-const INITIAL_VISIBLE_COLUMNS = ['name', 'accessibility', 'rating', 'actions'];
-
-type Attraction = (typeof attractions)[0];
+type GuestHouse = (typeof guestHouses)[0];
 
 export default function App() {
-  const accessibilityColorMap: Record<string, { bg: string; text: string }> = {
-    Accessible: { bg: 'bg-green-50', text: 'text-green-400' },
-    NotAccessible: { bg: 'bg-red-50', text: 'text-red-400' },
-  };
   const [categoryFilter, setCategoryFilter] = React.useState<Selection>('all');
   const [filterValue, setFilterValue] = React.useState('');
   const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
@@ -77,7 +77,7 @@ export default function App() {
   });
   const [page, setPage] = React.useState(1);
 
-  const pages = Math.ceil(attractions.length / rowsPerPage);
+  const pages = Math.ceil(guestHouses.length / rowsPerPage);
 
   const hasSearchFilter = Boolean(filterValue);
 
@@ -90,22 +90,22 @@ export default function App() {
   }, [visibleColumns]);
 
   const filteredItems = React.useMemo(() => {
-    let filteredAttractions = [...attractions];
+    let filteredGuestHouses = [...guestHouses];
 
     if (hasSearchFilter) {
-      filteredAttractions = filteredAttractions.filter((attraction) =>
-        attraction.name.toLowerCase().includes(filterValue.toLowerCase()),
+      filteredGuestHouses = filteredGuestHouses.filter((guestHouse) =>
+        guestHouse.name.toLowerCase().includes(filterValue.toLowerCase()),
       );
     }
     // if (
     //   categoryFilter !== 'all' &&
     //   Array.from(categoryFilter).length !== statusOptions.length
     // ) {
-    //   filteredAttractions = filteredAttractions.filter((attraction) =>
-    //     Array.from(categoryFilter).includes(attraction.category),
+    //   filteredGuestHouses = filteredGuestHouses.filter((guestHouse) =>
+    //     Array.from(categoryFilter).includes(guestHouse.category),
     //   );
     // }
-    return filteredAttractions;
+    return filteredGuestHouses;
   }, [filterValue, hasSearchFilter]);
 
   const items = React.useMemo(() => {
@@ -116,9 +116,9 @@ export default function App() {
   }, [page, filteredItems, rowsPerPage]);
 
   const sortedItems = React.useMemo(() => {
-    return [...items].sort((a: Attraction, b: Attraction) => {
-      const first = a[sortDescriptor.column as keyof Attraction] as number;
-      const second = b[sortDescriptor.column as keyof Attraction] as number;
+    return [...items].sort((a: GuestHouse, b: GuestHouse) => {
+      const first = a[sortDescriptor.column as keyof GuestHouse] as number;
+      const second = b[sortDescriptor.column as keyof GuestHouse] as number;
       const cmp = first < second ? -1 : first > second ? 1 : 0;
 
       return sortDescriptor.direction === 'descending' ? -cmp : cmp;
@@ -126,14 +126,14 @@ export default function App() {
   }, [sortDescriptor, items]);
 
   const renderCell = React.useCallback(
-    (attraction: Attraction, columnKey: React.Key) => {
-      const cellValue = attraction[columnKey as keyof Attraction];
+    (guestHouse: GuestHouse, columnKey: React.Key) => {
+      const cellValue = guestHouse[columnKey as keyof GuestHouse];
 
       switch (columnKey) {
         case 'accessibility':
           let bgColor = 'bg-red-50';
           let textColor = 'text-red-500';
-          if (attraction.accessibility === 'Accessible') {
+          if (guestHouse.accessibility === 'Accessible') {
             bgColor = 'bg-green-50';
             textColor = 'text-green-500';
           }
@@ -144,23 +144,6 @@ export default function App() {
               <p className={`text-xs ${textColor}`}>{cellValue}</p>
             </div>
           );
-        case 'name':
-          return (
-            <User
-              avatarProps={{
-                radius: 'full',
-                size: 'sm',
-                src: attraction.images[0],
-              }}
-              classNames={{
-                description: 'text-default-500',
-              }}
-              description={attraction.address}
-              name={cellValue}
-            >
-              {attraction.address}
-            </User>
-          );
         case 'rating':
           return (
             <div className="flex gap-1">
@@ -169,7 +152,7 @@ export default function App() {
                   key={i}
                   alt="star"
                   src={
-                    i < attraction.rating
+                    i < guestHouse.rating
                       ? '/icons/star.png'
                       : '/icons/emptyStar.png'
                   }
@@ -179,7 +162,23 @@ export default function App() {
               ))}
             </div>
           );
-
+        case 'name':
+          return (
+            <User
+              avatarProps={{
+                radius: 'full',
+                size: 'sm',
+                src: guestHouse.images[0],
+              }}
+              classNames={{
+                description: 'text-default-500',
+              }}
+              description={guestHouse.address}
+              name={cellValue}
+            >
+              {guestHouse.address}
+            </User>
+          );
         case 'actions':
           return (
             <div className="relative flex items-center justify-end gap-2">
@@ -249,31 +248,6 @@ export default function App() {
             onValueChange={onSearchChange}
           />
           <div className="flex gap-3">
-            {/* <Dropdown>
-              <DropdownTrigger className="hidden sm:flex">
-                <Button
-                  endContent={<ChevronDownIcon className="text-small" />}
-                  size="sm"
-                  variant="flat"
-                >
-                  Status
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu
-                disallowEmptySelection
-                aria-label="Table Columns"
-                closeOnSelect={false}
-                selectedKeys={categoryFilter}
-                selectionMode="multiple"
-                onSelectionChange={setCategoryFilter}
-              >
-                {statusOptions.map((status) => (
-                  <DropdownItem key={status.uid} className="capitalize">
-                    {capitalize(status.name)}
-                  </DropdownItem>
-                ))}
-              </DropdownMenu>
-            </Dropdown> */}
             <Dropdown>
               <DropdownTrigger className="hidden sm:flex">
                 <Button
@@ -295,7 +269,7 @@ export default function App() {
               >
                 {columns.map((column) => (
                   <DropdownItem key={column.uid} className="capitalize">
-                    {capitalize(column.name)}
+                    {column.name}
                   </DropdownItem>
                 ))}
               </DropdownMenu>
@@ -305,13 +279,13 @@ export default function App() {
               endContent={<PlusIcon />}
               size="sm"
             >
-              Create Attraction
+              Create Guest House
             </Button>
           </div>
         </div>
         <div className="flex items-center justify-between">
           <span className="text-small text-default-400">
-            Total {attractions.length} users
+            Total {guestHouses.length} guest houses
           </span>
           <label className="flex items-center text-small text-default-400">
             Rows per page:
@@ -404,7 +378,7 @@ export default function App() {
           </TableColumn>
         )}
       </TableHeader>
-      <TableBody emptyContent={'No attraction found'} items={sortedItems}>
+      <TableBody emptyContent={'No guest house found'} items={sortedItems}>
         {(item) => (
           <TableRow key={item.id}>
             {(columnKey) => (

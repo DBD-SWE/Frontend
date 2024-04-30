@@ -1,15 +1,10 @@
-import React, { useState } from 'react';
-import Image from 'next/image';
-import SummaryCardsList from './components/Dashboard/SummaryCardsList';
-import { Doughnut } from 'react-chartjs-2';
-import DoughnutChart from './components/Dashboard/DoughnutChart';
-import ChartLabelsList from './components/Dashboard/ChartLabelsList';
-import DoughnutSummaryCard from './components/Dashboard/DoughnutSummaryCard';
-import ActivityLog from './components/Dashboard/ActivityLog';
-import { PageTitle, SubTitle } from './components/text';
+import React from 'react';
+import SummaryCardsList from './components/SummaryCards';
+import DoughnutSummaryCard from './components/DoughnutSummaryCard';
+import ActivityLog from './components/ActivityLog';
+import { PageTitle } from '@/components/text';
 import { Button } from '@nextui-org/react';
-import { Tabs, Tab, Card, CardBody } from '@nextui-org/react';
-import TabsComponent from './components/Dashboard/Tabs';
+import TabsComponent from './components/Tabs';
 
 export default function Home() {
   return (
