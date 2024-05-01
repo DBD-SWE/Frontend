@@ -10,6 +10,7 @@ const StarRating = (props: Props) => {
 
   return (
     <div className="flex gap-1">
+      {/* Render 5 stars, either empty or full based on the hover and the selection */}
       {Array.from({ length: 5 }).map((_, index) => (
         <div
           key={index}
@@ -32,6 +33,7 @@ const StarRating = (props: Props) => {
           />
         </div>
       ))}
+      {/* Hidden input so that the stars can be used as form value */}
       <input type="hidden" name="rating" value={selectedStar + 1} />
     </div>
   );

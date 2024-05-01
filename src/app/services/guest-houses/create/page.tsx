@@ -28,12 +28,14 @@ const page = (props: Props) => {
   return (
     <div className="flex w-full flex-col">
       <div className="items-star flex w-full flex-row justify-between">
+        {/* Title and Subtitle */}
         <div className="flex flex-col">
           <PageTitle>Guest Houses</PageTitle>
           <SubTitle content={['Services', '○', 'Guest Houses', '○', 'Add']} />
         </div>
       </div>
       <div className="my-12 w-full">
+        {/* General info - Name, Description */}
         <Section
           title="General Information"
           description="Fill in basic information to create the guest house."
@@ -45,6 +47,7 @@ const page = (props: Props) => {
           }
         />
 
+        {/* Location info - Address, Long and Lat */}
         <Section
           title="Location Information"
           description="This information is related to the location of the service on google maps"
@@ -59,6 +62,7 @@ const page = (props: Props) => {
           }
         />
 
+        {/* Service Stats - N of Bathrooms and Bedrooms */}
         <Section
           title="Service Statistics"
           description="Fill in the basic statistics useful for the users."
@@ -70,13 +74,13 @@ const page = (props: Props) => {
           }
         />
 
-        {/* Software Information */}
+        {/* Extra Information - Accessbility and rating */}
         <Section
-          title="Software Information"
-          description="This information is related directly to this software"
+          title="Extra Information"
+          description="Extra information that would improve user experience."
           form={
-            <div className="flex w-[100%] max-w-[700px] flex-1 gap-5 max-md:mt-7 max-xl:flex-col">
-              <div className="sm:w-[350px] max-w-[350px]">
+            <div className="flex w-[100%] max-w-[700px] flex-1 gap-5 max-xl:flex-col max-md:mt-7">
+              <div className="max-w-[350px] sm:w-[350px]">
                 <Select
                   items={accessibility}
                   placeholder="Accessibility"

@@ -26,14 +26,17 @@ const page = (props: Props) => {
     { label: 'Non Accessible', value: 'Non Accessible' },
   ];
   return (
-    <div className="flex w-full flex-col">
+      <div className="flex w-full flex-col">
+          {/* title and subtitle */}
       <div className="items-star flex w-full flex-row justify-between">
         <div className="flex flex-col">
           <PageTitle>Attractions</PageTitle>
           <SubTitle content={['Services', '○', 'Attractions', '○', 'Add']} />
         </div>
-      </div>
-      <div className="my-12 w-full">
+          </div>
+          {/* Input Sections */}
+          <div className="my-12 w-full">
+              {/* General Info - Name and description */}
         <Section
           title="General Information"
           description="Fill in basic information to create the attraction."
@@ -45,6 +48,7 @@ const page = (props: Props) => {
           }
         />
 
+        {/* Location Info (address, long and lat) */}
         <Section
           title="Location Information"
           description="This information is related to the location of the service on google maps"
@@ -59,10 +63,10 @@ const page = (props: Props) => {
           }
         />
 
-        {/* Software Information */}
+        {/* Entra Info - rating and accessibility */}
         <Section
-          title="Software Information"
-          description="This information is related directly to this software"
+          title="Extra Information"
+          description="Extra information that would improve user experience."
           form={
             <div className="flex w-[100%] max-w-[700px] flex-1 gap-5 max-xl:flex-col max-md:mt-7">
               <div className="max-w-[350px] sm:w-[350px]">
