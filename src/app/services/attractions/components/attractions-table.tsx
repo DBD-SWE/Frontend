@@ -24,6 +24,7 @@ import { ChevronDownIcon } from '@/components/table/ChevronDownIcon';
 import { SearchIcon } from '@/components/table/SearchIcon';
 import { columns, attractions } from './attractionsData';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const ViewIcon = (
   <Image
@@ -283,13 +284,17 @@ export default function App() {
                 ))}
               </DropdownMenu>
             </Dropdown>
-            <Button
-              className="rounded bg-foreground text-background"
-              endContent={<PlusIcon />}
-              size="sm"
+            <Link
+              href="/services/attractions/create"
             >
-              Create Attraction
-            </Button>
+              <Button
+                className="rounded bg-foreground text-background"
+                endContent={<PlusIcon />}
+                size="sm"
+              >
+                Create Attraction
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="flex items-center justify-between">

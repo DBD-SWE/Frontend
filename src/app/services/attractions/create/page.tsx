@@ -1,8 +1,8 @@
 import { PageTitle, SubTitle } from '@/components/text';
 import React from 'react';
-import Section from '../../components/section';
+import Section from '@/services/components/section';
 import { Input, Select, TextArea } from '@/components/input';
-import FileInput from '../../components/file-input';
+import FileInput from '@/services/components/file-input';
 import { Button } from '@nextui-org/react';
 import { PlusIcon } from '../../../../../public/icons/jsx/PlusIcon';
 import Image from 'next/image';
@@ -29,14 +29,14 @@ const page = (props: Props) => {
     <div className="flex w-full flex-col">
       <div className="items-star flex w-full flex-row justify-between">
         <div className="flex flex-col">
-          <PageTitle>Guest Houses</PageTitle>
-          <SubTitle content={['Services', '○', 'Guest Houses', '○', 'Add']} />
+          <PageTitle>Attractions</PageTitle>
+          <SubTitle content={['Services', '○', 'Attractions', '○', 'Add']} />
         </div>
       </div>
       <div className="my-12 w-full">
         <Section
           title="General Information"
-          description="Fill in basic information to create the guest house."
+          description="Fill in basic information to create the attraction."
           form={
             <div className="flex w-[100%] max-w-[350px] flex-1 flex-col gap-x-5 gap-y-4 max-md:mt-7 lg:grid-cols-2 lg:grid-rows-2">
               <Input type="text" label="Name" />
@@ -59,24 +59,13 @@ const page = (props: Props) => {
           }
         />
 
-        <Section
-          title="Service Statistics"
-          description="Fill in the basic statistics useful for the users."
-          form={
-            <div className="flex w-[100%] max-w-[350px] flex-1 flex-col gap-x-5 gap-y-4 max-md:mt-7 lg:grid-cols-2 lg:grid-rows-2">
-              <Input type="number" label="Bedrooms" />
-              <Input type="number" label="Bathrooms" />
-            </div>
-          }
-        />
-
         {/* Software Information */}
         <Section
           title="Software Information"
           description="This information is related directly to this software"
           form={
-            <div className="flex w-[100%] max-w-[700px] flex-1 gap-5 max-md:mt-7 max-xl:flex-col">
-              <div className="sm:w-[350px] max-w-[350px]">
+            <div className="flex w-[100%] max-w-[700px] flex-1 gap-5 max-xl:flex-col max-md:mt-7">
+              <div className="max-w-[350px] sm:w-[350px]">
                 <Select
                   items={accessibility}
                   placeholder="Accessibility"
@@ -111,7 +100,7 @@ const page = (props: Props) => {
             endContent={<PlusIcon />}
             size="md"
           >
-            Create Guest House
+            Create Attraction
           </Button>
           <Button
             size="md"
