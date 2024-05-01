@@ -1,12 +1,12 @@
 import { PageTitle, SubTitle } from '@/components/text';
 import React from 'react';
-import SectionInfo from './components/SectionInfo';
 import Section from '../components/section';
 import { Input, Select, TextArea } from '@/components/input';
 import FileInput from '../components/file-input';
 import { Button } from '@nextui-org/react';
 import { PlusIcon } from '../../../../../public/icons/jsx/PlusIcon';
 import Image from 'next/image';
+import StarRating from './components/starRating';
 
 const DeleteIcon = (
   <Image
@@ -75,14 +75,18 @@ const page = (props: Props) => {
           title="Software Information"
           description="This information is related directly to this software"
           form={
-            <div className="flex w-[100%] max-w-[700px] flex-1 gap-x-5 max-md:mt-7 lg:max-w-[340px]">
-              <Select
-                items={accessibility}
-                placeholder="Choose Accessibility"
-                label="Accessibility"
-              />
-              <div className="flex items-center justify-center">
+            <div className="flex w-[100%] max-w-[700px] flex-1 gap-5 max-md:mt-7 max-xl:flex-col">
+              <div className="sm:w-[350px] max-w-[350px]">
+                <Select
+                  items={accessibility}
+                  placeholder="Accessibility"
+                  label="Select"
+                />
+              </div>
+              <div className="flex items-center gap-5">
                 <p className="text-xs">Rating</p>
+                <div className="rounded-fill h-[30px] w-[2px] bg-zinc-200"></div>
+                <StarRating />
               </div>
             </div>
           }
@@ -101,7 +105,7 @@ const page = (props: Props) => {
         />
 
         {/* Buttons */}
-        <div className="mt-10 flex gap-x-3 max-[475px]:flex-col">
+        <div className="mt-10 flex gap-3 max-[475px]:flex-col">
           <Button
             className="rounded bg-foreground px-6 text-sm text-background max-sm:px-4"
             endContent={<PlusIcon />}
