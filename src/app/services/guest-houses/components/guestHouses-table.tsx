@@ -190,8 +190,15 @@ export default function App() {
                   </Button>
                 </DropdownTrigger>
                 <DropdownMenu variant="faded">
-                  <DropdownItem startContent={ViewIcon}>View</DropdownItem>
+                  <DropdownItem
+                    startContent={ViewIcon}
+                    href={`/services/guest-houses/${guestHouse.id}`}
+                  >
+                    View
+                  </DropdownItem>
+
                   <DropdownItem startContent={EditIcon}>Edit</DropdownItem>
+
                   <DropdownItem
                     startContent={DeleteIcon}
                     key="delete"
