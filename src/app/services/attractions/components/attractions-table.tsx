@@ -199,8 +199,18 @@ export default function App() {
                   </Button>
                 </DropdownTrigger>
                 <DropdownMenu variant="faded">
-                  <DropdownItem startContent={ViewIcon} href={`/services/attractions/${attraction.id}`}>View</DropdownItem>
-                  <DropdownItem startContent={EditIcon}>Edit</DropdownItem>
+                  <DropdownItem
+                    startContent={ViewIcon}
+                    href={`/services/attractions/${attraction.id}`}
+                  >
+                    View
+                  </DropdownItem>
+                  <DropdownItem
+                    startContent={EditIcon}
+                    href={`/services/attractions/${attraction.id}/edit`}
+                  >
+                    Edit
+                  </DropdownItem>
                   <DropdownItem
                     startContent={DeleteIcon}
                     key="delete"
