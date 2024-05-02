@@ -197,7 +197,12 @@ export default function App() {
                     View
                   </DropdownItem>
 
-                  <DropdownItem startContent={EditIcon}>Edit</DropdownItem>
+                  <DropdownItem
+                    startContent={EditIcon}
+                    href={`/services/guest-houses/${guestHouse.id}/edit`}
+                  >
+                    Edit
+                  </DropdownItem>
 
                   <DropdownItem
                     startContent={DeleteIcon}
