@@ -9,7 +9,7 @@ type Props = {
 
 const StarRating = ({ rating, isDisabled }: Props) => {
   const [hoveredStar, setHoveredStar] = useState(-1);
-  const [selectedStar, setSelectedStar] = useState(rating - 1 || -1);
+  const [selectedStar, setSelectedStar] = useState(rating ? rating - 1 : -1);
   return (
     <div className={`flex gap-1 ${isDisabled ? 'opacity-50' : ''}`}>
       {/* Render 5 stars, either empty or full based on the hover and the selection */}
