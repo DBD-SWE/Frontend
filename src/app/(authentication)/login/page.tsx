@@ -13,7 +13,7 @@ export default function Login() {
       <div className="absolute top-4 left-8 transform ">
         <Image
           src={'/images/signingpage/logo.png'}
-          height={100}
+          height={75}
           width={130}
           alt="logo"
           className="object-contain"
@@ -24,10 +24,16 @@ export default function Login() {
       <div className="flex h-screen items-center justify-between px-12">
         {/* Text section */}
         <div className="">
-          <h1 className="font-bold text-white">Welcome Back!</h1>
+          <div>
+            <Image
+            src={'/images/signingpage/navgate.png'}
+            alt="navgate"
+            height={50}
+            width={150}
+            />
+          </div>
           <p className="text-sm text-white">
-            Enter the world of endless possibilities where all your data
-            management becomes easier.
+            Unlock Lebanon, Your ultimate Travel Guide
           </p>
         </div>
 
