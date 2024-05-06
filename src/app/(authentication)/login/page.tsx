@@ -8,7 +8,7 @@ export default function Login() {
     >
       <div className="absolute inset-0 bg-black opacity-0"></div>
 
-      <div className="flex justify-between items-center px-8">
+      <div className="flex h-screen items-center justify-between px-12">
         <div className="">
           <h1 className=" font-bold text-white">Welcome Back!</h1>
           <p className="text-sm text-white">

@@ -42,7 +42,7 @@ export default function LoginContainer() {
 
   const toggleVisibility = () => setIsVisible(!isVisible);
   return (
-    <div className=" bg-white flex h-[700px] w-[500px] flex-col justify-between rounded-lg px-14 shadow">
+    <div className=" bg-white flex h-[600px] w-[500px] flex-col justify-between rounded-lg px-14 shadow">
       {/* Heading  */}
       <div>
         <div className="w-full text-center">
