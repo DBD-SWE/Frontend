@@ -8,9 +8,9 @@ export default function Login() {
       style={{ backgroundImage: `url('/images/signingpage/background.png')` }}
     >
       <div className="absolute inset-0 bg-black opacity-0"></div>
-      
+
       {/* Logo positioned absolutely at the top */}
-      <div className="absolute top-4 left-8 transform ">
+      <div className="absolute left-8 top-4 hidden transform lg:block">
         <Image
           src={'/images/signingpage/logo.png'}
           height={75}
@@ -19,17 +19,17 @@ export default function Login() {
           className="object-contain"
         />
       </div>
-      
+
       {/* Main content */}
-      <div className="flex h-screen items-center justify-between px-12">
+      <div className="lg:flex h-screen lg:items-center lg:justify-between px-12 flex items-center justify-center">
         {/* Text section */}
-        <div className="">
+        <div className="hidden lg:block">
           <div>
             <Image
-            src={'/images/signingpage/navgate.png'}
-            alt="navgate"
-            height={50}
-            width={150}
+              src={'/images/signingpage/navgate.png'}
+              alt="navgate"
+              height={50}
+              width={150}
             />
           </div>
           <p className="text-sm text-white">
