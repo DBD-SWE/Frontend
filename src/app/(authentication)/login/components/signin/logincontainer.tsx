@@ -1,6 +1,29 @@
+'use client';
 import { Input } from '@/(general)/components/input';
-
+import Image from 'next/image';
+import React from 'react';
 export default function LoginContainer() {
+  const View = (
+    <Image
+      src={'/images/signingpage/view.png'}
+      width={15}
+      height={15}
+      className="object-contain"
+      alt="view"
+    />
+  );
+  const Hide = (
+    <Image
+      src={'/images/signingpage/hide.png'}
+      width={15}
+      height={15}
+      className="object-contain"
+      alt="hide"
+    />
+  );
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  const toggleVisibility = () => setIsVisible(!isVisible);
   return (
     <div className="h-4/5 w-2/5 rounded-lg px-14 shadow">
       {/* Heading  */}
@@ -13,8 +36,34 @@ export default function LoginContainer() {
       </div>
       {/* Inputs */}
       <div className="mt-10 w-full">
-        <div className="flex">
-          <Input className="w-full self-center" />
+        <div className="">
+          <Input
+            className="w-full self-center"
+            label="Email Address"
+            labelPlacement="outside"
+            placeholder=" "
+            variant="bordered"
+            classNames={{ inputWrapper: 'bg-white' }}
+          />
+
+          <Input
+            className="w-full self-center"
+            label="Password"
+            labelPlacement="outside"
+            placeholder=" "
+            variant="bordered"
+            classNames={{ inputWrapper: 'bg-white' }}
+            startContent={
+        <button className="focus:outline-none" type="button" onClick={toggleVisibility}>
+          {isVisible ? (
+            Hide
+          ) : (
+            View
+          )}
+        </button>
+      }
+      type={isVisible ? "text" : "password"}
+          />
         </div>
       </div>
     </div>
