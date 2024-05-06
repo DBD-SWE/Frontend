@@ -3,23 +3,38 @@ import { Input } from '@/(general)/components/input';
 import Image from 'next/image';
 import React from 'react';
 export default function LoginContainer() {
+  const Mail = (
+    <div className="flex flex-row items-center">
+      <Image
+        src={'/images/signingpage/mail.png'}
+        width={15}
+        height={15}
+        className="object-contain"
+        alt="mail"
+      />
+    </div>
+  );
   const View = (
-    <Image
-      src={'/images/signingpage/view.png'}
-      width={15}
-      height={15}
-      className="object-contain"
-      alt="view"
-    />
+    <div className="flex flex-row items-center">
+      <Image
+        src={'/images/signingpage/view.png'}
+        width={15}
+        height={15}
+        className="object-contain"
+        alt="view"
+      />
+    </div>
   );
   const Hide = (
-    <Image
-      src={'/images/signingpage/hide.png'}
-      width={15}
-      height={15}
-      className="object-contain"
-      alt="hide"
-    />
+    <div className="flex flex-row items-center">
+      <Image
+        src={'/images/signingpage/hide.png'}
+        width={15}
+        height={15}
+        className="object-contain"
+        alt="hide"
+      />
+    </div>
   );
   const [isVisible, setIsVisible] = React.useState(false);
 
@@ -44,6 +59,7 @@ export default function LoginContainer() {
             placeholder=" "
             variant="bordered"
             classNames={{ inputWrapper: 'bg-white' }}
+            startContent={Mail}
           />
 
           <Input
@@ -54,15 +70,15 @@ export default function LoginContainer() {
             variant="bordered"
             classNames={{ inputWrapper: 'bg-white' }}
             startContent={
-        <button className="focus:outline-none" type="button" onClick={toggleVisibility}>
-          {isVisible ? (
-            Hide
-          ) : (
-            View
-          )}
-        </button>
-      }
-      type={isVisible ? "text" : "password"}
+              <button
+                className="focus:outline-none"
+                type="button"
+                onClick={toggleVisibility}
+              >
+                {isVisible ? Hide : View}
+              </button>
+            }
+            type={isVisible ? 'text' : 'password'}
           />
         </div>
       </div>
