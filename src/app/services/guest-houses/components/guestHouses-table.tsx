@@ -24,6 +24,7 @@ import { ChevronDownIcon } from '@/components/table/ChevronDownIcon';
 import { SearchIcon } from '@/components/table/SearchIcon';
 import { columns, guestHouses } from './guestHousesData';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const INITIAL_VISIBLE_COLUMNS = [
   'name',
@@ -189,8 +190,20 @@ export default function App() {
                   </Button>
                 </DropdownTrigger>
                 <DropdownMenu variant="faded">
-                  <DropdownItem startContent={ViewIcon}>View</DropdownItem>
-                  <DropdownItem startContent={EditIcon}>Edit</DropdownItem>
+                  <DropdownItem
+                    startContent={ViewIcon}
+                    href={`/services/guest-houses/${guestHouse.id}`}
+                  >
+                    View
+                  </DropdownItem>
+
+                  <DropdownItem
+                    startContent={EditIcon}
+                    href={`/services/guest-houses/${guestHouse.id}/edit`}
+                  >
+                    Edit
+                  </DropdownItem>
+
                   <DropdownItem
                     startContent={DeleteIcon}
                     key="delete"
@@ -274,13 +287,15 @@ export default function App() {
                 ))}
               </DropdownMenu>
             </Dropdown>
-            <Button
-              className="rounded bg-foreground text-background"
-              endContent={<PlusIcon />}
-              size="sm"
-            >
-              Create Guest House
-            </Button>
+            <Link href="/services/guest-houses/create">
+              <Button
+                className="rounded bg-foreground text-background"
+                endContent={<PlusIcon />}
+                size="sm"
+              >
+                Create Guest House
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="flex items-center justify-between">
