@@ -26,7 +26,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/components/table/activity-log/SearchIcon.tsx"
+    "src/app/(general)/components/table/activity-log/SearchIcon.tsx"
   ],
   "exclude": ["node_modules"]
 }
