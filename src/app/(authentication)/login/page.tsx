@@ -7,9 +7,9 @@ export default function Login() {
       className=" relative min-h-screen bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url('/images/signingpage/background.png')` }}
     >
-      <div className='absolute left-0 top-0 w-full h-full max-sm:h-screen max-sm:w-screen'>
+      <div className="absolute  h-full w-full max-sm:h-screen max-sm:w-screen">
         {/* Logo positioned absolutely at the top */}
-        <div className="absolute hidden transform lg:block">
+        <div className="absolute left-4  top-4 hidden transform lg:block">
           <Image
             src={'/images/signingpage/logo.png'}
             height={75}
@@ -20,7 +20,7 @@ export default function Login() {
         </div>
 
         {/* Main content */}
-        <div className=" flex h-screen items-center justify-center px-12 lg:flex lg:items-center lg:justify-between max-sm:px-0">
+        <div className=" flex h-screen items-center justify-center px-12 max-sm:px-0 lg:flex lg:items-center lg:justify-between">
           {/* Text section */}
           <div className="hidden lg:block">
             <div>
