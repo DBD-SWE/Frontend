@@ -42,9 +42,25 @@ export default function RegisterContainer() {
 
   const toggleVisibility = () => setIsVisible(!isVisible);
   return (
-    <div className=" bg-white flex h-[600px] w-[500px] flex-col justify-between rounded-lg px-14 shadow max-sm:h-screen max-sm:w-screen max-sm:justify-center max-sm:px-8">
+    <div className=" flex h-[600px] w-[500px] flex-col justify-between rounded-lg bg-white px-14 shadow max-sm:h-screen max-sm:w-screen max-sm:justify-center max-sm:px-8">
       {/* Heading  */}
       <div>
+        {/* Top Heading */}
+        <div>
+          <div className="flex items-center pt-3">
+            <h1 className="pr-2 font-bold ">Welcome to </h1>
+            <Image
+              src={'/images/signingpage/navgateheader.png'}
+              height={60}
+              width={80}
+              alt="navgate"
+            />
+          </div>
+          <p className='text-[10px] font-light text-zinc-500'>
+            You've been invited to create an account with us. Let's get started
+            by setting up your login details.
+          </p>
+        </div>
         <div className="w-full text-center">
           <h1 className="pb-2 pt-12 text-[15px] font-bold">Sign In</h1>
           <p className="text-[10px] font-light text-zinc-500">
