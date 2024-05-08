@@ -1,7 +1,7 @@
-import { PageTitle, SubTitle } from '@/components/text';
+import { PageTitle, SubTitle } from '../../../components/text';
 import React from 'react';
 import Section from '../../components/section';
-import { Input, Select, TextArea } from '@/components/input';
+import { Input, Select, TextArea } from '../../../components/input';
 import FileInput from '../../components/file-input';
 import { Button } from '@nextui-org/react';
 import { PlusIcon } from '../../../../../../public/icons/jsx/PlusIcon';
