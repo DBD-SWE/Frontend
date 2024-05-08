@@ -42,7 +42,9 @@ export default function RegisterContainer() {
   const [isVisible, setIsVisible] = React.useState(false);
   const [isAgreed, setIsAgreed] = React.useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
-  const handleAgreementChange = (checked) => setIsAgreed(checked);
+  const handleAgreementChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsAgreed(event.target.checked);
+  };
   return (
     <div className=" flex h-[600px] w-[500px] flex-col justify-between rounded-lg bg-white px-14 shadow max-sm:h-screen max-sm:w-screen max-sm:justify-center max-sm:px-8">
       {/* Heading  */}
@@ -75,8 +77,8 @@ export default function RegisterContainer() {
           </p>
         </div>
         {/* Inputs */}
-        <div className="mt-10 w-full">
-          <div className="pb-6 pt-12">
+        <div className="mt-4 w-full">
+          <div className="pb-4 pt-6">
             <Input
               className="w-full self-center"
               label="Email Address"
@@ -89,8 +91,26 @@ export default function RegisterContainer() {
           </div>
           <div>
             <Input
-              className="w-full self-center "
+              className="w-full self-center pb-4 "
               label="Password"
+              labelPlacement="outside"
+              placeholder=" "
+              variant="bordered"
+              classNames={{ inputWrapper: 'bg-white' }}
+              startContent={
+                <button
+                  className="focus:outline-none"
+                  type="button"
+                  onClick={toggleVisibility}
+                >
+                  {isVisible ? Hide : View}
+                </button>
+              }
+              type={isVisible ? 'text' : 'password'}
+            />
+            <Input
+              className="w-full self-center "
+              label="Forgot Password?"
               labelPlacement="outside"
               placeholder=" "
               variant="bordered"
@@ -116,9 +136,9 @@ export default function RegisterContainer() {
               </Link>
             </div>
             {/* Checkbox for terms and conditions */}
-            <div className="mt-4 flex items-center">
+            <div className="mt-4 pb-6 flex items-center">
               <Checkbox checked={isAgreed} onChange={handleAgreementChange} />
-              <span className="ml-2 text-xs text-zinc-500">
+              <span className="ml-1 text-[10px] font-light text-zinc-500">
                 By checking this box, I agree to the Terms of Service and
                 Privacy Policy
               </span>
