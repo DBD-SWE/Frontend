@@ -56,17 +56,17 @@ export default function RegisterContainer() {
               alt="navgate"
             />
           </div>
-          <p className='text-[10px] font-light text-zinc-500'>
+          <p className="text-[10px] font-light text-zinc-500">
             You've been invited to create an account with us. Let's get started
             by setting up your login details.
           </p>
         </div>
-        <div className="w-full text-center">
-          <h1 className="pb-2 pt-12 text-[15px] font-bold">Sign In</h1>
-          <p className="text-[10px] font-light text-zinc-500">
-            Enter your credentials to access your account.
-          </p>
-          <div className="mt-8 h-[1px] bg-zinc-300" />
+        <div className="flex w-full items-center justify-center pt-8">
+          <div className="h-[1px] flex-grow bg-zinc-300" />
+
+          <h1 className="px-2 text-[15px] font-bold">Registration</h1>
+
+          <div className="h-[1px] flex-grow bg-zinc-300" />
         </div>
         {/* Inputs */}
         <div className="mt-10 w-full">
