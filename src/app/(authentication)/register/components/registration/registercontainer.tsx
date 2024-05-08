@@ -1,7 +1,7 @@
 'use client';
 import { Input } from '@/(general)/components/input';
 import Image from 'next/image';
-import React from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { Button, Checkbox } from '@nextui-org/react';
 
@@ -39,10 +39,28 @@ export default function RegisterContainer() {
       />
     </div>
   );
-  const [isVisible, setIsVisible] = React.useState(false);
-  const [isAgreed, setIsAgreed] = React.useState(false);
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordMatch, setPasswordMatch] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isAgreed, setIsAgreed] = useState(false);
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+    setPasswordMatch(event.target.value === confirmPassword);
+  };
+
+  const handleConfirmPasswordChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setConfirmPassword(event.target.value);
+    setPasswordMatch(password === event.target.value);
+  };
+
   const toggleVisibility = () => setIsVisible(!isVisible);
-  const handleAgreementChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAgreementChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     setIsAgreed(event.target.checked);
   };
   return (
@@ -91,7 +109,7 @@ export default function RegisterContainer() {
           </div>
           <div>
             <Input
-              className="w-full self-center pb-4 "
+              className="w-full self-center pb-4"
               label="Password"
               labelPlacement="outside"
               placeholder=" "
@@ -107,10 +125,11 @@ export default function RegisterContainer() {
                 </button>
               }
               type={isVisible ? 'text' : 'password'}
+              onChange={handlePasswordChange}
             />
             <Input
-              className="w-full self-center "
-              label="Forgot Password?"
+              className={`w-full self-center ${!passwordMatch && confirmPassword ? 'border-red-500' : ''}`}
+              label="Confirm Password"
               labelPlacement="outside"
               placeholder=" "
               variant="bordered"
@@ -125,6 +144,7 @@ export default function RegisterContainer() {
                 </button>
               }
               type={isVisible ? 'text' : 'password'}
+              onChange={handleConfirmPasswordChange}
             />
             {/* Forgot password link */}
             <div className="text-right">
@@ -136,7 +156,7 @@ export default function RegisterContainer() {
               </Link>
             </div>
             {/* Checkbox for terms and conditions */}
-            <div className="mt-4 pb-6 flex items-center">
+            <div className="mt-4 flex items-center pb-6">
               <Checkbox checked={isAgreed} onChange={handleAgreementChange} />
               <span className="ml-1 text-[10px] font-light text-zinc-500">
                 By checking this box, I agree to the Terms of Service and
