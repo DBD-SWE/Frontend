@@ -3,7 +3,8 @@ import { Input } from '@/(general)/components/input';
 import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
-import { Button } from '@nextui-org/react';
+import { Button, Checkbox } from '@nextui-org/react';
+
 export default function RegisterContainer() {
   const Mail = (
     <div className="flex flex-row items-center">
@@ -39,8 +40,9 @@ export default function RegisterContainer() {
     </div>
   );
   const [isVisible, setIsVisible] = React.useState(false);
-
+  const [isAgreed, setIsAgreed] = React.useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
+  const handleAgreementChange = (checked) => setIsAgreed(checked);
   return (
     <div className=" flex h-[600px] w-[500px] flex-col justify-between rounded-lg bg-white px-14 shadow max-sm:h-screen max-sm:w-screen max-sm:justify-center max-sm:px-8">
       {/* Heading  */}
@@ -61,12 +63,16 @@ export default function RegisterContainer() {
             by setting up your login details.
           </p>
         </div>
-        <div className="flex w-full items-center justify-center pt-8">
-          <div className="h-[1px] flex-grow bg-zinc-300" />
-
-          <h1 className="px-2 text-[15px] font-bold">Registration</h1>
-
-          <div className="h-[1px] flex-grow bg-zinc-300" />
+        {/* middle heading */}
+        <div>
+          <div className="flex w-full items-center justify-center pt-8">
+            <div className="h-[1px] flex-grow bg-zinc-300" />
+            <h1 className="px-2 text-[15px] font-bold">Registration</h1>
+            <div className="h-[1px] flex-grow bg-zinc-300" />
+          </div>
+          <p className="text-center text-[10px] font-light text-zinc-500">
+            Please create a secure and strong password to register your account.
+          </p>
         </div>
         {/* Inputs */}
         <div className="mt-10 w-full">
@@ -109,6 +115,14 @@ export default function RegisterContainer() {
                 Forgot password?
               </Link>
             </div>
+            {/* Checkbox for terms and conditions */}
+            <div className="mt-4 flex items-center">
+              <Checkbox checked={isAgreed} onChange={handleAgreementChange} />
+              <span className="ml-2 text-xs text-zinc-500">
+                By checking this box, I agree to the Terms of Service and
+                Privacy Policy
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -119,7 +133,7 @@ export default function RegisterContainer() {
             color="primary"
             className="flex-end h-10 w-full rounded px-11 text-sm"
           >
-            Sign in
+            Register
           </Button>
         </div>
       </div>
