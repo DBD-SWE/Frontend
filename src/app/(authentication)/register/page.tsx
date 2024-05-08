@@ -1,5 +1,8 @@
+import RegisterContainer from "./components/registration/registercontainer"
 export default function Register(){
     return(
-        <div></div>
+        <div>
+            <RegisterContainer/>
+        </div>
     )
 }
