@@ -5,20 +5,33 @@ import Image from 'next/image';
 type Props = {
   rating?: number;
   isDisabled?: boolean;
+  onChange?: (e: any) => void; // Add this to handle changes
 };
 
-const StarRating = ({ rating, isDisabled }: Props) => {
+const StarRating = ({ rating, isDisabled, onChange }: Props) => {
   const [hoveredStar, setHoveredStar] = useState(-1);
   const [selectedStar, setSelectedStar] = useState(rating ? rating - 1 : -1);
+
+  const handleRatingChange = (index: number) => {
+    setSelectedStar(index);
+    if (onChange) {
+      onChange({
+        target: {
+          value: index + 1,
+          name: 'rating',
+        },
+      }); // Call the onChange handler passing the new rating
+    }
+  };
+
   return (
     <div className={`flex gap-1 ${isDisabled ? 'opacity-50' : ''}`}>
-      {/* Render 5 stars, either empty or full based on the hover and the selection */}
       {Array.from({ length: 5 }).map((_, index) => (
         <div
           key={index}
           onMouseEnter={() => !isDisabled && setHoveredStar(index)}
           onMouseLeave={() => !isDisabled && setHoveredStar(-1)}
-          onClick={() => !isDisabled && setSelectedStar(index)}
+          onClick={() => !isDisabled && handleRatingChange(index)}
           className={`${!isDisabled ? 'cursor-pointer' : ''}`}
         >
           <Image
@@ -35,8 +48,6 @@ const StarRating = ({ rating, isDisabled }: Props) => {
           />
         </div>
       ))}
-      {/* Hidden input so that the stars can be used as form value */}
-      <input type="hidden" name="rating" value={selectedStar + 1} />
     </div>
   );
 };

@@ -13,23 +13,39 @@ interface SelectComponentProps {
   size?: 'sm' | 'md' | 'lg' | undefined;
   startContent?: React.ReactNode;
   isDisabled?: boolean;
+  name?: string;
+  isInvalid?: boolean;
+  errorMessage?: string;
+  onChange?: (e: any) => void;
 }
 
-const SelectComponent = (props: SelectComponentProps) => {
-  const { items, label, placeholder, size, startContent } = props;
-
+const SelectComponent = ({
+  items,
+  label,
+  placeholder,
+  size,
+  startContent,
+  isDisabled,
+  name,
+  isInvalid,
+  errorMessage,
+  onChange,
+}: SelectComponentProps) => {
   return (
     <Select
       startContent={startContent}
-      items={items}
+      items={items.map((item) => ({
+        key: item.value,
+        ...item,
+      }))}
       label={label}
       placeholder={placeholder}
-      size={size ? size : 'sm'}
-      isDisabled={props.isDisabled}
-
-      classNames={{
-        trigger: ['rounded'],
-      }}
+      size={size || 'sm'}
+      disabled={isDisabled}
+      name={name}
+      isInvalid={isInvalid}
+      errorMessage={errorMessage}
+      onChange={onChange}
     >
       {(item) => <SelectItem key={item.value}>{item.label}</SelectItem>}
     </Select>

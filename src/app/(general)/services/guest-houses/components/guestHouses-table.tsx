@@ -24,6 +24,7 @@ import { ChevronDownIcon } from '@/(general)/components/table/ChevronDownIcon';
 import { SearchIcon } from '@/(general)/components/table/SearchIcon';
 import Image from 'next/image';
 import { GuestHouse, TableColumnType } from '@/lib/types';
+import Link from 'next/link';
 
 const INITIAL_VISIBLE_COLUMNS = [
   'name',
@@ -277,13 +278,15 @@ export default function App({ guestHouses, columns }: Props) {
                 ))}
               </DropdownMenu>
             </Dropdown>
-            <Button
-              className="rounded bg-foreground text-background"
-              endContent={<PlusIcon />}
-              size="sm"
-            >
-              Create Guest House
-            </Button>
+            <Link href={`guest-houses/create`}>
+              <Button
+                className="rounded bg-foreground text-background"
+                endContent={<PlusIcon />}
+                size="sm"
+              >
+                Create Guest House
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="flex items-center justify-between">

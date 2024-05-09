@@ -58,3 +58,16 @@ export type ActivityLog = {
   status: string;
   time: string;
 };
+
+export type CreateGuestHouseFormData = {
+  name: string;
+  description: string;
+  address: string;
+  location_coordinates_lat: string;
+  location_coordinates_long: string;
+  number_of_bathrooms: number;
+  number_of_bedrooms: number;
+  rating: number;
+  accessibility: string;
+  images?: string[];
+};
