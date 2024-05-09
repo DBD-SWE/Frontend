@@ -3,14 +3,25 @@ import { cookies } from 'next/headers';
 
 const BASE_URL = process.env.BACKEND_URL || 'http://localhost:8000';
 
-export default axios.create({
+const api = axios.create({
   baseURL: BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-axios.interceptors.response.use(
+api.interceptors.request.use(
+  function (request) {
+    const accessToken = cookies().get('access')?.value;
+    request.headers.Authorization = `Bearer ${accessToken}`;
+    return request;
+  },
+  function (error) {
+    return Promise.reject(error);
+  },
+);
+
+api.interceptors.response.use(
   function (response) {
     return response;
   },
@@ -18,3 +29,5 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   },
 );
+
+export default api;
