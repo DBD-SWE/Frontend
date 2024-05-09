@@ -1,7 +1,3 @@
-import { cn } from '@/lib/utils';
-import CustomNextUiProvider from '@/lib/context/next-ui';
-import Header from '@/(general)/components/header';
-import Sidebar from '@/(general)/components/sidebar';
 import { PageTitle } from '../components/text';
 import TabsComponent from './components/Tabs';
 import { Button } from '@nextui-org/react';

@@ -2,9 +2,7 @@ import React from 'react';
 import SummaryCardsList from './components/SummaryCards';
 import DoughnutSummaryCard from './components/DoughnutSummaryCard';
 import ActivityLog from './components/ActivityLog';
-import { PageTitle } from '@/(general)/components/text';
 import { Button } from '@nextui-org/react';
-import TabsComponent from './components/Tabs';
 import { getDashboardData } from '@/lib/actions/dashboard';
 import Link from 'next/link';
 

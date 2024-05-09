@@ -22,8 +22,8 @@ import { PlusIcon } from '../../../../../../public/icons/jsx/PlusIcon';
 import { VerticalDotsIcon } from '@/(general)/components/table/VerticalDotsIcon';
 import { ChevronDownIcon } from '@/(general)/components/table/ChevronDownIcon';
 import { SearchIcon } from '@/(general)/components/table/SearchIcon';
-import { columns, guestHouses } from './guestHousesData';
 import Image from 'next/image';
+import { GuestHouse, GuestHouseColumn } from '@/lib/types';
 
 const INITIAL_VISIBLE_COLUMNS = [
   'name',
@@ -59,9 +59,27 @@ const DeleteIcon = (
   />
 );
 
-type GuestHouse = (typeof guestHouses)[0];
+//       id: 3,
+//         name: 'Seaside Retreat2',
+//         description: 'A beautiful seaside house with stunning ocean views.',
+//         district: [Object],
+//         location_coordinates_lat: '36.7783',
+//         location_coordinates_long: '-119.4179',
+//         category: 'Beach House',
+//         number_of_bathrooms: 3,
+//         number_of_bedrooms: 5,
+//         rating: 4.5,
+//         accessibility: true,
+//         food_type: 'VE',
+//         images: []
+//       }
 
-export default function App() {
+type Props = {
+  guestHouses: GuestHouse[];
+  columns: GuestHouseColumn[];
+};
+
+export default function App({ guestHouses, columns }: Props) {
   const [categoryFilter, setCategoryFilter] = React.useState<Selection>('all');
   const [filterValue, setFilterValue] = React.useState('');
   const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
