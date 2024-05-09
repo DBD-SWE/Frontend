@@ -4,18 +4,9 @@ import AdvancedTable from './components/guestHouses-table';
 import { Button } from '@nextui-org/react';
 import { getGuestHousesData } from '@/lib/actions/guestHouses';
 import Link from 'next/link';
-import { GuestHouse, GuestHouseColumn } from '@/lib/types';
+import { GuestHouse, TableColumnType } from '@/lib/types';
 
 type Props = {};
-
-// const columns = [
-//   { name: 'Name', uid: 'name', sortable: true },
-//   { name: 'Bathrooms', uid: 'bathrooms', sortable: true },
-//   { name: 'Bedrooms', uid: 'bedrooms', sortable: true },
-//   { name: 'Rating', uid: 'rating', sortable: true },
-//   { name: 'Accessibility', uid: 'accessibility', sortable: true },
-//   { name: 'actions', uid: 'actions' },
-// ];
 
 const page = async (props: Props) => {
   const { data, message, status } = await getGuestHousesData();
@@ -48,7 +39,7 @@ const page = async (props: Props) => {
     };
   });
 
-  const tableColumns: GuestHouseColumn[] = [
+  const tableColumns: TableColumnType[] = [
     { name: 'Name', uid: 'name', sortable: true },
     { name: 'Bathrooms', uid: 'bathrooms', sortable: true },
     { name: 'Bedrooms', uid: 'bedrooms', sortable: true },

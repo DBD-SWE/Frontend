@@ -3,8 +3,6 @@ import axios from '../api/axios';
 
 export async function getDashboardData() {
   try {
-    console.log('fired1');
-
     const response = await axios.get('/commodities/dashboard');
     const data = response.data;
     return {

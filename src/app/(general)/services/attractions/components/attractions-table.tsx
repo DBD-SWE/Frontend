@@ -22,8 +22,8 @@ import { PlusIcon } from '../../../../../../public/icons/jsx/PlusIcon';
 import { VerticalDotsIcon } from '@/(general)/components/table/VerticalDotsIcon';
 import { ChevronDownIcon } from '@/(general)/components/table/ChevronDownIcon';
 import { SearchIcon } from '@/(general)/components/table/SearchIcon';
-import { columns, attractions } from './attractionsData';
 import Image from 'next/image';
+import { Attraction, TableColumnType } from '@/lib/types';
 
 const ViewIcon = (
   <Image
@@ -50,15 +50,14 @@ const DeleteIcon = (
   />
 );
 
-const INITIAL_VISIBLE_COLUMNS = ['name', 'accessibility', 'rating', 'actions'];
+const INITIAL_VISIBLE_COLUMNS = ['name', 'actions'];
 
-type Attraction = (typeof attractions)[0];
+type Props = {
+  attractions: Attraction[];
+  columns: TableColumnType[];
+};
 
-export default function App() {
-  const accessibilityColorMap: Record<string, { bg: string; text: string }> = {
-    Accessible: { bg: 'bg-green-50', text: 'text-green-400' },
-    NotAccessible: { bg: 'bg-red-50', text: 'text-red-400' },
-  };
+export default function App({ attractions, columns }: Props) {
   const [categoryFilter, setCategoryFilter] = React.useState<Selection>('all');
   const [filterValue, setFilterValue] = React.useState('');
   const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
@@ -94,14 +93,6 @@ export default function App() {
         attraction.name.toLowerCase().includes(filterValue.toLowerCase()),
       );
     }
-    // if (
-    //   categoryFilter !== 'all' &&
-    //   Array.from(categoryFilter).length !== statusOptions.length
-    // ) {
-    //   filteredAttractions = filteredAttractions.filter((attraction) =>
-    //     Array.from(categoryFilter).includes(attraction.category),
-    //   );
-    // }
     return filteredAttractions;
   }, [filterValue, hasSearchFilter]);
 
@@ -127,20 +118,6 @@ export default function App() {
       const cellValue = attraction[columnKey as keyof Attraction];
 
       switch (columnKey) {
-        case 'accessibility':
-          let bgColor = 'bg-red-50';
-          let textColor = 'text-red-500';
-          if (attraction.accessibility === 'Accessible') {
-            bgColor = 'bg-green-50';
-            textColor = 'text-green-500';
-          }
-          return (
-            <div
-              className={`flex w-[100px] flex-row items-center justify-center gap-1 py-1 ${bgColor} rounded-full capitalize text-default-600`}
-            >
-              <p className={`text-xs ${textColor}`}>{cellValue}</p>
-            </div>
-          );
         case 'name':
           return (
             <User
@@ -169,25 +146,6 @@ export default function App() {
               {attraction.address}
             </User>
           );
-        case 'rating':
-          return (
-            <div className="flex gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Image
-                  key={i}
-                  alt="star"
-                  src={
-                    i < attraction.rating
-                      ? '/icons/star.png'
-                      : '/icons/emptyStar.png'
-                  }
-                  width={10}
-                  height={10}
-                />
-              ))}
-            </div>
-          );
-
         case 'actions':
           return (
             <div className="relative flex items-center justify-end gap-2">

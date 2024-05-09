@@ -1,25 +1,45 @@
 import React from 'react';
-import { PageTitle, SubTitle } from '@/(general)/components/text';
 import AdvancedTable from './components/attractions-table';
+import { getAttractionsData } from '@/lib/actions/attractions';
+import Link from 'next/link';
 import { Button } from '@nextui-org/react';
+import { Attraction, TableColumnType } from '@/lib/types';
 
 type Props = {};
 
-const page = (props: Props) => {
+const page = async (props: Props) => {
+  const { data, message, status } = await getAttractionsData();
+
+  if (status === 'error') {
+    return (
+      <div className="mt- flex h-[700px] w-full flex-col items-center justify-center gap-4">
+        <p>{message}</p>
+        <Link href="/services/guest-houses">
+          <Button color="primary" className="h-8 rounded px-4 text-sm">
+            Try Again
+          </Button>
+        </Link>
+      </div>
+    );
+  }
+
+  const attractions: Attraction[] = data?.attractions.map((entry: any) => {
+    return {
+      id: entry.id,
+      name: entry.name,
+      address: entry.district.name,
+      images: entry.images,
+    };
+  });
+
+  const attractionsColumns: TableColumnType[] = [
+    { name: 'Name', uid: 'name', sortable: true },
+    { name: 'Actions', uid: 'actions' },
+  ];
+
   return (
-    <div className="flex w-full flex-col">
-      <div className="items-star flex w-full flex-row justify-between">
-        <div className="flex flex-col">
-          <PageTitle>Attractions</PageTitle>
-          <SubTitle content={['Services', '○', 'Attractions']} />
-        </div>
-        <Button color="primary" className="h-8 rounded px-4 text-sm">
-          Download
-        </Button>
-      </div>
-      <div className="my-12">
-        <AdvancedTable />
-      </div>
+    <div className="my-12">
+      <AdvancedTable attractions={attractions} columns={attractionsColumns} />
     </div>
   );
 };

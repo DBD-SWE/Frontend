@@ -13,8 +13,15 @@ export type GuestHouse = {
   images: string[];
 };
 
-export type GuestHouseColumn = {
+export type TableColumnType = {
   name: string;
   uid: string;
   sortable?: boolean;
+};
+
+export type Attraction = {
+  id: number;
+  name: string;
+  address: string;
+  images: string[];
 };

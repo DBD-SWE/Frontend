@@ -23,7 +23,7 @@ import { VerticalDotsIcon } from '@/(general)/components/table/VerticalDotsIcon'
 import { ChevronDownIcon } from '@/(general)/components/table/ChevronDownIcon';
 import { SearchIcon } from '@/(general)/components/table/SearchIcon';
 import Image from 'next/image';
-import { GuestHouse, GuestHouseColumn } from '@/lib/types';
+import { GuestHouse, TableColumnType } from '@/lib/types';
 
 const INITIAL_VISIBLE_COLUMNS = [
   'name',
@@ -59,24 +59,9 @@ const DeleteIcon = (
   />
 );
 
-//       id: 3,
-//         name: 'Seaside Retreat2',
-//         description: 'A beautiful seaside house with stunning ocean views.',
-//         district: [Object],
-//         location_coordinates_lat: '36.7783',
-//         location_coordinates_long: '-119.4179',
-//         category: 'Beach House',
-//         number_of_bathrooms: 3,
-//         number_of_bedrooms: 5,
-//         rating: 4.5,
-//         accessibility: true,
-//         food_type: 'VE',
-//         images: []
-//       }
-
 type Props = {
   guestHouses: GuestHouse[];
-  columns: GuestHouseColumn[];
+  columns: TableColumnType[];
 };
 
 export default function App({ guestHouses, columns }: Props) {
