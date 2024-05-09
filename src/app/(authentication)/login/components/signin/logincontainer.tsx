@@ -4,6 +4,9 @@ import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@nextui-org/react';
+import { useFormState, useFormStatus } from 'react-dom';
+import { login } from '@/lib/actions/auth';
+
 export default function LoginContainer() {
   const Mail = (
     <div className="flex flex-row items-center">
@@ -38,11 +41,24 @@ export default function LoginContainer() {
       />
     </div>
   );
+
+  const initialState = {
+    message: '',
+    error: '',
+  };
+
   const [isVisible, setIsVisible] = React.useState(false);
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const { pending } = useFormStatus();
+  const [state, formAction] = useFormState(login, initialState);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
   return (
-    <div className=" bg-white flex h-[600px] w-[500px] flex-col justify-between rounded-lg px-14 shadow max-sm:h-screen max-sm:w-screen max-sm:justify-center max-sm:px-8">
+    <form
+      action={formAction}
+      className=" flex h-[600px] w-[500px] flex-col justify-between rounded-lg bg-white px-14 shadow max-sm:h-screen max-sm:w-screen max-sm:justify-center max-sm:px-8"
+    >
       {/* Heading  */}
       <div>
         <div className="w-full text-center">
@@ -63,6 +79,9 @@ export default function LoginContainer() {
               variant="bordered"
               classNames={{ inputWrapper: 'bg-white' }}
               startContent={Mail}
+              type="email"
+              name="email"
+              disabled={pending}
             />
           </div>
           <div>
@@ -83,6 +102,9 @@ export default function LoginContainer() {
                 </button>
               }
               type={isVisible ? 'text' : 'password'}
+              name="password"
+              disabled={pending}
+              minLength={8}
             />
             {/* Forgot password link */}
             <div className="text-right">
@@ -97,16 +119,23 @@ export default function LoginContainer() {
         </div>
       </div>
       <div>
+        <div>
+          {state.error && (
+            <div className="mb-2 text-red-500">{state.error}</div>
+          )}
+        </div>
         {/* Button  */}
         <div className="flex justify-center pb-20">
           <Button
+            type="submit"
             color="primary"
+            disabled={pending}
             className="flex-end h-10 w-full rounded px-11 text-sm"
           >
             Sign in
           </Button>
         </div>
       </div>
-    </div>
+    </form>
   );
 }
