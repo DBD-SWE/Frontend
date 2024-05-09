@@ -10,21 +10,8 @@ const loginSchma = z.object({
   password: z.string().min(8),
 });
 
-export async function getMe() {
-  try {
-    const res = await fetch('http://localhost:8000/auth/userinfo/', {
-      headers: {
-        Authorization: `Bearer ${cookies().get('access')?.value}`,
-      },
-    });
-    return res.status;
-  } catch (err) {
-    console.log(err);
-    return null;
-  }
-}
-
 export async function login(prevState: any, formData: FormData) {
+  'use server';
   try {
     // Parse and validate input
     const { email, password } = loginSchma.parse({
