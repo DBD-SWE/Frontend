@@ -24,9 +24,9 @@ import { PlusIcon } from '../../../../../public/icons/jsx/PlusIcon';
 import { VerticalDotsIcon } from './VerticalDotsIcon';
 import { ChevronDownIcon } from './ChevronDownIcon';
 import { SearchIcon } from './SearchIcon';
-import { columns, users, statusOptions, bannedOptions } from './data';
 import { capitalize } from './utils';
 import Image from 'next/image';
+import { BannedOptions, StatusOptions, TableColumnType } from '@/lib/types';
 
 const ViewIcon = (
   <Image
@@ -106,7 +106,19 @@ const rolesImages: {
   },
 };
 
-export default function AdvancedTable() {
+type Props = {
+  users: User[];
+  columns: TableColumnType[];
+  statusOptions: StatusOptions[];
+  bannedOptions: BannedOptions[];
+};
+
+export default function AdvancedTable({
+  users,
+  columns,
+  statusOptions,
+  bannedOptions,
+}: Props) {
   const [filterValue, setFilterValue] = React.useState('');
   const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
     new Set([]),

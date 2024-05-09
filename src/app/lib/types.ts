@@ -25,3 +25,27 @@ export type Attraction = {
   address: string;
   images: string[];
 };
+
+export type User = {
+  id: number;
+  name: string;
+  role: string;
+  team: string;
+  status: string;
+  age: string;
+  avatar: string;
+  ban: string;
+  email: string;
+};
+
+export type StatusOptions = {
+  name: string;
+  uid: string;
+  color: string;
+};
+
+export type BannedOptions = {
+  name: string;
+  uid: string;
+  color: string;
+};
