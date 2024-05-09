@@ -24,7 +24,6 @@ export default async function Home() {
     );
   }
 
-  console.log(data);
   const summaryCardData = [
     {
       title: 'Guest Houses',
@@ -63,16 +62,25 @@ export default async function Home() {
     },
   ];
 
+  const pieChartLabels = data?.pieChartData.map(
+    (entry: { name: string; commodities_count: number }) => entry.name,
+  );
+  const pieChartStats = data?.pieChartData.map(
+    (entry: { name: string; commodities_count: number }) =>
+      entry.commodities_count,
+  );
+
+  console.log(pieChartLabels, pieChartStats);
   return (
     <div className="mt-1 flex h-full w-full flex-col">
       <SummaryCardsList data={summaryCardData} />
       <div className="mb-4 flex w-full flex-col gap-8 xl:flex-row">
         <DoughnutSummaryCard
           title="Services"
-          total={216}
+          total={data?.summaryCardsData.commoditiesCount}
           lastModified="Jan 8, 2024"
-          labels={['Blat', 'Amchit', 'Halat', 'Ehmej', 'Bchelleh']}
-          stats={[25, 20, 15, 30, 10]}
+          labels={pieChartLabels}
+          stats={pieChartStats}
           colors={['#FF0000', '#2ECC71', '#FFD767', '#2463EB', '#FF6B00']}
         />
         <ActivityLog />
