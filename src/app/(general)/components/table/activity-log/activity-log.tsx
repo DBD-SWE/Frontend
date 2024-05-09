@@ -22,7 +22,6 @@ import {
 } from '@nextui-org/react';
 import { ChevronDownIcon } from './ChevronDownIcon';
 import { SearchIcon } from './SearchIcon';
-import { columns, activityLogs, statusOptions } from './data-activity';
 import Image from 'next/image';
 import { ActivityLog, StatusOptions, TableColumnType } from '@/lib/types';
 
