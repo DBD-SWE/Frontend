@@ -24,6 +24,7 @@ import { ChevronDownIcon } from './ChevronDownIcon';
 import { SearchIcon } from './SearchIcon';
 import { columns, activityLogs, statusOptions } from './data-activity';
 import Image from 'next/image';
+import { ActivityLog, StatusOptions, TableColumnType } from '@/lib/types';
 
 function formatDateTime(isoString: string): string {
   // Create a new Date object from the ISO string
@@ -101,9 +102,19 @@ const INITIAL_VISIBLE_COLUMNS = [
   'time',
 ];
 
-type User = (typeof activityLogs)[0];
+type User = ActivityLog;
 
-export default function AdvancedTable({ allUsers }: { allUsers?: boolean }) {
+type Props = {
+  activityLogs: ActivityLog[];
+  columns: TableColumnType[];
+  statusOptions: StatusOptions[];
+};
+
+export default function AdvancedTable({
+  activityLogs,
+  columns,
+  statusOptions,
+}: Props) {
   const [filterValue, setFilterValue] = React.useState('');
   const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
     new Set([]),
@@ -136,7 +147,7 @@ export default function AdvancedTable({ allUsers }: { allUsers?: boolean }) {
 
     if (hasSearchFilter) {
       filteredUsers = filteredUsers.filter((user) =>
-        user.user.name.toLowerCase().includes(filterValue.toLowerCase()),
+        user.name.toLowerCase().includes(filterValue.toLowerCase()),
       );
     }
     if (
@@ -178,12 +189,11 @@ export default function AdvancedTable({ allUsers }: { allUsers?: boolean }) {
             avatarProps={{
               radius: 'full',
               size: 'sm',
-              src: user.user.avatar,
               showFallback: true,
               fallback: (
                 <div className="flex h-full w-full items-center justify-center">
                   <h1 className="text-xs font-semibold text-black">
-                    {user.user.name
+                    {user.name
                       .split(' ')
                       .map((name) => name[0])
                       .join('')}
@@ -194,11 +204,8 @@ export default function AdvancedTable({ allUsers }: { allUsers?: boolean }) {
             classNames={{
               description: 'text-default-500',
             }}
-            description={user.user.email}
-            name={user.user.name}
-          >
-            {user.user.email}
-          </User>
+            name={user.name}
+          ></User>
         );
       case 'action':
         let actionStyle = icons[user['content_type']]

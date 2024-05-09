@@ -10,7 +10,6 @@ export async function middleware(request: NextRequest) {
   if (!accessToken || !refreshToken) {
     return redirectToLogin();
   }
-
   // if the access token is valid, continue to the next middleware otherwise refresh the token
   if (await isTokenValid(accessToken)) {
     return NextResponse.next();
@@ -19,26 +18,32 @@ export async function middleware(request: NextRequest) {
   }
 }
 
+// handle the error with try catch
 // Function to handle token refresh
 async function handleTokenRefresh(refreshToken: string) {
-  // get a new access token using the refresh token
-  const refreshResponse = await fetch(`${BACKEND_URL}/auth/token/refresh/`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      refresh: refreshToken,
-    }),
-  });
+  try {
+    // get a new access token using the refresh token
+    const refreshResponse = await fetch(`${BACKEND_URL}/auth/token/refresh/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        refresh: refreshToken,
+      }),
+    });
 
-  // if the refresh was successful, set the new access token in the cookies otherwise redirect to login
-  if (refreshResponse.ok) {
-    const { access: newAccessToken } = await refreshResponse.json();
-    const response = NextResponse.next();
-    response.cookies.set('access', newAccessToken);
-    return response;
-  } else return redirectToLogin();
+    // if the refresh was successful, set the new access token in the cookies otherwise redirect to login
+    if (refreshResponse.ok) {
+      const { access: newAccessToken } = await refreshResponse.json();
+      const response = NextResponse.next();
+      response.cookies.set('access', newAccessToken);
+      return response;
+    } else return redirectToLogin();
+  } catch (err) {
+    console.error('Error refreshing token', err);
+    return redirectToLogin();
+  }
 }
 
 // Function to check if the token is valid

@@ -49,3 +49,12 @@ export type BannedOptions = {
   uid: string;
   color: string;
 };
+
+export type ActivityLog = {
+  id: number;
+  name: string;
+  action: string;
+  ip_address: string;
+  status: string;
+  time: string;
+};
