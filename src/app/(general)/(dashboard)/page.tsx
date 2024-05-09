@@ -70,7 +70,13 @@ export default async function Home() {
       entry.commodities_count,
   );
 
-  console.log(pieChartLabels, pieChartStats);
+  const activityLogData = [
+    data?.recentActivities[0],
+    data?.recentActivities[1],
+  ];
+
+  console.log(activityLogData);
+
   return (
     <div className="mt-1 flex h-full w-full flex-col">
       <SummaryCardsList data={summaryCardData} />
