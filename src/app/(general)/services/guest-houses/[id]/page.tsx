@@ -1,5 +1,5 @@
-import { PageTitle, SubTitle } from '../../../components/text';
-import React from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import Section from '../../components/section';
 import { Input, Select, TextArea } from '../../../components/input';
 import FileInput from '../../components/file-input';
@@ -7,6 +7,10 @@ import { Button } from '@nextui-org/react';
 import Image from 'next/image';
 import StarRating from '../../components/starRating';
 import Link from 'next/link';
+import { getGuestHouse } from '@/lib/actions/guestHouses';
+import { useRouter } from 'next/router';
+import { useParams } from 'next/navigation';
+import { GuestHouse } from '@/lib/types';
 
 const DeleteIcon = (
   <Image
@@ -24,28 +28,31 @@ const EditIcon = (
 
 type Props = {};
 
-const page = (props: Props) => {
+const Page = (props: Props) => {
   const accessibility = [
     { label: 'Accessible', value: 'Accessible' },
     { label: 'Non Accessible', value: 'Non Accessible' },
   ];
+
+  const [guestHouseData, setGuestHouseData] = useState<GuestHouse>();
+  const param = useParams();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data, message, status } = await getGuestHouse(Number(param.id));
+      if (status === 'error') {
+        console.log(message);
+      } else {
+        setGuestHouseData(data);
+        console.log(data);
+      }
+    };
+    fetchData();
+  }, [param.id]);
+
   return (
     <div className="flex w-full flex-col">
-      <div className="items-star flex w-full flex-row justify-between">
-        {/* Title and Subtitle */}
-        <div className="flex flex-col">
-          <PageTitle>Guest Houses</PageTitle>
-          <SubTitle
-            content={[
-              'Services',
-              '○',
-              'Guest Houses',
-              '○',
-              '{Guesthouse_Name}',
-            ]}
-          />
-        </div>
-      </div>
+      <div className="items-star flex w-full flex-row justify-between"></div>
       <div className="my-12 w-full">
         {/* General info - Name, Description */}
         <Section
@@ -56,12 +63,12 @@ const page = (props: Props) => {
               <Input
                 type="text"
                 label="Name"
-                value="{Guesthouse_name}"
+                value={guestHouseData?.name}
                 isDisabled
               />
               <TextArea
                 label="Description"
-                value="{Guesthouse_desc}"
+                value={guestHouseData?.description}
                 isDisabled
               />
             </div>
@@ -74,25 +81,19 @@ const page = (props: Props) => {
           description="This information is related to the location of the service on google maps"
           form={
             <div className="flex w-[100%] max-w-[350px] flex-1 flex-col gap-x-5 gap-y-4 max-md:mt-7 lg:grid-cols-2 lg:grid-rows-2">
-              <Input
-                type="text"
-                label="Address"
-                value="{Guesthouse Address}"
-                isDisabled
-              />
               <div className="flex w-full gap-x-1">
                 <Input
                   type="text"
                   label="Logitude"
                   className="w-1/2"
-                  value="{Guesthouse Long}"
+                  value={(guestHouseData as any)?.location_coordinates_long}
                   isDisabled
                 />
                 <Input
                   type="text"
                   label="Latitude"
                   className="w-1/2"
-                  value="{Guesthouse Lat}"
+                  value={(guestHouseData as any)?.location_coordinates_lat}
                   isDisabled
                 />
               </div>
@@ -106,8 +107,32 @@ const page = (props: Props) => {
           description="Fill in the basic statistics useful for the users."
           form={
             <div className="flex w-[100%] max-w-[350px] flex-1 flex-col gap-x-5 gap-y-4 max-md:mt-7 lg:grid-cols-2 lg:grid-rows-2">
-              <Input type="number" label="Bedrooms" value={5} isDisabled />
-              <Input type="number" label="Bathrooms" value={6} isDisabled />
+              <Input
+                type="number"
+                label="Bedrooms"
+                value={(guestHouseData as any)?.number_of_bedrooms}
+                isDisabled
+              />
+              <Input
+                type="number"
+                label="Bathrooms"
+                value={(guestHouseData as any)?.number_of_bathrooms}
+                isDisabled
+              />
+              <Input
+                type="text"
+                label="Category"
+                name="category"
+                placeholder={(guestHouseData as any)?.category}
+                disabled={true}
+              />
+              <Select
+                items={[]}
+                placeholder={(guestHouseData as any)?.district.name}
+                label="Select"
+                name="district"
+                isDisabled={true}
+              />
             </div>
           }
         />
@@ -120,16 +145,20 @@ const page = (props: Props) => {
             <div className="flex w-[100%] max-w-[700px] flex-1 gap-5 max-xl:flex-col max-md:mt-7">
               <div className="max-w-[350px] sm:w-[350px]">
                 <Select
-                  isDisabled
+                  isDisabled={true}
                   items={accessibility}
-                  placeholder="Accessibility"
+                  placeholder={
+                    (guestHouseData as any)?.accessibility
+                      ? 'Accessible'
+                      : 'Non Accessible'
+                  }
                   label="Select"
                 />
               </div>
               <div className="flex items-center gap-5">
                 <p className="text-xs">Rating</p>
                 <div className="rounded-fill h-[30px] w-[2px] bg-zinc-200"></div>
-                <StarRating isDisabled rating={3} />
+                <StarRating isDisabled={true} rating={guestHouseData?.rating} />
               </div>
             </div>
           }
@@ -142,7 +171,7 @@ const page = (props: Props) => {
           last
           form={
             <div className="flex w-[100%] max-w-[700px] flex-1 max-md:mt-7 max-md:justify-center lg:max-w-[340px]">
-              {/* <FileInput /> */}
+              <FileInput isDisabled={true} />
             </div>
           }
         />
@@ -173,4 +202,4 @@ const page = (props: Props) => {
   );
 };
 
-export default page;
+export default Page;

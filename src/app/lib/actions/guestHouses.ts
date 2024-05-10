@@ -33,3 +33,18 @@ export async function createGuestHouse(guestHouse: CreateGuestHouseFormData) {
   }
   redirect(`/services/guest-houses`);
 }
+
+export async function getGuestHouse(id: number) {
+  try {
+    const response = await axios.get(`commodities/guesthouses/${id}`);
+    return {
+      status: 'ok',
+      data: response.data,
+    };
+  } catch (error) {
+    return {
+      status: 'error',
+      message: 'An error occurred while fetching data',
+    };
+  }
+}

@@ -25,6 +25,7 @@ import { SearchIcon } from '@/(general)/components/table/SearchIcon';
 import Image from 'next/image';
 import { GuestHouse, TableColumnType } from '@/lib/types';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 const INITIAL_VISIBLE_COLUMNS = [
   'name',
@@ -193,7 +194,12 @@ export default function App({ guestHouses, columns }: Props) {
                   </Button>
                 </DropdownTrigger>
                 <DropdownMenu variant="faded">
-                  <DropdownItem startContent={ViewIcon}>View</DropdownItem>
+                  <DropdownItem
+                    startContent={ViewIcon}
+                    href={`/services/guest-houses/${guestHouse.id}`}
+                  >
+                    View
+                  </DropdownItem>
                   <DropdownItem startContent={EditIcon}>Edit</DropdownItem>
                   <DropdownItem
                     startContent={DeleteIcon}

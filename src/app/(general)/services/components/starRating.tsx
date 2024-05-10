@@ -10,16 +10,10 @@ type Props = {
   errorMessage?: string;
 };
 
-const StarRating = ({
-  rating,
-  isDisabled,
-  onChange,
-  isInvalid,
-  errorMessage,
-}: Props) => {
+const StarRating = ({ rating, isDisabled, onChange }: Props) => {
   const [hoveredStar, setHoveredStar] = useState(-1);
-  const [selectedStar, setSelectedStar] = useState(rating ? rating - 1 : -1);
-
+  const [selectedStar, setSelectedStar] = useState(rating);
+  console.log(selectedStar);
   const handleRatingChange = (index: number) => {
     setSelectedStar(index);
     if (onChange) {
