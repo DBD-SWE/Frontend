@@ -71,3 +71,12 @@ export type CreateGuestHouseFormData = {
   accessibility: string;
   images?: string[];
 };
+
+export type CreateAttractionFormData = {
+  name: string;
+  description: string;
+  district: number;
+  location_coordinates_lat: number;
+  location_coordinates_long: number;
+  images?: string[];
+};

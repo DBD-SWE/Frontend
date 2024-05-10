@@ -1,6 +1,8 @@
 'use server';
 
+import { redirect } from 'next/navigation';
 import axios from '../api/axios';
+import { CreateAttractionFormData } from '../types';
 
 export async function getAttractionsData() {
   try {
@@ -18,4 +20,14 @@ export async function getAttractionsData() {
       message: 'An error occurred while fetching data',
     };
   }
+}
+
+export async function createAttraction(attraction: CreateAttractionFormData) {
+  try {
+    const res = await axios.post('commodities/attractions/', attraction);
+    console.log('ok');
+  } catch (error) {
+    console.log(error);
+  }
+  redirect(`/services/attractions/`);
 }

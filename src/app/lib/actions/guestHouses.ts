@@ -28,9 +28,8 @@ export async function createGuestHouse(guestHouse: CreateGuestHouseFormData) {
       ...guestHouse,
       food_type: 'VE',
     });
-    console.log('ok');
   } catch (error) {
     console.log(error);
   }
-  redirect('/services/guest-houses');
+  redirect(`/services/guest-houses`);
 }

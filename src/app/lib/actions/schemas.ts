@@ -14,3 +14,12 @@ export const guestHouseSchema = z.object({
   district: z.string().min(1),
   category: z.string().min(1),
 });
+
+export const attractionSchema = z.object({
+  name: z.string().min(1),
+  description: z.string().min(1),
+  district: z.string().min(1),
+  location_coordinates_lat: z.string().min(1),
+  location_coordinates_long: z.string().min(1),
+  images: z.array(z.string()).optional(),
+});
