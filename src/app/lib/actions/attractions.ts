@@ -25,9 +25,21 @@ export async function getAttractionsData() {
 export async function createAttraction(attraction: CreateAttractionFormData) {
   try {
     const res = await axios.post('commodities/attractions/', attraction);
-    console.log('ok');
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
   redirect(`/services/attractions/`);
+}
+
+export async function getAttraction(id: number) {
+  try {
+    const response = await axios.get(`commodities/attractions/${id}`);
+    return {
+      status: 'ok',
+      data: response.data,
+    };
+  } catch (error) {
+    return {
+      status: 'error',
+      message: 'An error occurred while fetching data',
+    };
+  }
 }

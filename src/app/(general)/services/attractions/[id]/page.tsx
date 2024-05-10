@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import Section from '@/(general)/services/components/section';
 import FileInput from '../../components/file-input';
 import { Button } from '@nextui-org/react';
@@ -6,6 +7,9 @@ import Image from 'next/image';
 import StarRating from '../../components/starRating';
 import Link from 'next/link';
 import { Input, Select, TextArea } from '@/(general)/components/input';
+import { Attraction } from '@/lib/types';
+import { useParams } from 'next/navigation';
+import { getAttraction } from '@/lib/actions/attractions';
 
 const DeleteIcon = (
   <Image
@@ -23,11 +27,26 @@ const EditIcon = (
 
 type Props = {};
 
-const page = (props: Props) => {
+const Page = (props: Props) => {
   const accessibility = [
     { label: 'Accessible', value: 'Accessible' },
     { label: 'Non Accessible', value: 'Non Accessible' },
   ];
+
+  const [attractionData, setAttractionData] = useState<Attraction>();
+  const param = useParams();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data, message, status } = await getAttraction(Number(param.id));
+      if (status === 'error') {
+      } else {
+        setAttractionData(data);
+      }
+    };
+    fetchData();
+  }, [param.id]);
+
   return (
     <div className="flex w-full flex-col">
       <div className="my-12 w-full">
@@ -40,12 +59,12 @@ const page = (props: Props) => {
               <Input
                 type="text"
                 label="Name"
-                value="{Guesthouse_name}"
+                value={attractionData?.name}
                 isDisabled
               />
               <TextArea
                 label="Description"
-                value="{Guesthouse_desc}"
+                value={attractionData?.description}
                 isDisabled
               />
             </div>
@@ -58,25 +77,26 @@ const page = (props: Props) => {
           description="This information is related to the location of the service on google maps"
           form={
             <div className="flex w-[100%] max-w-[350px] flex-1 flex-col gap-x-5 gap-y-4 max-md:mt-7 lg:grid-cols-2 lg:grid-rows-2">
-              <Input
-                type="text"
-                label="Address"
-                value="{Guesthouse Address}"
-                isDisabled
+              <Select
+                items={[]}
+                placeholder={(attractionData as any)?.district.name}
+                label="Select"
+                name="district"
+                isDisabled={true}
               />
               <div className="flex w-full gap-x-1">
                 <Input
                   type="text"
                   label="Logitude"
                   className="w-1/2"
-                  value="{Guesthouse Long}"
+                  value={(attractionData as any)?.location_coordinates_long}
                   isDisabled
                 />
                 <Input
                   type="text"
                   label="Latitude"
                   className="w-1/2"
-                  value="{Guesthouse Lat}"
+                  value={(attractionData as any)?.location_coordinates_lat}
                   isDisabled
                 />
               </div>
@@ -91,7 +111,7 @@ const page = (props: Props) => {
           last
           form={
             <div className="flex w-[100%] max-w-[700px] flex-1 max-md:mt-7 max-md:justify-center lg:max-w-[340px]">
-              {/* <FileInput /> */}
+              <FileInput isDisabled={true} photos={attractionData?.images} />
             </div>
           }
         />
@@ -126,4 +146,4 @@ const page = (props: Props) => {
   );
 };
 
-export default page;
+export default Page;

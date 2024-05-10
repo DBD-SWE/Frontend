@@ -41,10 +41,8 @@ const Page = (props: Props) => {
     const fetchData = async () => {
       const { data, message, status } = await getGuestHouse(Number(param.id));
       if (status === 'error') {
-        console.log(message);
       } else {
         setGuestHouseData(data);
-        console.log(data);
       }
     };
     fetchData();

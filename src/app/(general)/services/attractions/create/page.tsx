@@ -75,7 +75,6 @@ const Page = (props: Props) => {
 
   const handleSubmit = async () => {
     try {
-      console.log('Form Data:', formData);
       const validatedData = attractionSchema.parse(formData);
       await createAttraction(validatedData);
     } catch (error) {

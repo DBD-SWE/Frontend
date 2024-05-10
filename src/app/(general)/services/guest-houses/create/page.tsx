@@ -37,7 +37,6 @@ const Page = (props: Props) => {
 
   useEffect(() => {
     const getDistricts = async () => {
-      console.log('hi');
       const { message, data, status } = await getAllDistricts();
       if (status === 'ok') {
         setDistricts(
@@ -51,7 +50,6 @@ const Page = (props: Props) => {
       } else {
         setPageError(message as string);
       }
-      console.log('hi');
     };
     getDistricts();
   }, []);
@@ -89,7 +87,6 @@ const Page = (props: Props) => {
 
   const handleSubmit = async () => {
     try {
-      console.log('formData', formData);
       const validatedData = guestHouseSchema.parse({
         ...formData,
         rating: parseInt(formData.rating),

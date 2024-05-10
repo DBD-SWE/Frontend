@@ -157,7 +157,12 @@ export default function App({ attractions, columns }: Props) {
                   </Button>
                 </DropdownTrigger>
                 <DropdownMenu variant="faded">
-                  <DropdownItem startContent={ViewIcon}>View</DropdownItem>
+                  <DropdownItem
+                    startContent={ViewIcon}
+                    href={`/services/attractions/${attraction.id}`}
+                  >
+                    View
+                  </DropdownItem>
                   <DropdownItem startContent={EditIcon}>Edit</DropdownItem>
                   <DropdownItem
                     startContent={DeleteIcon}
