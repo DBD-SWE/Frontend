@@ -1,9 +1,8 @@
 'use server';
 
 import axios from '../api/axios';
-import { z } from 'zod';
-import { CreateGuestHouseFormData, GuestHouse } from '../types';
-import { RedirectType, redirect } from 'next/navigation';
+import { CreateGuestHouseFormData } from '../types';
+import { redirect } from 'next/navigation';
 
 export async function getGuestHousesData() {
   try {
@@ -24,6 +23,14 @@ export async function getGuestHousesData() {
 }
 
 export async function createGuestHouse(guestHouse: CreateGuestHouseFormData) {
-  console.log(guestHouse);
-  redirect('/services/guesthouses', RedirectType.replace);
+  try {
+    const res = await axios.post('commodities/guesthouses/', {
+      ...guestHouse,
+      food_type: 'VE',
+    });
+    console.log('ok');
+  } catch (error) {
+    console.log(error);
+  }
+  redirect('/services/guest-houses');
 }

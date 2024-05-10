@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Section from '../../components/section';
 import { Input, Select, TextArea } from '../../../components/input';
 import FileInput from '../../components/file-input';
@@ -8,9 +8,11 @@ import { PlusIcon } from '../../../../../../public/icons/jsx/PlusIcon';
 import Image from 'next/image';
 import StarRating from '../../components/starRating';
 import { useFormStatus } from 'react-dom';
-import { createGuestHouse } from '@/lib/actions/guestHouses';
 import { guestHouseSchema } from '@/lib/actions/schemas';
-import { ZodError, number } from 'zod';
+import { ZodError, number, set } from 'zod';
+import { createGuestHouse } from '@/lib/actions/guestHouses';
+import { getAllDistricts } from '@/lib/actions/districts';
+import Link from 'next/link';
 
 const DeleteIcon = (
   <Image
@@ -26,9 +28,33 @@ type Props = {};
 
 const Page = (props: Props) => {
   const accessibility = [
-    { label: 'Accessible', value: 'Accessible' },
-    { label: 'Non Accessible', value: 'Non Accessible' },
+    { label: 'Accessible', value: true },
+    { label: 'Non Accessible', value: false },
   ];
+
+  const [districts, setDistricts] = useState([]);
+  const [pageError, setPageError] = useState('');
+
+  useEffect(() => {
+    const getDistricts = async () => {
+      console.log('hi');
+      const { message, data, status } = await getAllDistricts();
+      if (status === 'ok') {
+        setDistricts(
+          data?.districts.map((district: any) => {
+            return {
+              label: district.name,
+              value: district.id,
+            };
+          }),
+        );
+      } else {
+        setPageError(message as string);
+      }
+      console.log('hi');
+    };
+    getDistricts();
+  }, []);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -36,11 +62,13 @@ const Page = (props: Props) => {
     address: '',
     location_coordinates_lat: '',
     location_coordinates_long: '',
-    number_of_bedrooms: '',
-    number_of_bathrooms: '',
-    accessibility: '',
+    number_of_bedrooms: 0,
+    number_of_bathrooms: 0,
+    accessibility: null,
     rating: '',
     images: [],
+    district: null,
+    category: '',
   });
 
   const [zodErrors, setZodErrors] = useState({
@@ -53,14 +81,22 @@ const Page = (props: Props) => {
     number_of_bathrooms: '',
     accessibility: '',
     rating: '',
+    district: '',
+    category: '',
   });
 
   const { pending } = useFormStatus();
 
-  const createGuestHouse = async () => {
+  const handleSubmit = async () => {
     try {
       console.log('formData', formData);
-      const validatedData = guestHouseSchema.parse(formData);
+      const validatedData = guestHouseSchema.parse({
+        ...formData,
+        rating: parseInt(formData.rating),
+        number_of_bedrooms: Number(formData.number_of_bedrooms),
+        number_of_bathrooms: Number(formData.number_of_bathrooms),
+      });
+      await createGuestHouse(validatedData);
     } catch (error) {
       if (error instanceof ZodError) {
         error.errors.forEach((err) => {
@@ -85,8 +121,21 @@ const Page = (props: Props) => {
     }));
   };
 
+  if (!!pageError) {
+    return (
+      <div className="mt- flex h-[700px] w-full flex-col items-center justify-center gap-4">
+        <p>{pageError}</p>
+        <Link href="/services/guest-houses/create">
+          <Button color="primary" className="h-8 rounded px-4 text-sm">
+            Try Again
+          </Button>
+        </Link>
+      </div>
+    );
+  }
+
   return (
-    <form action={createGuestHouse} className="my-12 w-full">
+    <form action={handleSubmit} className="my-12 w-full">
       {/* General info - Name, Description */}
       <Section
         title="General Information"
@@ -99,12 +148,16 @@ const Page = (props: Props) => {
               name="name"
               disabled={pending}
               onChange={onChange}
+              isInvalid={!!zodErrors.name}
+              errorMessage={zodErrors.name}
             />
             <TextArea
               label="Description"
               name="description"
               disabled={pending}
               onChange={onChange}
+              isInvalid={!!zodErrors.description}
+              errorMessage={zodErrors.description}
             />
           </div>
         }
@@ -122,6 +175,8 @@ const Page = (props: Props) => {
               name="address"
               onChange={onChange}
               disabled={pending}
+              isInvalid={!!zodErrors.address}
+              errorMessage={zodErrors.address}
             />
             <div className="flex w-full gap-x-1">
               <Input
@@ -131,6 +186,8 @@ const Page = (props: Props) => {
                 className="w-1/2"
                 label="logitude"
                 disabled={pending}
+                isInvalid={!!zodErrors.location_coordinates_lat}
+                errorMessage={zodErrors.location_coordinates_lat}
               />
               <Input
                 type="text"
@@ -139,6 +196,8 @@ const Page = (props: Props) => {
                 className="w-1/2"
                 label="latitude"
                 disabled={pending}
+                isInvalid={!!zodErrors.location_coordinates_long}
+                errorMessage={zodErrors.location_coordinates_long}
               />
             </div>
           </div>
@@ -157,6 +216,8 @@ const Page = (props: Props) => {
               name="number_of_bedrooms"
               onChange={onChange}
               disabled={pending}
+              isInvalid={!!zodErrors.number_of_bedrooms}
+              errorMessage={zodErrors.number_of_bedrooms}
             />
             <Input
               type="number"
@@ -164,6 +225,27 @@ const Page = (props: Props) => {
               name="number_of_bathrooms"
               onChange={onChange}
               disabled={pending}
+              isInvalid={!!zodErrors.number_of_bathrooms}
+              errorMessage={zodErrors.number_of_bathrooms}
+            />
+            <Input
+              type="text"
+              label="Category"
+              name="category"
+              onChange={onChange}
+              disabled={pending}
+              isInvalid={!!zodErrors.category}
+              errorMessage={zodErrors.category}
+            />
+            <Select
+              items={districts}
+              placeholder="district"
+              label="Select"
+              name="district"
+              isDisabled={pending}
+              onChange={onChange}
+              isInvalid={!!zodErrors.district}
+              errorMessage={zodErrors.district}
             />
           </div>
         }
@@ -183,12 +265,28 @@ const Page = (props: Props) => {
                 name="accessibility"
                 isDisabled={pending}
                 onChange={onChange}
+                isInvalid={!!zodErrors.accessibility}
+                errorMessage={zodErrors.accessibility}
               />
             </div>
-            <div className="flex items-center gap-5">
-              <p className="text-xs">Rating</p>
-              <div className="rounded-fill h-[30px] w-[2px] bg-zinc-200"></div>
-              <StarRating isDisabled={pending} onChange={onChange} />
+            <div className="flex flex-col justify-center gap-1">
+              <div className="flex items-center gap-5">
+                <p className="text-xs">Rating</p>
+                <div className="rounded-fill h-[30px] w-[2px] bg-zinc-200"></div>
+                <StarRating
+                  isDisabled={pending}
+                  onChange={onChange}
+                  isInvalid={!!zodErrors.rating}
+                  errorMessage={zodErrors.rating}
+                />
+              </div>
+              {!!zodErrors.rating ? (
+                <span className="text-xs text-red-500">
+                  {zodErrors.rating === 'Expected number, received string'
+                    ? 'Required'
+                    : zodErrors.rating}
+                </span>
+              ) : null}
             </div>
           </div>
         }

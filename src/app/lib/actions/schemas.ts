@@ -11,4 +11,6 @@ export const guestHouseSchema = z.object({
   rating: z.number().nonnegative(),
   accessibility: z.string().min(1),
   images: z.array(z.string()).optional(),
+  district: z.string().min(1),
+  category: z.string().min(1),
 });
