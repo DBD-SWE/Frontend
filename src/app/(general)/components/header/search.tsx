@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { SearchIcon, CloseIcon } from '@/lib/icons';
 
-const SearchInput = () => {
+const SearchInput = ({ isDisabled }: { isDisabled: boolean }) => {
   const [text, setText] = useState<string>('');
   return (
     <div className="relative">
