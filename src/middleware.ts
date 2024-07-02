@@ -5,16 +5,34 @@ const BACKEND_URL = process.env.BACKEND_URL;
 
 export async function middleware(request: NextRequest) {
   const { accessToken, refreshToken } = extractTokens(request);
+  const { pathname } = request.nextUrl;
 
-  // if the access token or refresh token is missing, redirect to login
-  if (!accessToken || !refreshToken) {
+  // if the user is on the onboarding path and is not authenticated, redirect to login
+  if (pathname.startsWith('/onboarding') && !accessToken) {
     return redirectToLogin();
   }
-  // if the access token is valid, continue to the next middleware otherwise refresh the token
-  if (await isTokenValid(accessToken)) {
+
+  // if the access token or refresh token is missing and the path is not onboarding, redirect to login
+  if ((!accessToken || !refreshToken) && !pathname.startsWith('/onboarding')) {
+    return redirectToLogin();
+  }
+
+  const tokenValidationResult = await isTokenValid(accessToken!!);
+
+  // Check the result of token validation
+  if (tokenValidationResult === true) {
+    // Redirect to home page if the user is authenticated and not already on the home page
+    if (pathname !== '/') {
+      return NextResponse.redirect(`${SERVER_URL}/`);
+    }
     return NextResponse.next();
+  } else if (
+    tokenValidationResult === 'No UserInfo matches the given query.' &&
+    pathname !== '/onboarding'
+  ) {
+    return redirectToOnboarding();
   } else {
-    return handleTokenRefresh(refreshToken);
+    return handleTokenRefresh(refreshToken!!);
   }
 }
 
@@ -54,7 +72,16 @@ async function isTokenValid(accessToken: string) {
         Authorization: `Bearer ${accessToken}`,
       },
     });
-    return response.status === 200;
+
+    if (response.status === 200) {
+      return true;
+    } else {
+      const data = await response.json();
+      if (data.detail === 'No UserInfo matches the given query.') {
+        return 'No UserInfo matches the given query.';
+      }
+      return false;
+    }
   } catch (err) {
     console.error('Error checking token validity', err);
     return false;
@@ -64,6 +91,11 @@ async function isTokenValid(accessToken: string) {
 // Function to redirect to the login page
 function redirectToLogin() {
   return NextResponse.redirect(`${SERVER_URL}/login`);
+}
+
+// Function to redirect to the placeholder page
+function redirectToOnboarding() {
+  return NextResponse.redirect(`${SERVER_URL}/onboarding`);
 }
 
 // Function to extract tokens from the request object
@@ -84,5 +116,7 @@ export const config = {
     '/services/:path*',
     '/users/:path*',
     '/view-roles/:path*',
+    '/onboarding/:path*',
+    '/login/:path*',
   ],
 };
