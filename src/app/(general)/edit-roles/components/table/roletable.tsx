@@ -72,7 +72,6 @@ export default function RoleTable({ data }: EditTableProps) {
       return item;
     });
     // Here you would typically update the state or context, or perform an API call
-    console.log(newData); // For demonstration
   };
 
   return (
