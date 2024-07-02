@@ -15,7 +15,11 @@ export default function DashboardLayout({
             <PageTitle>General Dashboard</PageTitle>
             <TabsComponent />
           </div>
-          <Button color="primary" className="h-8 rounded px-4 text-sm">
+          <Button
+            isDisabled
+            color="primary"
+            className="h-8 rounded px-4 text-sm"
+          >
             Download
           </Button>
         </div>
