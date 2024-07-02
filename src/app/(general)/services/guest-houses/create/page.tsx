@@ -28,8 +28,8 @@ type Props = {};
 
 const Page = (props: Props) => {
   const accessibility = [
-    { label: 'Accessible', value: true },
-    { label: 'Non Accessible', value: false },
+    { label: 'Accessible', value: 'true' },
+    { label: 'Non Accessible', value: 'false' },
   ];
 
   const [districts, setDistricts] = useState([]);
