@@ -14,7 +14,7 @@ export default function UsersLayout({
           <PageTitle>User Management</PageTitle>
           <SubTitle content={['Users', '○', 'Users List']} />
         </div>
-        <Button color="primary" className="h-8 rounded px-4 text-sm">
+        <Button isDisabled color="primary" className="h-8 rounded px-4 text-sm">
           Download
         </Button>
       </div>
