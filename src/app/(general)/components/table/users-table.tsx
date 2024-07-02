@@ -120,9 +120,6 @@ export default function AdvancedTable({
   bannedOptions,
 }: Props) {
   const [filterValue, setFilterValue] = React.useState('');
-  const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
-    new Set([]),
-  );
   const [visibleColumns, setVisibleColumns] = React.useState<Selection>(
     new Set(INITIAL_VISIBLE_COLUMNS),
   );
@@ -430,17 +427,6 @@ export default function AdvancedTable({
           <span className="text-small text-default-400">
             Total {users.length} users
           </span>
-          <label className="flex items-center text-small text-default-400">
-            Rows per page:
-            <select
-              className="bg-transparent text-small text-default-400 outline-none"
-              onChange={onRowsPerPageChange}
-            >
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-            </select>
-          </label>
         </div>
       </div>
     );
@@ -469,14 +455,9 @@ export default function AdvancedTable({
           variant="light"
           onChange={setPage}
         />
-        <span className="text-small text-default-400">
-          {selectedKeys === 'all'
-            ? 'All items selected'
-            : `${selectedKeys.size} of ${items.length} selected`}
-        </span>
       </div>
     );
-  }, [selectedKeys, items.length, page, pages, hasSearchFilter]);
+  }, [items.length, page, pages, hasSearchFilter]);
 
   const classNames = React.useMemo(
     () => ({
@@ -510,12 +491,9 @@ export default function AdvancedTable({
         },
       }}
       classNames={classNames}
-      selectedKeys={selectedKeys}
-      selectionMode="multiple"
       sortDescriptor={sortDescriptor}
       topContent={topContent}
       topContentPlacement="outside"
-      onSelectionChange={setSelectedKeys}
       onSortChange={setSortDescriptor}
     >
       <TableHeader columns={headerColumns}>
