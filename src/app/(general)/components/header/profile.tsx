@@ -1,11 +1,21 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { getMe } from '@/lib/actions/auth';
 
 const Profile = () => {
   const [open, setOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const avatarRef = useRef<HTMLDivElement>(null); 
+  const avatarRef = useRef<HTMLDivElement>(null);
+  const [user, setUser] = useState<any>(null);
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      const user = await getMe();
+      setUser(user);
+      console.log(user);
+    };
+    fetchCurrentUser();
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent): void => {
